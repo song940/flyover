@@ -1,0 +1,19 @@
+{
+  "name": "@alipay/flyover",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:zeus.ls/flyover.git"
+  },
+  "keywords": [],
+  "author": "Lsong <song940@gmail.com> (https://lsong.org)",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
