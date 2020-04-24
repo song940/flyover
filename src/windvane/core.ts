@@ -17,8 +17,3 @@ export const pcall = (api: string, params?) => new Promise((resolve, reject) => 
     resolve(res);
   });
 });
-
-export const addEventListener = (type: string, fn) => {
-  document.addEventListener(type, fn, false);
-  return () => document.removeEventListener(type, fn);
-};

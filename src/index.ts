@@ -10,19 +10,19 @@ import {
   isQianNiu
 } from './utils';
 
-export const toast = (content, options) => {
+export const toast = (content, options?) => {
   if (isAlipay) return alipay.toast(content, options);
   if (isQianNiu) return qianniu.toast(content, options);
 };
 
-export const alert = (content, options) => {
+export const alert = (content, options?) => {
   if (isAlipay) return alipay.alert(content, options);
   if (isQianNiu) return qianniu.alert(content, options);
 };
 
-export const confirm = (content, options) => {
-  if(isAlipay) return alipay.confirm(content, options);
-  if(isQianNiu) return qianniu.confirm(content, options);
+export const confirm = (content, options?) => {
+  if (isAlipay) return alipay.confirm(content, options);
+  if (isQianNiu) return qianniu.confirm(content, options);
 };
 
 export const showLoading = () => {
@@ -35,7 +35,17 @@ export const hideLoading = () => {
   if (isQianNiu) return qianniu.hideLoading();
 };
 
-export const pushWindow = (url, options) => {
-  if(isAlipay) return alipay.pushWindow(url, options);
-  if(isQianNiu) return qianniu.pushWindow(url, options);
+export const pushWindow = (url, options?) => {
+  if (isAlipay) return alipay.pushWindow(url, options);
+  if (isQianNiu) return qianniu.pushWindow(url, options);
+};
+
+export const popWindow = () => {
+  if (isAlipay) return alipay.popWindow();
+  if (isQianNiu) return qianniu.popWindow();
+};
+
+export const closeWebview = () => {
+  if (isAlipay) return alipay.closeWebview();
+  if (isQianNiu) return qianniu.popWindow();
 };

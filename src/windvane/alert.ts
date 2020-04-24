@@ -1,4 +1,5 @@
-import { pcall, addEventListener } from './core';
+import { pcall } from './core';
+import { addEventListener } from '../utils';
 
 type AlertOption = {
   buttonText?: string

@@ -58,3 +58,8 @@ export const isDingTalk = /AliApp\(DingTalk\/([\d\.]+)\)/i.test(ua);
 export const isQianNiu = /AliApp\(QN\/([\d\.]+)\)/i.test(ua);
 export const isAmap = /amap/i.test(ua);
 export const isInside = /Inside/i.test(ua);
+
+export const addEventListener = (type: string, fn) => {
+  document.addEventListener(type, fn, false);
+  return () => document.removeEventListener(type, fn);
+};
