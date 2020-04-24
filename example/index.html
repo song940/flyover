@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flyover example</title>
+  <style>
+    body {
+      font-family: monospace;
+    }
+
+    h1 {
+      text-align: center;
+      transform: uppercase;
+    }
+
+    button {
+      width: 100%;
+      height: 30px;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>flyover demo</h1>
+  <button id="toast">toast</button>
+  <button id="alert">alert</button>
+  <button id="confirm">confirm</button>
+  <button id="showloading">show loading</button>
+  <button id="hideloading">hide loading</button>
+  <button id="pushwindow">push window</button>
+</body>
+<script src="../dist/flyover.js"></script>
+<script>
+  document.getElementById('toast').addEventListener('click', () => {
+    Flyover.toast('hello world');
+  });
+
+  document.getElementById('alert').addEventListener('click', () => {
+    Flyover.alert('hello world').then(console.log);
+  });
+
+  document.getElementById('confirm').addEventListener('click', () => {
+    Flyover.confirm('hello world').then(console.log);
+  });
+
+  document.getElementById('showloading').addEventListener('click', () => {
+    Flyover.showLoading().then(console.log);
+  });
+
+  document.getElementById('hideloading').addEventListener('click', () => {
+    Flyover.hideLoading().then(console.log);
+  });
+
+  document.getElementById('pushwindow').addEventListener('click', () => {
+    Flyover.pushWindow('http://baidu.com').then(console.log);
+  });
+</script>
+
+</html>

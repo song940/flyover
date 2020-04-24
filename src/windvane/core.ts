@@ -1,3 +1,7 @@
+import { install } from './install';
+
+install();
+
 
 export const call = (api, params?, callback?) => {
   const [className, methodName] = api.split('.');
@@ -13,3 +17,8 @@ export const pcall = (api: string, params?) => new Promise((resolve, reject) => 
     resolve(res);
   });
 });
+
+export const addEventListener = (type: string, fn) => {
+  document.addEventListener(type, fn, false);
+  return () => document.removeEventListener(type, fn);
+};

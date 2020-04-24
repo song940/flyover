@@ -1,7 +1,13 @@
 import { pcall } from "./core";
 
-export const confirm = (message, options?) => {
-  const { okbutton, canclebutton, _index } = options;
+type ConfirmOption = {
+  okbutton?: string,
+  canclebutton?: string,
+  _index?: any
+};
+
+export const confirm = (message, options: ConfirmOption = {}) => {
+  const { okbutton = '确定', canclebutton = '取消', _index } = options;
   return pcall('WVUIDialog.confirm', {
     message,
     okbutton,
