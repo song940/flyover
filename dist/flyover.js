@@ -100,11 +100,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /*!*****************************!*\
   !*** ./src/alipay/index.ts ***!
   \*****************************/
-/*! exports provided: toast, alert, confirm, showLoading, hideLoading, popWindow, pushWindow, closeWebview */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nebula__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../nebula */ \"./src/nebula/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"toast\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"toast\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"alert\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"alert\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"confirm\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"confirm\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"showLoading\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"showLoading\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"hideLoading\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"hideLoading\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"popWindow\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"popWindow\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"pushWindow\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"pushWindow\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"closeWebview\", function() { return _nebula__WEBPACK_IMPORTED_MODULE_0__[\"closeWebview\"]; });\n\n\n\n\n//# sourceURL=webpack://Flyover/./src/alipay/index.ts?");
+eval("\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ../nebula */ \"./src/nebula/index.ts\"));\n\n\n//# sourceURL=webpack://Flyover/./src/alipay/index.ts?");
 
 /***/ }),
 
@@ -112,11 +112,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _neb
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/*! exports provided: toast, alert, confirm, showLoading, hideLoading, pushWindow, popWindow, closeWebview */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"toast\", function() { return toast; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"alert\", function() { return alert; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"confirm\", function() { return confirm; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showLoading\", function() { return showLoading; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"hideLoading\", function() { return hideLoading; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"pushWindow\", function() { return pushWindow; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"popWindow\", function() { return popWindow; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"closeWebview\", function() { return closeWebview; });\n/* harmony import */ var _alipay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./alipay */ \"./src/alipay/index.ts\");\n/* harmony import */ var _qianniu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./qianniu */ \"./src/qianniu/index.ts\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ \"./src/utils/index.ts\");\n\n\n\nconst toast = (content, options) => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"toast\"](content, options);\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isQianNiu\"])\n        return _qianniu__WEBPACK_IMPORTED_MODULE_1__[\"toast\"](content, options);\n};\nconst alert = (content, options) => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"alert\"](content, options);\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isQianNiu\"])\n        return _qianniu__WEBPACK_IMPORTED_MODULE_1__[\"alert\"](content, options);\n};\nconst confirm = (content, options) => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"confirm\"](content, options);\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isQianNiu\"])\n        return _qianniu__WEBPACK_IMPORTED_MODULE_1__[\"confirm\"](content, options);\n};\nconst showLoading = () => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"showLoading\"]();\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isQianNiu\"])\n        return _qianniu__WEBPACK_IMPORTED_MODULE_1__[\"showLoading\"]();\n};\nconst hideLoading = () => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"hideLoading\"]();\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isQianNiu\"])\n        return _qianniu__WEBPACK_IMPORTED_MODULE_1__[\"hideLoading\"]();\n};\nconst pushWindow = (url, options) => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"pushWindow\"](url, options);\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isQianNiu\"])\n        return _qianniu__WEBPACK_IMPORTED_MODULE_1__[\"pushWindow\"](url, options);\n};\nconst popWindow = () => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"popWindow\"]();\n};\nconst closeWebview = () => {\n    if (_utils__WEBPACK_IMPORTED_MODULE_2__[\"isAlipay\"])\n        return _alipay__WEBPACK_IMPORTED_MODULE_0__[\"closeWebview\"]();\n};\n\n\n//# sourceURL=webpack://Flyover/./src/index.ts?");
+eval("\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];\n    result[\"default\"] = mod;\n    return result;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar alipay = __importStar(__webpack_require__(/*! ./alipay */ \"./src/alipay/index.ts\"));\nvar mybank = __importStar(__webpack_require__(/*! ./mybank */ \"./src/mybank/index.ts\"));\nvar qianniu = __importStar(__webpack_require__(/*! ./qianniu */ \"./src/qianniu/index.ts\"));\nvar utils_1 = __webpack_require__(/*! ./utils */ \"./src/utils/index.ts\");\nexports.call = function (method) {\n    var params = [];\n    for (var _i = 1; _i < arguments.length; _i++) {\n        params[_i - 1] = arguments[_i];\n    }\n};\nexports.toast = function (content, options) {\n    if (utils_1.isAlipay)\n        return alipay.toast(content, options);\n    if (utils_1.isQianNiu)\n        return qianniu.toast(content, options);\n    if (utils_1.isMyBank)\n        return mybank.toast(content, options);\n};\nexports.alert = function (content, options) {\n    if (utils_1.isAlipay)\n        return alipay.alert(content, options);\n    if (utils_1.isQianNiu)\n        return qianniu.alert(content, options);\n    if (utils_1.isMyBank)\n        return mybank.alert(content, options);\n};\nexports.confirm = function (content, options) {\n    if (utils_1.isAlipay)\n        return alipay.confirm(content, options);\n    if (utils_1.isQianNiu)\n        return qianniu.confirm(content, options);\n    if (utils_1.isMyBank)\n        return mybank.confirm(content, options);\n};\nexports.showLoading = function () {\n    if (utils_1.isAlipay)\n        return alipay.showLoading();\n    if (utils_1.isQianNiu)\n        return qianniu.showLoading();\n    if (utils_1.isMyBank)\n        return mybank.showLoading();\n};\nexports.hideLoading = function () {\n    if (utils_1.isAlipay)\n        return alipay.hideLoading();\n    if (utils_1.isQianNiu)\n        return qianniu.hideLoading();\n    if (utils_1.isMyBank)\n        return mybank.hideLoading();\n};\nexports.pushWindow = function (url, options) {\n    if (utils_1.isAlipay)\n        return alipay.pushWindow(url, options);\n    if (utils_1.isQianNiu)\n        return qianniu.pushWindow(url, options);\n    if (utils_1.isMyBank)\n        return mybank.pushWindow(url, options);\n};\nexports.popWindow = function () {\n    if (utils_1.isAlipay)\n        return alipay.popWindow();\n    if (utils_1.isQianNiu)\n        return qianniu.popWindow();\n    if (utils_1.isMyBank)\n        return mybank.popWindow();\n};\nexports.closeWebview = function () {\n    if (utils_1.isAlipay)\n        return alipay.closeWebview();\n    if (utils_1.isQianNiu)\n        return qianniu.popWindow();\n    if (utils_1.isMyBank)\n        return mybank.closeWebview();\n};\n\n\n//# sourceURL=webpack://Flyover/./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/mybank/index.ts":
+/*!*****************************!*\
+  !*** ./src/mybank/index.ts ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ../nebula */ \"./src/nebula/index.ts\"));\n\n\n//# sourceURL=webpack://Flyover/./src/mybank/index.ts?");
 
 /***/ }),
 
@@ -124,11 +136,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*****************************!*\
   !*** ./src/nebula/alert.ts ***!
   \*****************************/
-/*! exports provided: alert */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"alert\", function() { return alert; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n\nconst alert = (message, options) => {\n    const { title, buttonText } = options;\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('alert', {\n        title,\n        message,\n        button: buttonText\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/alert.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\nexports.alert = function (message, options) {\n    var title = options.title, buttonText = options.buttonText;\n    return core_1.pcall('alert', {\n        title: title,\n        message: message,\n        button: buttonText\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/alert.ts?");
 
 /***/ }),
 
@@ -136,11 +148,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!************************************!*\
   !*** ./src/nebula/closeWebview.ts ***!
   \************************************/
-/*! exports provided: closeWebview */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"closeWebview\", function() { return closeWebview; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n\nconst closeWebview = () => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('closeWebview');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/closeWebview.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\nexports.closeWebview = function () {\n    return core_1.pcall('closeWebview');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/closeWebview.ts?");
 
 /***/ }),
 
@@ -148,11 +160,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*******************************!*\
   !*** ./src/nebula/confirm.ts ***!
   \*******************************/
-/*! exports provided: confirm */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"confirm\", function() { return confirm; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n\nconst confirm = (message, { title, okButton, cancelButton }) => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('confirm', {\n        title,\n        message,\n        okButton,\n        cancelButton,\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/confirm.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\nexports.confirm = function (message, _a) {\n    var title = _a.title, okButton = _a.okButton, cancelButton = _a.cancelButton;\n    return core_1.pcall('confirm', {\n        title: title,\n        message: message,\n        okButton: okButton,\n        cancelButton: cancelButton,\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/confirm.ts?");
 
 /***/ }),
 
@@ -160,11 +172,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!****************************!*\
   !*** ./src/nebula/core.ts ***!
   \****************************/
-/*! exports provided: ready, call, pcall */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ready\", function() { return ready; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"call\", function() { return call; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"pcall\", function() { return pcall; });\nfunction ready(callback) {\n    // @ts-ignore\n    if (window.AlipayJSBridge) {\n        callback && callback();\n    }\n    else {\n        document.addEventListener('AlipayJSBridgeReady', callback, false);\n    }\n}\nconst call = (method, ...params) => {\n    ready(() => AlipayJSBridge.call(method, ...params));\n};\nconst pcall = (method, ...params) => new Promise((resolve, reject) => {\n    params.push(res => {\n        console.log(`AlipayJSBridge.call(${method})`, res);\n        resolve(res);\n    });\n    return call(method, ...params);\n});\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/core.ts?");
+eval("\nvar __spreadArrays = (this && this.__spreadArrays) || function () {\n    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;\n    for (var r = Array(s), k = 0, i = 0; i < il; i++)\n        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)\n            r[k] = a[j];\n    return r;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nfunction ready(callback) {\n    // @ts-ignore\n    if (window.AlipayJSBridge) {\n        callback && callback();\n    }\n    else {\n        document.addEventListener('AlipayJSBridgeReady', callback, false);\n    }\n}\nexports.ready = ready;\nexports.call = function (method) {\n    var params = [];\n    for (var _i = 1; _i < arguments.length; _i++) {\n        params[_i - 1] = arguments[_i];\n    }\n    ready(function () { return AlipayJSBridge.call.apply(AlipayJSBridge, __spreadArrays([method], params)); });\n};\nexports.pcall = function (method) {\n    var params = [];\n    for (var _i = 1; _i < arguments.length; _i++) {\n        params[_i - 1] = arguments[_i];\n    }\n    return new Promise(function (resolve, reject) {\n        params.push(function (res) {\n            console.log(\"AlipayJSBridge.call(\" + method + \")\", res);\n            resolve(res);\n        });\n        return exports.call.apply(void 0, __spreadArrays([method], params));\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/core.ts?");
 
 /***/ }),
 
@@ -172,11 +184,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*****************************!*\
   !*** ./src/nebula/index.ts ***!
   \*****************************/
-/*! exports provided: toast, alert, confirm, showLoading, hideLoading, popWindow, pushWindow, closeWebview */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toast */ \"./src/nebula/toast.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"toast\", function() { return _toast__WEBPACK_IMPORTED_MODULE_0__[\"toast\"]; });\n\n/* harmony import */ var _alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alert */ \"./src/nebula/alert.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"alert\", function() { return _alert__WEBPACK_IMPORTED_MODULE_1__[\"alert\"]; });\n\n/* harmony import */ var _confirm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./confirm */ \"./src/nebula/confirm.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"confirm\", function() { return _confirm__WEBPACK_IMPORTED_MODULE_2__[\"confirm\"]; });\n\n/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ \"./src/nebula/loading.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"showLoading\", function() { return _loading__WEBPACK_IMPORTED_MODULE_3__[\"showLoading\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"hideLoading\", function() { return _loading__WEBPACK_IMPORTED_MODULE_3__[\"hideLoading\"]; });\n\n/* harmony import */ var _popWindow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./popWindow */ \"./src/nebula/popWindow.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"popWindow\", function() { return _popWindow__WEBPACK_IMPORTED_MODULE_4__[\"popWindow\"]; });\n\n/* harmony import */ var _pushWindow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pushWindow */ \"./src/nebula/pushWindow.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"pushWindow\", function() { return _pushWindow__WEBPACK_IMPORTED_MODULE_5__[\"pushWindow\"]; });\n\n/* harmony import */ var _closeWebview__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./closeWebview */ \"./src/nebula/closeWebview.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"closeWebview\", function() { return _closeWebview__WEBPACK_IMPORTED_MODULE_6__[\"closeWebview\"]; });\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/index.ts?");
+eval("\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ./toast */ \"./src/nebula/toast.ts\"));\n__export(__webpack_require__(/*! ./alert */ \"./src/nebula/alert.ts\"));\n__export(__webpack_require__(/*! ./confirm */ \"./src/nebula/confirm.ts\"));\n__export(__webpack_require__(/*! ./loading */ \"./src/nebula/loading.ts\"));\n__export(__webpack_require__(/*! ./popWindow */ \"./src/nebula/popWindow.ts\"));\n__export(__webpack_require__(/*! ./pushWindow */ \"./src/nebula/pushWindow.ts\"));\n__export(__webpack_require__(/*! ./closeWebview */ \"./src/nebula/closeWebview.ts\"));\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/index.ts?");
 
 /***/ }),
 
@@ -184,11 +196,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _toa
 /*!*******************************!*\
   !*** ./src/nebula/loading.ts ***!
   \*******************************/
-/*! exports provided: showLoading, hideLoading */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showLoading\", function() { return showLoading; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"hideLoading\", function() { return hideLoading; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n\nconst showLoading = () => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"call\"])('showLoading');\n};\nconst hideLoading = () => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"call\"])('hideLoading');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/loading.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\nexports.showLoading = function () {\n    return core_1.call('showLoading');\n};\nexports.hideLoading = function () {\n    return core_1.call('hideLoading');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/loading.ts?");
 
 /***/ }),
 
@@ -196,11 +208,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*********************************!*\
   !*** ./src/nebula/popWindow.ts ***!
   \*********************************/
-/*! exports provided: popWindow */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"popWindow\", function() { return popWindow; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n\nconst popWindow = () => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('popWindow');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/popWindow.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\nexports.popWindow = function () {\n    return core_1.pcall('popWindow');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/popWindow.ts?");
 
 /***/ }),
 
@@ -208,11 +220,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!**********************************!*\
   !*** ./src/nebula/pushWindow.ts ***!
   \**********************************/
-/*! exports provided: pushWindow */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"pushWindow\", function() { return pushWindow; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n\n/**\n * pushWindow\n * https://myjsapi.alipay.com/jsapi/context/push-window.html\n * @param url\n * @param param\n */\nconst pushWindow = (url, param) => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('pushWindow', { url, param });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/pushWindow.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n/**\n * pushWindow\n * https://myjsapi.alipay.com/jsapi/context/push-window.html\n * @param url\n * @param param\n */\nexports.pushWindow = function (url, param) {\n    return core_1.pcall('pushWindow', { url: url, param: param });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/pushWindow.ts?");
 
 /***/ }),
 
@@ -220,11 +232,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*****************************!*\
   !*** ./src/nebula/toast.ts ***!
   \*****************************/
-/*! exports provided: toast */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"toast\", function() { return toast; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\n\nconst toast = (content, options) => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('toast', Object.assign({ content }, options));\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/toast.ts?");
+eval("\nvar __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/nebula/core.ts\");\nexports.toast = function (content, options) {\n    return core_1.pcall('toast', __assign({ content: content }, options));\n};\n\n\n//# sourceURL=webpack://Flyover/./src/nebula/toast.ts?");
 
 /***/ }),
 
@@ -232,11 +244,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!******************************!*\
   !*** ./src/qianniu/index.ts ***!
   \******************************/
-/*! exports provided: toast, alert, confirm, showLoading, hideLoading, popWindow, getAbsoluteURL, pushWindow */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _windvane__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../windvane */ \"./src/windvane/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"toast\", function() { return _windvane__WEBPACK_IMPORTED_MODULE_0__[\"toast\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"alert\", function() { return _windvane__WEBPACK_IMPORTED_MODULE_0__[\"alert\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"confirm\", function() { return _windvane__WEBPACK_IMPORTED_MODULE_0__[\"confirm\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"showLoading\", function() { return _windvane__WEBPACK_IMPORTED_MODULE_0__[\"showLoading\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"hideLoading\", function() { return _windvane__WEBPACK_IMPORTED_MODULE_0__[\"hideLoading\"]; });\n\n/* harmony import */ var _popWindow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./popWindow */ \"./src/qianniu/popWindow.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"popWindow\", function() { return _popWindow__WEBPACK_IMPORTED_MODULE_1__[\"popWindow\"]; });\n\n/* harmony import */ var _pushWindow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pushWindow */ \"./src/qianniu/pushWindow.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"getAbsoluteURL\", function() { return _pushWindow__WEBPACK_IMPORTED_MODULE_2__[\"getAbsoluteURL\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"pushWindow\", function() { return _pushWindow__WEBPACK_IMPORTED_MODULE_2__[\"pushWindow\"]; });\n\n\n\n\n\n\n//# sourceURL=webpack://Flyover/./src/qianniu/index.ts?");
+eval("\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ../windvane */ \"./src/windvane/index.ts\"));\n__export(__webpack_require__(/*! ./popWindow */ \"./src/qianniu/popWindow.ts\"));\n__export(__webpack_require__(/*! ./pushWindow */ \"./src/qianniu/pushWindow.ts\"));\n\n\n//# sourceURL=webpack://Flyover/./src/qianniu/index.ts?");
 
 /***/ }),
 
@@ -244,11 +256,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _win
 /*!**********************************!*\
   !*** ./src/qianniu/popWindow.ts ***!
   \**********************************/
-/*! exports provided: popWindow */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"popWindow\", function() { return popWindow; });\nconst popWindow = () => {\n    QN.navigator.pop();\n};\n\n\n//# sourceURL=webpack://Flyover/./src/qianniu/popWindow.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.popWindow = function () {\n    QN.navigator.pop();\n};\n\n\n//# sourceURL=webpack://Flyover/./src/qianniu/popWindow.ts?");
 
 /***/ }),
 
@@ -256,11 +268,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!***********************************!*\
   !*** ./src/qianniu/pushWindow.ts ***!
   \***********************************/
-/*! exports provided: getAbsoluteURL, pushWindow */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAbsoluteURL\", function() { return getAbsoluteURL; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"pushWindow\", function() { return pushWindow; });\nfunction getAbsoluteURL(url) {\n    let ele = document.createElement('a');\n    ele.href = url;\n    url = ele.href;\n    ele = null;\n    return url;\n}\n;\nconst pushWindow = (url, options = {}) => {\n    const { data } = options;\n    return new Promise((resolve, reject) => {\n        try {\n            QN.navigator.push({\n                url: getAbsoluteURL(url),\n                query: data,\n            });\n            resolve();\n        }\n        catch (e) {\n            reject(e);\n        }\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/qianniu/pushWindow.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nfunction getAbsoluteURL(url) {\n    var ele = document.createElement('a');\n    ele.href = url;\n    url = ele.href;\n    ele = null;\n    return url;\n}\nexports.getAbsoluteURL = getAbsoluteURL;\n;\nexports.pushWindow = function (url, options) {\n    if (options === void 0) { options = {}; }\n    var data = options.data;\n    return new Promise(function (resolve, reject) {\n        try {\n            QN.navigator.push({\n                url: getAbsoluteURL(url),\n                query: data,\n            });\n            resolve();\n        }\n        catch (e) {\n            reject(e);\n        }\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/qianniu/pushWindow.ts?");
 
 /***/ }),
 
@@ -268,11 +280,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!****************************!*\
   !*** ./src/utils/index.ts ***!
   \****************************/
-/*! exports provided: NebulaBridgeUrl, WindVaneBridgeUrl, DingTalkBridgeUrl, AmapBridgeUrl, QianniuBridgeUrl, loadScript, aliAppInfo, isAlipay, isKoubei, isKoubeiMerchant, isTaobao, isTmall, isWealth, isMyBank, isDingTalk, isQianNiu, isAmap, isInside, addEventListener */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"NebulaBridgeUrl\", function() { return NebulaBridgeUrl; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"WindVaneBridgeUrl\", function() { return WindVaneBridgeUrl; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DingTalkBridgeUrl\", function() { return DingTalkBridgeUrl; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"AmapBridgeUrl\", function() { return AmapBridgeUrl; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"QianniuBridgeUrl\", function() { return QianniuBridgeUrl; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadScript\", function() { return loadScript; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"aliAppInfo\", function() { return aliAppInfo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isAlipay\", function() { return isAlipay; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isKoubei\", function() { return isKoubei; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isKoubeiMerchant\", function() { return isKoubeiMerchant; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isTaobao\", function() { return isTaobao; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isTmall\", function() { return isTmall; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isWealth\", function() { return isWealth; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isMyBank\", function() { return isMyBank; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isDingTalk\", function() { return isDingTalk; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isQianNiu\", function() { return isQianNiu; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isAmap\", function() { return isAmap; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"isInside\", function() { return isInside; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addEventListener\", function() { return addEventListener; });\nconst NebulaBridgeUrl = '//a.alipayobjects.com/g/h5-lib/alipayjsapi/3.0.5/alipayjsapi.inc.min.js';\nconst WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';\nconst DingTalkBridgeUrl = '//g.alicdn.com/dingding/dingtalk-jsapi/2.4.3/dingtalk.open.js';\nconst AmapBridgeUrl = '//as.alipayobjects.com/g/insuranceprod/amap-util/1.0.0/amap.js';\nconst QianniuBridgeUrl = '//g.alicdn.com/x-bridge/qap-sdk/2.4.2/qn.min.js';\nconst loadScript = (url) => new Promise((resolve, reject) => {\n    const script = document.createElement('script');\n    script.src = url;\n    script.charset = 'UTF-8';\n    script.addEventListener('load', resolve, false);\n    script.addEventListener('error', () => reject(new Error('script load error')), false);\n    document.head.appendChild(script);\n});\nconst getAliappInfo = (ua) => {\n    if (/AliApp\\(([\\w\\-]+)\\/([\\d\\.]+)\\)/i.test(ua)) {\n        return {\n            name: String(RegExp.$1).toLowerCase(),\n            version: RegExp.$2,\n        };\n    }\n    const matches = ua.match(/(amap)\\/([\\d.]+)/i);\n    if (Array.isArray(matches) && matches.length > 2 && matches[1] === 'amap') {\n        return {\n            name: 'amap',\n            version: matches[2],\n        };\n    }\n    const insideMatchs = ua.match(/(Inside)([\\/\\s](.*))?/i);\n    if (Array.isArray(insideMatchs) && insideMatchs.length > 2 && insideMatchs[1] === 'Inside') {\n        return {\n            name: 'Inside',\n            version: insideMatchs[3] || '',\n        };\n    }\n    return {\n        name: 'web',\n        version: '',\n    };\n};\nconst ua = window.navigator.userAgent;\nconst aliAppInfo = getAliappInfo(ua);\nconst isAlipay = /AliApp\\(AP\\/([\\d\\.]+)\\)/i.test(ua);\nconst isKoubei = /AliApp\\(KB\\/([\\d\\.]+)\\)/i.test(ua);\nconst isKoubeiMerchant = /AliApp\\(AM\\/([\\d\\.]+)\\)/i.test(ua);\nconst isTaobao = /AliApp\\(TB\\/([\\d\\.]+)\\)/i.test(ua);\nconst isTmall = /AliApp\\(TM\\/([\\d\\.]+)\\)/i.test(ua);\nconst isWealth = /AliApp\\(AFW\\/([\\d\\.]+)\\)/i.test(ua);\nconst isMyBank = /AliApp\\(BK\\/([\\d\\.]+)\\)/i.test(ua);\nconst isDingTalk = /AliApp\\(DingTalk\\/([\\d\\.]+)\\)/i.test(ua);\nconst isQianNiu = /AliApp\\(QN\\/([\\d\\.]+)\\)/i.test(ua);\nconst isAmap = /amap/i.test(ua);\nconst isInside = /Inside/i.test(ua);\nconst addEventListener = (type, fn) => {\n    document.addEventListener(type, fn, false);\n    return () => document.removeEventListener(type, fn);\n};\n\n\n//# sourceURL=webpack://Flyover/./src/utils/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.NebulaBridgeUrl = '//a.alipayobjects.com/g/h5-lib/alipayjsapi/3.0.5/alipayjsapi.inc.min.js';\nexports.WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';\nexports.DingTalkBridgeUrl = '//g.alicdn.com/dingding/dingtalk-jsapi/2.4.3/dingtalk.open.js';\nexports.AmapBridgeUrl = '//as.alipayobjects.com/g/insuranceprod/amap-util/1.0.0/amap.js';\nexports.QianniuBridgeUrl = '//g.alicdn.com/x-bridge/qap-sdk/2.4.2/qn.min.js';\nexports.loadScript = function (url) { return new Promise(function (resolve, reject) {\n    var script = document.createElement('script');\n    script.src = url;\n    script.charset = 'UTF-8';\n    script.addEventListener('load', resolve, false);\n    script.addEventListener('error', function () { return reject(new Error('script load error')); }, false);\n    document.head.appendChild(script);\n}); };\nvar getAliappInfo = function (ua) {\n    if (/AliApp\\(([\\w\\-]+)\\/([\\d\\.]+)\\)/i.test(ua)) {\n        return {\n            name: String(RegExp.$1).toLowerCase(),\n            version: RegExp.$2,\n        };\n    }\n    var matches = ua.match(/(amap)\\/([\\d.]+)/i);\n    if (Array.isArray(matches) && matches.length > 2 && matches[1] === 'amap') {\n        return {\n            name: 'amap',\n            version: matches[2],\n        };\n    }\n    var insideMatchs = ua.match(/(Inside)([\\/\\s](.*))?/i);\n    if (Array.isArray(insideMatchs) && insideMatchs.length > 2 && insideMatchs[1] === 'Inside') {\n        return {\n            name: 'Inside',\n            version: insideMatchs[3] || '',\n        };\n    }\n    return {\n        name: 'web',\n        version: '',\n    };\n};\nvar ua = window.navigator.userAgent;\nexports.aliAppInfo = getAliappInfo(ua);\nexports.isAlipay = /AliApp\\(AP\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isKoubei = /AliApp\\(KB\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isKoubeiMerchant = /AliApp\\(AM\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isTaobao = /AliApp\\(TB\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isTmall = /AliApp\\(TM\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isWealth = /AliApp\\(AFW\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isMyBank = /AliApp\\(BK\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isDingTalk = /AliApp\\(DingTalk\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isQianNiu = /AliApp\\(QN\\/([\\d\\.]+)\\)/i.test(ua);\nexports.isAmap = /amap/i.test(ua);\nexports.isInside = /Inside/i.test(ua);\nexports.addEventListener = function (type, fn) {\n    document.addEventListener(type, fn, false);\n    return function () { return document.removeEventListener(type, fn); };\n};\n\n\n//# sourceURL=webpack://Flyover/./src/utils/index.ts?");
 
 /***/ }),
 
@@ -280,11 +292,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*******************************!*\
   !*** ./src/windvane/alert.ts ***!
   \*******************************/
-/*! exports provided: alert */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"alert\", function() { return alert; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ \"./src/utils/index.ts\");\n\n\nconst waittingEvent = id => new Promise(done => {\n    const removeListener = Object(_utils__WEBPACK_IMPORTED_MODULE_1__[\"addEventListener\"])('WV.Event.Alert', e => {\n        const { identifier } = e.param || {};\n        if (identifier && id === identifier) {\n            done(e);\n            removeListener();\n        }\n    });\n});\nconst alert = (message, options = {}) => {\n    const { buttonText = '确定' } = options;\n    const identifier = Date.now();\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('WVUIDialog.alert', {\n        message,\n        okbutton: buttonText,\n        identifier,\n    }).then(() => waittingEvent(identifier));\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/alert.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\nvar utils_1 = __webpack_require__(/*! ../utils */ \"./src/utils/index.ts\");\nvar waittingEvent = function (id) { return new Promise(function (done) {\n    var removeListener = utils_1.addEventListener('WV.Event.Alert', function (e) {\n        var identifier = (e.param || {}).identifier;\n        if (identifier && id === identifier) {\n            done(e);\n            removeListener();\n        }\n    });\n}); };\nexports.alert = function (message, options) {\n    if (options === void 0) { options = {}; }\n    var _a = options.buttonText, buttonText = _a === void 0 ? '确定' : _a;\n    var identifier = Date.now();\n    return core_1.pcall('WVUIDialog.alert', {\n        message: message,\n        okbutton: buttonText,\n        identifier: identifier,\n    }).then(function () { return waittingEvent(identifier); });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/alert.ts?");
 
 /***/ }),
 
@@ -292,11 +304,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*********************************!*\
   !*** ./src/windvane/confirm.ts ***!
   \*********************************/
-/*! exports provided: confirm */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"confirm\", function() { return confirm; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ \"./src/utils/index.ts\");\n\n\nconst cbkObj = {};\nconst waittingEvent = (id, text) => new Promise(done => {\n    const removeListener = Object(_utils__WEBPACK_IMPORTED_MODULE_1__[\"addEventListener\"])('wv.dialog', e => {\n        const { type, _index } = e.param || {};\n        if (_index === id) {\n            done(type === text);\n            removeListener();\n        }\n    });\n});\nconst confirm = (message, options = {}) => {\n    const { okbutton = '确定', canclebutton = '取消' } = options;\n    const _index = Date.now();\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('WVUIDialog.confirm', {\n        message,\n        okbutton,\n        canclebutton,\n        _index,\n    }).then(() => waittingEvent(_index, okbutton));\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/confirm.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\nvar utils_1 = __webpack_require__(/*! ../utils */ \"./src/utils/index.ts\");\nvar cbkObj = {};\nvar waittingEvent = function (id, text) { return new Promise(function (done) {\n    var removeListener = utils_1.addEventListener('wv.dialog', function (e) {\n        var _a = e.param || {}, type = _a.type, _index = _a._index;\n        if (_index === id) {\n            done(type === text);\n            removeListener();\n        }\n    });\n}); };\nexports.confirm = function (message, options) {\n    if (options === void 0) { options = {}; }\n    var _a = options.okbutton, okbutton = _a === void 0 ? '确定' : _a, _b = options.canclebutton, canclebutton = _b === void 0 ? '取消' : _b;\n    var _index = Date.now();\n    return core_1.pcall('WVUIDialog.confirm', {\n        message: message,\n        okbutton: okbutton,\n        canclebutton: canclebutton,\n        _index: _index,\n    }).then(function () { return waittingEvent(_index, okbutton); });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/confirm.ts?");
 
 /***/ }),
 
@@ -304,11 +316,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!******************************!*\
   !*** ./src/windvane/core.ts ***!
   \******************************/
-/*! exports provided: call, pcall */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"call\", function() { return call; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"pcall\", function() { return pcall; });\n/* harmony import */ var _install__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./install */ \"./src/windvane/install.ts\");\n\nObject(_install__WEBPACK_IMPORTED_MODULE_0__[\"install\"])();\nconst call = (api, params, callback) => {\n    const [className, methodName] = api.split('.');\n    const success = o => callback && callback(null, o);\n    const failure = e => callback && callback(e);\n    // @ts-ignore\n    window.lib.windvane.call(className, methodName, params, success, failure);\n};\nconst pcall = (api, params) => new Promise((resolve, reject) => {\n    return call(api, params, (err, res) => {\n        if (err)\n            return reject(err);\n        resolve(res);\n    });\n});\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/core.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar install_1 = __webpack_require__(/*! ./install */ \"./src/windvane/install.ts\");\ninstall_1.install();\nexports.call = function (api, params, callback) {\n    var _a = api.split('.'), className = _a[0], methodName = _a[1];\n    var success = function (o) { return callback && callback(null, o); };\n    var failure = function (e) { return callback && callback(e); };\n    // @ts-ignore\n    window.lib.windvane.call(className, methodName, params, success, failure);\n};\nexports.pcall = function (api, params) { return new Promise(function (resolve, reject) {\n    return exports.call(api, params, function (err, res) {\n        if (err)\n            return reject(err);\n        resolve(res);\n    });\n}); };\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/core.ts?");
 
 /***/ }),
 
@@ -316,11 +328,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*******************************!*\
   !*** ./src/windvane/index.ts ***!
   \*******************************/
-/*! exports provided: toast, alert, confirm, showLoading, hideLoading */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toast */ \"./src/windvane/toast.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"toast\", function() { return _toast__WEBPACK_IMPORTED_MODULE_0__[\"toast\"]; });\n\n/* harmony import */ var _alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alert */ \"./src/windvane/alert.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"alert\", function() { return _alert__WEBPACK_IMPORTED_MODULE_1__[\"alert\"]; });\n\n/* harmony import */ var _confirm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./confirm */ \"./src/windvane/confirm.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"confirm\", function() { return _confirm__WEBPACK_IMPORTED_MODULE_2__[\"confirm\"]; });\n\n/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ \"./src/windvane/loading.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"showLoading\", function() { return _loading__WEBPACK_IMPORTED_MODULE_3__[\"showLoading\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"hideLoading\", function() { return _loading__WEBPACK_IMPORTED_MODULE_3__[\"hideLoading\"]; });\n\n\n\n\n\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/index.ts?");
+eval("\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ./toast */ \"./src/windvane/toast.ts\"));\n__export(__webpack_require__(/*! ./alert */ \"./src/windvane/alert.ts\"));\n__export(__webpack_require__(/*! ./confirm */ \"./src/windvane/confirm.ts\"));\n__export(__webpack_require__(/*! ./loading */ \"./src/windvane/loading.ts\"));\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/index.ts?");
 
 /***/ }),
 
@@ -328,11 +340,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _toa
 /*!*********************************!*\
   !*** ./src/windvane/install.ts ***!
   \*********************************/
-/*! exports provided: install */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"install\", function() { return install; });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ \"./src/utils/index.ts\");\n\nconst install = () => Promise.all([\n    Object(_utils__WEBPACK_IMPORTED_MODULE_0__[\"loadScript\"])(_utils__WEBPACK_IMPORTED_MODULE_0__[\"QianniuBridgeUrl\"]),\n    Object(_utils__WEBPACK_IMPORTED_MODULE_0__[\"loadScript\"])(_utils__WEBPACK_IMPORTED_MODULE_0__[\"WindVaneBridgeUrl\"]),\n]);\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/install.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar utils_1 = __webpack_require__(/*! ../utils */ \"./src/utils/index.ts\");\nexports.install = function () {\n    return Promise.all([\n        utils_1.loadScript(utils_1.QianniuBridgeUrl),\n        utils_1.loadScript(utils_1.WindVaneBridgeUrl),\n    ]);\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/install.ts?");
 
 /***/ }),
 
@@ -340,11 +352,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*********************************!*\
   !*** ./src/windvane/loading.ts ***!
   \*********************************/
-/*! exports provided: showLoading, hideLoading */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showLoading\", function() { return showLoading; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"hideLoading\", function() { return hideLoading; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\n\nconst showLoading = () => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('WVUI.showLoadingBox');\n};\nconst hideLoading = () => {\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"pcall\"])('WVUI.hideLoadingBox');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/loading.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\nexports.showLoading = function () {\n    return core_1.pcall('WVUI.showLoadingBox');\n};\nexports.hideLoading = function () {\n    return core_1.pcall('WVUI.hideLoadingBox');\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/loading.ts?");
 
 /***/ }),
 
@@ -352,11 +364,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*******************************!*\
   !*** ./src/windvane/toast.ts ***!
   \*******************************/
-/*! exports provided: toast */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"toast\", function() { return toast; });\n/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\n\nconst toast = (message, options = {}) => {\n    const { duration } = options;\n    return Object(_core__WEBPACK_IMPORTED_MODULE_0__[\"call\"])('WVUIToast.toast', {\n        message,\n        duration,\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/toast.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar core_1 = __webpack_require__(/*! ./core */ \"./src/windvane/core.ts\");\nexports.toast = function (message, options) {\n    if (options === void 0) { options = {}; }\n    var duration = options.duration;\n    return core_1.call('WVUIToast.toast', {\n        message: message,\n        duration: duration,\n    });\n};\n\n\n//# sourceURL=webpack://Flyover/./src/windvane/toast.ts?");
 
 /***/ })
 

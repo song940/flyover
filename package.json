@@ -1,6 +1,6 @@
 {
   "name": "@alipay/flyover",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "./dist/flyover.js",
   "scripts": {
@@ -14,7 +14,8 @@
   "author": "Lsong <song940@gmail.com> (https://lsong.org)",
   "license": "MIT",
   "devDependencies": {
-    "kelp-build": "^0.0.7-beta9"
+    "kelp-build": "^0.0.7-beta10",
+    "typescript": "^3.8.3"
   },
   "publishConfig": {
     "registry": "https://registry.npm.alibaba-inc.com"
