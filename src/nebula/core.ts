@@ -20,3 +20,9 @@ export const pcall = (method: string, ...params: any): Promise<any> => new Promi
   });
   return call(method, ...params);
 });
+
+
+export const handleResponse = res => {
+  if(res.success) return res.data;
+  throw new Error();
+};

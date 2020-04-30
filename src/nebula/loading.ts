@@ -1,9 +1,9 @@
-import { call } from './core';
+import { pcall, handleResponse } from './core';
 
 export const showLoading = () => {
-  return call('showLoading');
+  return pcall('showLoading').then(handleResponse);
 };
 
 export const hideLoading = () => {
-  return call('hideLoading');
+  return pcall('hideLoading').then(handleResponse);
 };

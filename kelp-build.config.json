@@ -1,9 +1,0 @@
-{
-  "src": "./src/index.ts",
-  "typescript": true,
-  "output": {
-    "library": "Flyover",
-    "path": "dist",
-    "filename": "flyover.js"
-  }
-}

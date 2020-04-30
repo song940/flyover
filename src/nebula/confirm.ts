@@ -8,11 +8,11 @@ type ConfirmOption = {
   cancelButton?: string,
 };
 
-export const confirm = (message: string, { title, okButton, cancelButton }: ConfirmOption) => {
+export const confirm = (message: string, { title, okButton, cancelButton }: ConfirmOption = {}): Promise<boolean> => {
   return pcall('confirm', {
     title,
     message,
     okButton,
     cancelButton,
-  })
+  }).then(({ ok }) => ok);
 };

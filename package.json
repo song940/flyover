@@ -1,20 +1,25 @@
 {
   "name": "@alipay/flyover",
   "version": "0.0.2",
-  "description": "",
+  "description": "flyover",
   "main": "./dist/flyover.js",
   "scripts": {
-    "build": "kelp-build"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
     "url": "git@gitlab.alibaba-inc.com:zeus.ls/flyover.git"
   },
-  "keywords": [],
+  "keywords": [
+    "jsbridge",
+    "bridgex"
+  ],
   "author": "Lsong <song940@gmail.com> (https://lsong.org)",
   "license": "MIT",
   "devDependencies": {
-    "kelp-build": "^0.0.7-beta10",
+    "@rollup/plugin-typescript": "^4.1.1",
+    "rollup": "^2.7.5",
+    "tslib": "^1.11.1",
     "typescript": "^3.8.3"
   },
   "publishConfig": {

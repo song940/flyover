@@ -2,15 +2,13 @@ import { pcall } from './core';
 
 type AlertOption = {
   title?: string,
-  content?: string,
   buttonText?: string,
 };
 
-export const alert = (message: string, options?: AlertOption) => {
-  const { title, buttonText } = options;
+export const alert = (message: string, { title, buttonText: button }: AlertOption = {}): Promise<void> => {
   return pcall('alert', {
     title,
     message,
-    button: buttonText
+    button,
   });
 };
