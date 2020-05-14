@@ -12,45 +12,6 @@ var loadScript = function (url) { return new Promise(function (resolve, reject) 
     script.addEventListener('error', function () { return reject(new Error('script load error')); }, false);
     document.head.appendChild(script);
 }); };
-var getAliappInfo = function (ua) {
-    if (/AliApp\(([\w\-]+)\/([\d\.]+)\)/i.test(ua)) {
-        return {
-            name: String(RegExp.$1).toLowerCase(),
-            version: RegExp.$2,
-        };
-    }
-    var matches = ua.match(/(amap)\/([\d.]+)/i);
-    if (Array.isArray(matches) && matches.length > 2 && matches[1] === 'amap') {
-        return {
-            name: 'amap',
-            version: matches[2],
-        };
-    }
-    var insideMatchs = ua.match(/(Inside)([\/\s](.*))?/i);
-    if (Array.isArray(insideMatchs) && insideMatchs.length > 2 && insideMatchs[1] === 'Inside') {
-        return {
-            name: 'Inside',
-            version: insideMatchs[3] || '',
-        };
-    }
-    return {
-        name: 'web',
-        version: '',
-    };
-};
-var ua = window.navigator.userAgent;
-var aliAppInfo = getAliappInfo(ua);
-var isAlipay = /AliApp\(AP\/([\d\.]+)\)/i.test(ua);
-var isKoubei = /AliApp\(KB\/([\d\.]+)\)/i.test(ua);
-var isKoubeiMerchant = /AliApp\(AM\/([\d\.]+)\)/i.test(ua);
-var isTaobao = /AliApp\(TB\/([\d\.]+)\)/i.test(ua);
-var isTmall = /AliApp\(TM\/([\d\.]+)\)/i.test(ua);
-var isWealth = /AliApp\(AFW\/([\d\.]+)\)/i.test(ua);
-var isMyBank = /AliApp\(BK\/([\d\.]+)\)/i.test(ua);
-var isDingTalk = /AliApp\(DingTalk\/([\d\.]+)\)/i.test(ua);
-var isQianNiu = /AliApp\(QN\/([\d\.]+)\)/i.test(ua);
-var isAmap = /amap/i.test(ua);
-var isInside = /Inside/i.test(ua);
 var addEventListener = function (type, fn) {
     document.addEventListener(type, fn, false);
     return function () { return document.removeEventListener(type, fn); };
@@ -136,39 +97,8 @@ var hideLoading = function () {
     return pcall('WVUI.hideLoadingBox');
 };
 
-var popWindow = function () {
-    QN.navigator.pop();
-};
-
-function getAbsoluteURL(url) {
-    var ele = document.createElement('a');
-    ele.href = url;
-    url = ele.href;
-    ele = null;
-    return url;
-}
-var pushWindow = function (url, options) {
-    if (options === void 0) { options = {}; }
-    var data = options.data;
-    return new Promise(function (resolve, reject) {
-        try {
-            QN.navigator.push({
-                url: getAbsoluteURL(url),
-                query: data,
-            });
-            resolve();
-        }
-        catch (e) {
-            reject(e);
-        }
-    });
-};
-
 exports.alert = alert;
 exports.confirm = confirm;
-exports.getAbsoluteURL = getAbsoluteURL;
 exports.hideLoading = hideLoading;
-exports.popWindow = popWindow;
-exports.pushWindow = pushWindow;
 exports.showLoading = showLoading;
 exports.toast = toast;

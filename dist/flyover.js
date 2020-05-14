@@ -4,16 +4,6 @@
     (global = global || self, factory(global.Flyover = {}));
 }(this, (function (exports) { 'use strict';
 
-    var WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';
-    var QianniuBridgeUrl = '//g.alicdn.com/x-bridge/qap-sdk/2.4.2/qn.min.js';
-    var loadScript = function (url) { return new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
-        script.src = url;
-        script.charset = 'UTF-8';
-        script.addEventListener('load', resolve, false);
-        script.addEventListener('error', function () { return reject(new Error('script load error')); }, false);
-        document.head.appendChild(script);
-    }); };
     var getAliappInfo = function (ua) {
         if (/AliApp\(([\w\-]+)\/([\d\.]+)\)/i.test(ua)) {
             return {
@@ -53,7 +43,34 @@
     var isQianNiu = /AliApp\(QN\/([\d\.]+)\)/i.test(ua);
     var isAmap = /amap/i.test(ua);
     var isInside = /Inside/i.test(ua);
-    var addEventListener = function (type, fn) {
+
+    var detect = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        aliAppInfo: aliAppInfo,
+        isAlipay: isAlipay,
+        isKoubei: isKoubei,
+        isKoubeiMerchant: isKoubeiMerchant,
+        isTaobao: isTaobao,
+        isTmall: isTmall,
+        isWealth: isWealth,
+        isMyBank: isMyBank,
+        isDingTalk: isDingTalk,
+        isQianNiu: isQianNiu,
+        isAmap: isAmap,
+        isInside: isInside
+    });
+
+    var WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';
+    var QianniuBridgeUrl = '//g.alicdn.com/x-bridge/qap-sdk/2.4.2/qn.min.js';
+    var loadScript = function (url) { return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = url;
+        script.charset = 'UTF-8';
+        script.addEventListener('load', resolve, false);
+        script.addEventListener('error', function () { return reject(new Error('script load error')); }, false);
+        document.head.appendChild(script);
+    }); };
+    var addEventListener$1 = function (type, fn) {
         document.addEventListener(type, fn, false);
         return function () { return document.removeEventListener(type, fn); };
     };
@@ -91,7 +108,7 @@
     };
 
     var waittingEvent = function (id) { return new Promise(function (done) {
-        var removeListener = addEventListener('WV.Event.Alert', function (e) {
+        var removeListener = addEventListener$1('WV.Event.Alert', function (e) {
             var identifier = (e.param || {}).identifier;
             if (identifier && id === identifier) {
                 done(e);
@@ -111,7 +128,7 @@
     };
 
     var waittingEvent$1 = function (id, text) { return new Promise(function (done) {
-        var removeListener = addEventListener('wv.dialog', function (e) {
+        var removeListener = addEventListener$1('wv.dialog', function (e) {
             var _a = e.param || {}, type = _a.type, _index = _a._index;
             if (_index === id) {
                 done(type === text);
@@ -270,8 +287,27 @@
         return pcall$1('closeWebview');
     };
 
+    var openInBrowser = function (url) {
+        return pcall$1('openInBrowser', { url: url });
+    };
+
+    /**
+     * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+     * @param title
+     * @param onClickTitle
+     */
+    var setTitle = function (title, onClickTitle) {
+        return call$1('setTitle', {
+            title: title
+        }, onClickTitle);
+    };
+
     var alipay = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        ready: ready,
+        call: call$1,
+        pcall: pcall$1,
+        handleResponse: handleResponse,
         toast: toast$1,
         alert: alert$1,
         confirm: confirm$1,
@@ -279,11 +315,17 @@
         hideLoading: hideLoading$1,
         popWindow: popWindow,
         pushWindow: pushWindow,
-        closeWebview: closeWebview
+        closeWebview: closeWebview,
+        openInBrowser: openInBrowser,
+        setTitle: setTitle
     });
 
     var mybank = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        ready: ready,
+        call: call$1,
+        pcall: pcall$1,
+        handleResponse: handleResponse,
         toast: toast$1,
         alert: alert$1,
         confirm: confirm$1,
@@ -291,11 +333,17 @@
         hideLoading: hideLoading$1,
         popWindow: popWindow,
         pushWindow: pushWindow,
-        closeWebview: closeWebview
+        closeWebview: closeWebview,
+        openInBrowser: openInBrowser,
+        setTitle: setTitle
     });
 
     var koubei = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        ready: ready,
+        call: call$1,
+        pcall: pcall$1,
+        handleResponse: handleResponse,
         toast: toast$1,
         alert: alert$1,
         confirm: confirm$1,
@@ -303,7 +351,9 @@
         hideLoading: hideLoading$1,
         popWindow: popWindow,
         pushWindow: pushWindow,
-        closeWebview: closeWebview
+        closeWebview: closeWebview,
+        openInBrowser: openInBrowser,
+        setTitle: setTitle
     });
 
     var taobao = /*#__PURE__*/Object.freeze({
@@ -398,15 +448,50 @@
     var closeWebview$1 = function () {
         return call$2('closeWebview');
     };
+    var onResume = function (fn) {
+        return addEventListener('resume', fn);
+    };
+    var onPause = function (fn) {
+        return addEventListener('pause', fn);
+    };
+    var onBack = function (fn) {
+        return addEventListener('back', fn);
+    };
+    var onReady = function (fn) {
+        return addEventListener('ready', fn);
+    };
 
     exports.alert = alert$2;
+    exports.aliAppInfo = aliAppInfo;
+    exports.alipay = alipay;
     exports.call = call$2;
     exports.closeWebview = closeWebview$1;
     exports.confirm = confirm$2;
+    exports.detect = detect;
     exports.hideLoading = hideLoading$2;
+    exports.isAlipay = isAlipay;
+    exports.isAmap = isAmap;
+    exports.isDingTalk = isDingTalk;
+    exports.isInside = isInside;
+    exports.isKoubei = isKoubei;
+    exports.isKoubeiMerchant = isKoubeiMerchant;
+    exports.isMyBank = isMyBank;
+    exports.isQianNiu = isQianNiu;
+    exports.isTaobao = isTaobao;
+    exports.isTmall = isTmall;
+    exports.isWealth = isWealth;
+    exports.koubei = koubei;
+    exports.mybank = mybank;
+    exports.onBack = onBack;
+    exports.onPause = onPause;
+    exports.onReady = onReady;
+    exports.onResume = onResume;
     exports.popWindow = popWindow$2;
     exports.pushWindow = pushWindow$2;
+    exports.qianniu = qianniu;
     exports.showLoading = showLoading$2;
+    exports.taobao = taobao;
+    exports.tmall = tmall;
     exports.toast = toast$2;
 
     Object.defineProperty(exports, '__esModule', { value: true });

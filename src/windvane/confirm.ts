@@ -7,10 +7,6 @@ type ConfirmOption = {
   _index?: any
 };
 
-const cbkObj = {};
-
-
-
 const waittingEvent = (id, text) => new Promise(done => {
   const removeListener = addEventListener('wv.dialog', e => {
     const { type, _index } = e.param || {};

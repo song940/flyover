@@ -1,3 +1,8 @@
+declare function ready(callback: any): void;
+declare const call: (method: string, ...params: any) => void;
+declare const pcall: (method: string, ...params: any) => Promise<any>;
+declare const handleResponse: (res: any) => any;
+
 declare type ToastOption = {
     type: 'none' | 'success' | 'fail' | 'exception';
     duration: number;
@@ -65,4 +70,13 @@ declare const pushWindow: (url: string, param?: PushWindowParam) => Promise<any>
 
 declare const closeWebview: () => Promise<any>;
 
-export { alert, closeWebview, confirm, hideLoading, popWindow, pushWindow, showLoading, toast };
+declare const openInBrowser: (url: string) => Promise<any>;
+
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+ * @param title
+ * @param onClickTitle
+ */
+declare const setTitle: (title: any, onClickTitle: any) => void;
+
+export { alert, call, closeWebview, confirm, handleResponse, hideLoading, openInBrowser, pcall, popWindow, pushWindow, ready, setTitle, showLoading, toast };

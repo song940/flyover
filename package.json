@@ -2,8 +2,7 @@
   "name": "@alipay/flyover",
   "version": "0.0.3",
   "description": "flyover",
-  "main": "./lib/flyover.js",
-  "types": "./types",
+  "main": "./dist/flyover.js",
   "scripts": {
     "build": "rollup -c"
   },

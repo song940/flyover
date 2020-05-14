@@ -32,27 +32,27 @@ export default [].concat(
   }),
   typescript({
     input: 'src/alipay/index.ts',
-    output: 'lib/alipay/index',
+    output: 'dist/alipay/index',
     format: 'cjs'
   }),
   typescript({
     input: 'src/mybank/index.ts',
-    output: 'lib/mybank/index',
+    output: 'dist/mybank/index',
     format: 'cjs'
   }),
   typescript({
     input: 'src/koubei/index.ts',
-    output: 'lib/koubei/index',
+    output: 'dist/koubei/index',
     format: 'cjs'
   }),
   typescript({
     input: 'src/qianniu/index.ts',
-    output: 'lib/qianniu/index',
+    output: 'dist/qianniu/index',
     format: 'cjs'
   }),
   typescript({
     input: 'src/taobao/index.ts',
-    output: 'lib/taobao/index',
+    output: 'dist/taobao/index',
     format: 'cjs'
   }),
 );

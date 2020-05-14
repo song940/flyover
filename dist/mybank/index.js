@@ -125,11 +125,32 @@ var closeWebview = function () {
     return pcall('closeWebview');
 };
 
+var openInBrowser = function (url) {
+    return pcall('openInBrowser', { url: url });
+};
+
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+ * @param title
+ * @param onClickTitle
+ */
+var setTitle = function (title, onClickTitle) {
+    return call('setTitle', {
+        title: title
+    }, onClickTitle);
+};
+
 exports.alert = alert;
+exports.call = call;
 exports.closeWebview = closeWebview;
 exports.confirm = confirm;
+exports.handleResponse = handleResponse;
 exports.hideLoading = hideLoading;
+exports.openInBrowser = openInBrowser;
+exports.pcall = pcall;
 exports.popWindow = popWindow;
 exports.pushWindow = pushWindow;
+exports.ready = ready;
+exports.setTitle = setTitle;
 exports.showLoading = showLoading;
 exports.toast = toast;
