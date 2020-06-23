@@ -422,6 +422,7 @@
             return koubei[method].apply(koubei, params);
         if (isQianNiu)
             return qianniu[method].apply(qianniu, params);
+        // if(detect.isTinyapp) return tinyapp.call(method, params);
         return Promise.reject();
     };
     var toast$2 = function (content, options) {

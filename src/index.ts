@@ -6,6 +6,7 @@ import * as mybank from './mybank';
 import * as koubei from './koubei';
 import * as taobao from './taobao';
 import * as qianniu from './qianniu';
+import * as tinyapp from './tinyapp';
 
 export const call = (method, ...params) => {
   if (detect.isTmall) return tmall[method](...params);
@@ -14,6 +15,7 @@ export const call = (method, ...params) => {
   if (detect.isMyBank) return mybank[method](...params);
   if (detect.isKoubei) return koubei[method](...params);
   if (detect.isQianNiu) return qianniu[method](...params);
+  // if(detect.isTinyapp) return tinyapp.call(method, params);
   return Promise.reject();
 };
 
