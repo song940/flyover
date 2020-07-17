@@ -7,4 +7,5 @@ export * from './popWindow';
 export * from './pushWindow';
 export * from './closeWebview';
 export * from './openInBrowser';
+export * from './pullToRefresh';
 export * from './setTitle';

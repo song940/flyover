@@ -55,6 +55,10 @@ export interface EventHandler {
   (event: any): void
 }
 
+export const onReady = (fn: EventHandler) => {
+  return call('ready', fn);
+};
+
 export const onResume = (fn: EventHandler) => {
   return addEventListener('resume', fn);
 };
@@ -66,9 +70,13 @@ export const onPause = (fn: EventHandler) => {
 export const onBack = (fn: EventHandler) => {
   return addEventListener('back', fn);
 };
-
-export const onReady = (fn: EventHandler) => {
-  return addEventListener('ready', fn);
+/**
+ * onPullToRefresh
+ * @param fn
+ * @docs http://jsapi.alipay.net/jsapi/events/fire-pull-to-refresh.html
+ */
+export const onPullToRefresh = (fn: EventHandler) => {
+  return addEventListener('firePullToRefresh', fn);
 };
 
 export {

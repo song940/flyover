@@ -129,6 +129,10 @@ var openInBrowser = function (url) {
     return pcall('openInBrowser', { url: url });
 };
 
+var restorePullToRefresh = function () {
+    return pcall('restorePullToRefresh');
+};
+
 /**
  * https://myjsapi.alipay.com/jsapi/ui/set-title.html
  * @param title
@@ -151,6 +155,7 @@ exports.pcall = pcall;
 exports.popWindow = popWindow;
 exports.pushWindow = pushWindow;
 exports.ready = ready;
+exports.restorePullToRefresh = restorePullToRefresh;
 exports.setTitle = setTitle;
 exports.showLoading = showLoading;
 exports.toast = toast;

@@ -72,6 +72,8 @@ declare const closeWebview: () => Promise<any>;
 
 declare const openInBrowser: (url: string) => Promise<any>;
 
+declare const restorePullToRefresh: () => Promise<any>;
+
 /**
  * https://myjsapi.alipay.com/jsapi/ui/set-title.html
  * @param title
@@ -79,4 +81,4 @@ declare const openInBrowser: (url: string) => Promise<any>;
  */
 declare const setTitle: (title: any, onClickTitle: any) => void;
 
-export { alert, call, closeWebview, confirm, handleResponse, hideLoading, openInBrowser, pcall, popWindow, pushWindow, ready, setTitle, showLoading, toast };
+export { alert, call, closeWebview, confirm, handleResponse, hideLoading, openInBrowser, pcall, popWindow, pushWindow, ready, restorePullToRefresh, setTitle, showLoading, toast };

@@ -291,6 +291,10 @@
         return pcall$1('openInBrowser', { url: url });
     };
 
+    var restorePullToRefresh = function () {
+        return pcall$1('restorePullToRefresh');
+    };
+
     /**
      * https://myjsapi.alipay.com/jsapi/ui/set-title.html
      * @param title
@@ -317,6 +321,7 @@
         pushWindow: pushWindow,
         closeWebview: closeWebview,
         openInBrowser: openInBrowser,
+        restorePullToRefresh: restorePullToRefresh,
         setTitle: setTitle
     });
 
@@ -335,6 +340,7 @@
         pushWindow: pushWindow,
         closeWebview: closeWebview,
         openInBrowser: openInBrowser,
+        restorePullToRefresh: restorePullToRefresh,
         setTitle: setTitle
     });
 
@@ -353,6 +359,7 @@
         pushWindow: pushWindow,
         closeWebview: closeWebview,
         openInBrowser: openInBrowser,
+        restorePullToRefresh: restorePullToRefresh,
         setTitle: setTitle
     });
 
@@ -449,6 +456,9 @@
     var closeWebview$1 = function () {
         return call$2('closeWebview');
     };
+    var onReady = function (fn) {
+        return call$2('ready', fn);
+    };
     var onResume = function (fn) {
         return addEventListener('resume', fn);
     };
@@ -458,8 +468,13 @@
     var onBack = function (fn) {
         return addEventListener('back', fn);
     };
-    var onReady = function (fn) {
-        return addEventListener('ready', fn);
+    /**
+     * onPullToRefresh
+     * @param fn
+     * @docs http://jsapi.alipay.net/jsapi/events/fire-pull-to-refresh.html
+     */
+    var onPullToRefresh = function (fn) {
+        return addEventListener('firePullToRefresh', fn);
     };
 
     exports.alert = alert$2;
@@ -485,6 +500,7 @@
     exports.mybank = mybank;
     exports.onBack = onBack;
     exports.onPause = onPause;
+    exports.onPullToRefresh = onPullToRefresh;
     exports.onReady = onReady;
     exports.onResume = onResume;
     exports.popWindow = popWindow$2;

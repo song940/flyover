@@ -152,6 +152,8 @@ declare const closeWebview: () => Promise<any>;
 
 declare const openInBrowser: (url: string) => Promise<any>;
 
+declare const restorePullToRefresh: () => Promise<any>;
+
 /**
  * https://myjsapi.alipay.com/jsapi/ui/set-title.html
  * @param title
@@ -167,6 +169,7 @@ declare const index$1_popWindow: typeof popWindow;
 declare const index$1_pushWindow: typeof pushWindow;
 declare const index$1_closeWebview: typeof closeWebview;
 declare const index$1_openInBrowser: typeof openInBrowser;
+declare const index$1_restorePullToRefresh: typeof restorePullToRefresh;
 declare const index$1_setTitle: typeof setTitle;
 declare namespace index$1 {
   export {
@@ -183,6 +186,7 @@ declare namespace index$1 {
     index$1_pushWindow as pushWindow,
     index$1_closeWebview as closeWebview,
     index$1_openInBrowser as openInBrowser,
+    index$1_restorePullToRefresh as restorePullToRefresh,
     index$1_setTitle as setTitle,
   };
 }
@@ -195,6 +199,7 @@ declare const index$2_popWindow: typeof popWindow;
 declare const index$2_pushWindow: typeof pushWindow;
 declare const index$2_closeWebview: typeof closeWebview;
 declare const index$2_openInBrowser: typeof openInBrowser;
+declare const index$2_restorePullToRefresh: typeof restorePullToRefresh;
 declare const index$2_setTitle: typeof setTitle;
 declare namespace index$2 {
   export {
@@ -211,6 +216,7 @@ declare namespace index$2 {
     index$2_pushWindow as pushWindow,
     index$2_closeWebview as closeWebview,
     index$2_openInBrowser as openInBrowser,
+    index$2_restorePullToRefresh as restorePullToRefresh,
     index$2_setTitle as setTitle,
   };
 }
@@ -223,6 +229,7 @@ declare const index$3_popWindow: typeof popWindow;
 declare const index$3_pushWindow: typeof pushWindow;
 declare const index$3_closeWebview: typeof closeWebview;
 declare const index$3_openInBrowser: typeof openInBrowser;
+declare const index$3_restorePullToRefresh: typeof restorePullToRefresh;
 declare const index$3_setTitle: typeof setTitle;
 declare namespace index$3 {
   export {
@@ -239,6 +246,7 @@ declare namespace index$3 {
     index$3_pushWindow as pushWindow,
     index$3_closeWebview as closeWebview,
     index$3_openInBrowser as openInBrowser,
+    index$3_restorePullToRefresh as restorePullToRefresh,
     index$3_setTitle as setTitle,
   };
 }
@@ -294,9 +302,15 @@ declare const closeWebview$1: () => any;
 interface EventHandler {
     (event: any): void;
 }
+declare const onReady: (fn: EventHandler) => any;
 declare const onResume: (fn: EventHandler) => void;
 declare const onPause: (fn: EventHandler) => void;
 declare const onBack: (fn: EventHandler) => void;
-declare const onReady: (fn: EventHandler) => void;
+/**
+ * onPullToRefresh
+ * @param fn
+ * @docs http://jsapi.alipay.net/jsapi/events/fire-pull-to-refresh.html
+ */
+declare const onPullToRefresh: (fn: EventHandler) => void;
 
-export { EventHandler, alert$2 as alert, aliAppInfo, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onReady, onResume, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };
+export { EventHandler, alert$2 as alert, aliAppInfo, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };
