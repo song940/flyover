@@ -2,29 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';
-var QianniuBridgeUrl = '//g.alicdn.com/x-bridge/qap-sdk/2.4.2/qn.min.js';
-var loadScript = function (url) { return new Promise(function (resolve, reject) {
-    var script = document.createElement('script');
-    script.src = url;
-    script.charset = 'UTF-8';
-    script.addEventListener('load', resolve, false);
-    script.addEventListener('error', function () { return reject(new Error('script load error')); }, false);
-    document.head.appendChild(script);
-}); };
-var addEventListener = function (type, fn) {
-    document.addEventListener(type, fn, false);
-    return function () { return document.removeEventListener(type, fn); };
-};
-
-var install = function () {
-    return Promise.all([
-        loadScript(QianniuBridgeUrl),
-        loadScript(WindVaneBridgeUrl),
-    ]);
-};
-
-install();
 var call = function (api, params, callback) {
     var _a = api.split('.'), className = _a[0], methodName = _a[1];
     var success = function (o) { return callback && callback(null, o); };
@@ -47,6 +24,11 @@ var toast = function (message, options) {
         message: message,
         duration: duration,
     });
+};
+
+var addEventListener = function (type, fn) {
+    document.addEventListener(type, fn, false);
+    return function () { return document.removeEventListener(type, fn); };
 };
 
 var waittingEvent = function (id) { return new Promise(function (done) {

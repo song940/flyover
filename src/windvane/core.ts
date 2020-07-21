@@ -1,7 +1,3 @@
-import { install } from './install';
-
-install();
-
 
 export const call = (api, params?, callback?) => {
   const [className, methodName] = api.split('.');

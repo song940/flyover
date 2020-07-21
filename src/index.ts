@@ -15,7 +15,7 @@ export const call = (method, ...params) => {
   if (detect.isMyBank) return mybank[method](...params);
   if (detect.isKoubei) return koubei[method](...params);
   if (detect.isQianNiu) return qianniu[method](...params);
-  // if(detect.isTinyapp) return tinyapp.call(method, params);
+  // if (detect.isTinyapp) return tinyapp.call(method, params);
   return Promise.reject();
 };
 

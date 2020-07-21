@@ -1,4 +1,4 @@
-declare var QN;
+declare var QN: any;
 
 export function getAbsoluteURL(url) {
   let ele = document.createElement('a');
