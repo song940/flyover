@@ -17,6 +17,40 @@ declare type AlertOption = {
 };
 declare const alert: (message: string, { title, buttonText: button }?: AlertOption) => Promise<void>;
 
+declare type TransparentTitleOption = {
+    mode?: "auto" | "always" | "custom" | "none";
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+ * @param title
+ * @param onClickTitle
+ */
+declare const setTitle: (title: any, onClickTitle: any) => Promise<any>;
+/**
+ * setTitleColor
+ * @param color
+ * @param reset
+ * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
+ */
+declare const setTitleColor: (color: string | number, reset?: boolean) => Promise<any>;
+/**
+ * setTransparentTitle
+ * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
+ */
+declare const setTransparentTitle: (options?: TransparentTitleOption) => Promise<any>;
+declare type TitleAndStatusbarHeightType = {
+    density?: number;
+    titleBarHeight: number;
+    statusBarHeight: number;
+};
+/**
+ * getTitleAndStatusbarHeight
+ * @docs http://jsapi.alipay.net/jsapi/ui/get-title-and-statusbar-height.html
+ */
+declare const getTitleAndStatusbarHeight: () => Promise<TitleAndStatusbarHeightType>;
+declare const hideBackButton: () => Promise<any>;
+declare const showBackButton: () => Promise<any>;
+
 declare type ConfirmOption = {
     title?: string;
     message?: string;
@@ -74,11 +108,4 @@ declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-/**
- * https://myjsapi.alipay.com/jsapi/ui/set-title.html
- * @param title
- * @param onClickTitle
- */
-declare const setTitle: (title: any, onClickTitle: any) => void;
-
-export { alert, call, closeWebview, confirm, handleResponse, hideLoading, openInBrowser, pcall, popWindow, pushWindow, ready, restorePullToRefresh, setTitle, showLoading, toast };
+export { alert, call, closeWebview, confirm, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, openInBrowser, pcall, popWindow, pushWindow, ready, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };

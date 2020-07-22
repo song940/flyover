@@ -84,6 +84,55 @@ var alert = function (message, _a) {
     });
 };
 
+var fromColor = function (color) {
+    if (color.indexOf('#') !== 0)
+        return color;
+    return parseInt(color.slice(1), 16);
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+ * @param title
+ * @param onClickTitle
+ */
+var setTitle = function (title, onClickTitle) {
+    return pcall('setTitle', {
+        title: title
+    }, onClickTitle);
+};
+/**
+ * setTitleColor
+ * @param color
+ * @param reset
+ * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
+ */
+var setTitleColor = function (color, reset) {
+    if (reset === void 0) { reset = false; }
+    if (typeof color === 'string') {
+        color = fromColor(color);
+    }
+    return pcall('setTitleColor', { color: color, reset: reset });
+};
+/**
+ * setTransparentTitle
+ * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
+ */
+var setTransparentTitle = function (options) {
+    return pcall('setTransparentTitle', options);
+};
+/**
+ * getTitleAndStatusbarHeight
+ * @docs http://jsapi.alipay.net/jsapi/ui/get-title-and-statusbar-height.html
+ */
+var getTitleAndStatusbarHeight = function () {
+    return pcall('getTitleAndStatusbarHeight');
+};
+var hideBackButton = function () {
+    return pcall('hideBackButton');
+};
+var showBackButton = function () {
+    return pcall('showBackButton');
+};
+
 var confirm = function (message, _a) {
     var _b = _a === void 0 ? {} : _a, title = _b.title, okButton = _b.okButton, cancelButton = _b.cancelButton;
     return pcall('confirm', {
@@ -133,22 +182,13 @@ var restorePullToRefresh = function () {
     return pcall('restorePullToRefresh');
 };
 
-/**
- * https://myjsapi.alipay.com/jsapi/ui/set-title.html
- * @param title
- * @param onClickTitle
- */
-var setTitle = function (title, onClickTitle) {
-    return call('setTitle', {
-        title: title
-    }, onClickTitle);
-};
-
 exports.alert = alert;
 exports.call = call;
 exports.closeWebview = closeWebview;
 exports.confirm = confirm;
+exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight;
 exports.handleResponse = handleResponse;
+exports.hideBackButton = hideBackButton;
 exports.hideLoading = hideLoading;
 exports.openInBrowser = openInBrowser;
 exports.pcall = pcall;
@@ -157,5 +197,8 @@ exports.pushWindow = pushWindow;
 exports.ready = ready;
 exports.restorePullToRefresh = restorePullToRefresh;
 exports.setTitle = setTitle;
+exports.setTitleColor = setTitleColor;
+exports.setTransparentTitle = setTransparentTitle;
+exports.showBackButton = showBackButton;
 exports.showLoading = showLoading;
 exports.toast = toast;

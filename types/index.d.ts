@@ -1,7 +1,4 @@
-declare const aliAppInfo: {
-    name: string;
-    version: string;
-};
+declare const isIOS: boolean;
 declare const isAlipay: boolean;
 declare const isKoubei: boolean;
 declare const isKoubeiMerchant: boolean;
@@ -14,7 +11,7 @@ declare const isQianNiu: boolean;
 declare const isAmap: boolean;
 declare const isInside: boolean;
 
-declare const detect_aliAppInfo: typeof aliAppInfo;
+declare const detect_isIOS: typeof isIOS;
 declare const detect_isAlipay: typeof isAlipay;
 declare const detect_isKoubei: typeof isKoubei;
 declare const detect_isKoubeiMerchant: typeof isKoubeiMerchant;
@@ -28,7 +25,7 @@ declare const detect_isAmap: typeof isAmap;
 declare const detect_isInside: typeof isInside;
 declare namespace detect {
   export {
-    detect_aliAppInfo as aliAppInfo,
+    detect_isIOS as isIOS,
     detect_isAlipay as isAlipay,
     detect_isKoubei as isKoubei,
     detect_isKoubeiMerchant as isKoubeiMerchant,
@@ -97,6 +94,40 @@ declare type AlertOption$1 = {
 };
 declare const alert$1: (message: string, { title, buttonText: button }?: AlertOption$1) => Promise<void>;
 
+declare type TransparentTitleOption = {
+    mode?: "auto" | "always" | "custom" | "none";
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+ * @param title
+ * @param onClickTitle
+ */
+declare const setTitle: (title: any, onClickTitle: any) => Promise<any>;
+/**
+ * setTitleColor
+ * @param color
+ * @param reset
+ * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
+ */
+declare const setTitleColor: (color: string | number, reset?: boolean) => Promise<any>;
+/**
+ * setTransparentTitle
+ * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
+ */
+declare const setTransparentTitle: (options?: TransparentTitleOption) => Promise<any>;
+declare type TitleAndStatusbarHeightType = {
+    density?: number;
+    titleBarHeight: number;
+    statusBarHeight: number;
+};
+/**
+ * getTitleAndStatusbarHeight
+ * @docs http://jsapi.alipay.net/jsapi/ui/get-title-and-statusbar-height.html
+ */
+declare const getTitleAndStatusbarHeight: () => Promise<TitleAndStatusbarHeightType>;
+declare const hideBackButton: () => Promise<any>;
+declare const showBackButton: () => Promise<any>;
+
 declare type ConfirmOption$1 = {
     title?: string;
     message?: string;
@@ -154,23 +185,21 @@ declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-/**
- * https://myjsapi.alipay.com/jsapi/ui/set-title.html
- * @param title
- * @param onClickTitle
- */
-declare const setTitle: (title: any, onClickTitle: any) => void;
-
 declare const index$1_ready: typeof ready;
 declare const index$1_call: typeof call;
 declare const index$1_pcall: typeof pcall;
 declare const index$1_handleResponse: typeof handleResponse;
+declare const index$1_setTitle: typeof setTitle;
+declare const index$1_setTitleColor: typeof setTitleColor;
+declare const index$1_setTransparentTitle: typeof setTransparentTitle;
+declare const index$1_getTitleAndStatusbarHeight: typeof getTitleAndStatusbarHeight;
+declare const index$1_hideBackButton: typeof hideBackButton;
+declare const index$1_showBackButton: typeof showBackButton;
 declare const index$1_popWindow: typeof popWindow;
 declare const index$1_pushWindow: typeof pushWindow;
 declare const index$1_closeWebview: typeof closeWebview;
 declare const index$1_openInBrowser: typeof openInBrowser;
 declare const index$1_restorePullToRefresh: typeof restorePullToRefresh;
-declare const index$1_setTitle: typeof setTitle;
 declare namespace index$1 {
   export {
     index$1_ready as ready,
@@ -179,6 +208,12 @@ declare namespace index$1 {
     index$1_handleResponse as handleResponse,
     toast$1 as toast,
     alert$1 as alert,
+    index$1_setTitle as setTitle,
+    index$1_setTitleColor as setTitleColor,
+    index$1_setTransparentTitle as setTransparentTitle,
+    index$1_getTitleAndStatusbarHeight as getTitleAndStatusbarHeight,
+    index$1_hideBackButton as hideBackButton,
+    index$1_showBackButton as showBackButton,
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
@@ -187,7 +222,6 @@ declare namespace index$1 {
     index$1_closeWebview as closeWebview,
     index$1_openInBrowser as openInBrowser,
     index$1_restorePullToRefresh as restorePullToRefresh,
-    index$1_setTitle as setTitle,
   };
 }
 
@@ -195,12 +229,17 @@ declare const index$2_ready: typeof ready;
 declare const index$2_call: typeof call;
 declare const index$2_pcall: typeof pcall;
 declare const index$2_handleResponse: typeof handleResponse;
+declare const index$2_setTitle: typeof setTitle;
+declare const index$2_setTitleColor: typeof setTitleColor;
+declare const index$2_setTransparentTitle: typeof setTransparentTitle;
+declare const index$2_getTitleAndStatusbarHeight: typeof getTitleAndStatusbarHeight;
+declare const index$2_hideBackButton: typeof hideBackButton;
+declare const index$2_showBackButton: typeof showBackButton;
 declare const index$2_popWindow: typeof popWindow;
 declare const index$2_pushWindow: typeof pushWindow;
 declare const index$2_closeWebview: typeof closeWebview;
 declare const index$2_openInBrowser: typeof openInBrowser;
 declare const index$2_restorePullToRefresh: typeof restorePullToRefresh;
-declare const index$2_setTitle: typeof setTitle;
 declare namespace index$2 {
   export {
     index$2_ready as ready,
@@ -209,6 +248,12 @@ declare namespace index$2 {
     index$2_handleResponse as handleResponse,
     toast$1 as toast,
     alert$1 as alert,
+    index$2_setTitle as setTitle,
+    index$2_setTitleColor as setTitleColor,
+    index$2_setTransparentTitle as setTransparentTitle,
+    index$2_getTitleAndStatusbarHeight as getTitleAndStatusbarHeight,
+    index$2_hideBackButton as hideBackButton,
+    index$2_showBackButton as showBackButton,
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
@@ -217,7 +262,6 @@ declare namespace index$2 {
     index$2_closeWebview as closeWebview,
     index$2_openInBrowser as openInBrowser,
     index$2_restorePullToRefresh as restorePullToRefresh,
-    index$2_setTitle as setTitle,
   };
 }
 
@@ -225,12 +269,17 @@ declare const index$3_ready: typeof ready;
 declare const index$3_call: typeof call;
 declare const index$3_pcall: typeof pcall;
 declare const index$3_handleResponse: typeof handleResponse;
+declare const index$3_setTitle: typeof setTitle;
+declare const index$3_setTitleColor: typeof setTitleColor;
+declare const index$3_setTransparentTitle: typeof setTransparentTitle;
+declare const index$3_getTitleAndStatusbarHeight: typeof getTitleAndStatusbarHeight;
+declare const index$3_hideBackButton: typeof hideBackButton;
+declare const index$3_showBackButton: typeof showBackButton;
 declare const index$3_popWindow: typeof popWindow;
 declare const index$3_pushWindow: typeof pushWindow;
 declare const index$3_closeWebview: typeof closeWebview;
 declare const index$3_openInBrowser: typeof openInBrowser;
 declare const index$3_restorePullToRefresh: typeof restorePullToRefresh;
-declare const index$3_setTitle: typeof setTitle;
 declare namespace index$3 {
   export {
     index$3_ready as ready,
@@ -239,6 +288,12 @@ declare namespace index$3 {
     index$3_handleResponse as handleResponse,
     toast$1 as toast,
     alert$1 as alert,
+    index$3_setTitle as setTitle,
+    index$3_setTitleColor as setTitleColor,
+    index$3_setTransparentTitle as setTransparentTitle,
+    index$3_getTitleAndStatusbarHeight as getTitleAndStatusbarHeight,
+    index$3_hideBackButton as hideBackButton,
+    index$3_showBackButton as showBackButton,
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
@@ -247,7 +302,6 @@ declare namespace index$3 {
     index$3_closeWebview as closeWebview,
     index$3_openInBrowser as openInBrowser,
     index$3_restorePullToRefresh as restorePullToRefresh,
-    index$3_setTitle as setTitle,
   };
 }
 
@@ -299,6 +353,18 @@ declare const hideLoading$2: () => any;
 declare const pushWindow$2: (url: any, options?: any) => any;
 declare const popWindow$2: () => any;
 declare const closeWebview$1: () => any;
+declare const restorePullToRefresh$1: () => any;
+declare type TransparentTitleOption$1 = {
+    mode?: "auto" | "always" | "custom" | "none";
+};
+declare type TitleAndStatusbarHeightType$1 = {
+    density?: number;
+    titleBarHeight: number;
+    statusBarHeight: number;
+};
+declare const setTransparentTitle$1: (options?: TransparentTitleOption$1) => any;
+declare const getTitleAndStatusbarHeight$1: () => Promise<TitleAndStatusbarHeightType$1>;
+declare const setTitleColor$1: (color: any, reset: any) => any;
 interface EventHandler {
     (event: any): void;
 }
@@ -313,4 +379,4 @@ declare const onBack: (fn: EventHandler) => void;
  */
 declare const onPullToRefresh: (fn: EventHandler) => void;
 
-export { EventHandler, alert$2 as alert, aliAppInfo, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };
+export { EventHandler, alert$2 as alert, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };

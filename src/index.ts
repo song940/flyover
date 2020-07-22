@@ -51,6 +51,32 @@ export const closeWebview = () => {
   return call('closeWebview');
 };
 
+export const restorePullToRefresh = () => {
+  return call('restorePullToRefresh');
+};
+
+type TransparentTitleOption = {
+  mode?: "auto" | "always" | "custom" | "none"
+};
+
+type TitleAndStatusbarHeightType = {
+  density?: number,
+  titleBarHeight: number,
+  statusBarHeight: number,
+};
+
+export const setTransparentTitle = (options?: TransparentTitleOption) => {
+  return call('setTransparentTitle', options);
+};
+
+export const getTitleAndStatusbarHeight = (): Promise<TitleAndStatusbarHeightType> => {
+  return call('getTitleAndStatusbarHeight');
+};
+
+export const setTitleColor = (color, reset) => {
+  return call('setTitleColor', color, reset);
+};
+
 export interface EventHandler {
   (event: any): void
 }

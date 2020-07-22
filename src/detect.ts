@@ -1,37 +1,7 @@
 
-const getAliappInfo = (ua: string) => {
-  if (/AliApp\(([\w\-]+)\/([\d\.]+)\)/i.test(ua)) {
-    return {
-      name: String(RegExp.$1).toLowerCase(),
-      version: RegExp.$2,
-    };
-  }
-
-  const matches = ua.match(/(amap)\/([\d.]+)/i);
-  if (Array.isArray(matches) && matches.length > 2 && matches[1] === 'amap') {
-    return {
-      name: 'amap',
-      version: matches[2],
-    };
-  }
-
-  const insideMatchs = ua.match(/(Inside)([\/\s](.*))?/i);
-  if (Array.isArray(insideMatchs) && insideMatchs.length > 2 && insideMatchs[1] === 'Inside') {
-    return {
-      name: 'Inside',
-      version: insideMatchs[3] || '',
-    };
-  }
-
-  return {
-    name: 'web',
-    version: '',
-  };
-};
-
 const ua = window.navigator.userAgent;
 
-export const aliAppInfo = getAliappInfo(ua);
+export const isIOS = /iPhone|iPad|iPod/i.test(ua);
 export const isAlipay = /AliApp\(AP\/([\d\.]+)\)/i.test(ua);
 export const isKoubei = /AliApp\(KB\/([\d\.]+)\)/i.test(ua);
 export const isKoubeiMerchant = /AliApp\(AM\/([\d\.]+)\)/i.test(ua);

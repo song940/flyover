@@ -4,34 +4,8 @@
     (global = global || self, factory(global.Flyover = {}));
 }(this, (function (exports) { 'use strict';
 
-    var getAliappInfo = function (ua) {
-        if (/AliApp\(([\w\-]+)\/([\d\.]+)\)/i.test(ua)) {
-            return {
-                name: String(RegExp.$1).toLowerCase(),
-                version: RegExp.$2,
-            };
-        }
-        var matches = ua.match(/(amap)\/([\d.]+)/i);
-        if (Array.isArray(matches) && matches.length > 2 && matches[1] === 'amap') {
-            return {
-                name: 'amap',
-                version: matches[2],
-            };
-        }
-        var insideMatchs = ua.match(/(Inside)([\/\s](.*))?/i);
-        if (Array.isArray(insideMatchs) && insideMatchs.length > 2 && insideMatchs[1] === 'Inside') {
-            return {
-                name: 'Inside',
-                version: insideMatchs[3] || '',
-            };
-        }
-        return {
-            name: 'web',
-            version: '',
-        };
-    };
     var ua = window.navigator.userAgent;
-    var aliAppInfo = getAliappInfo(ua);
+    var isIOS = /iPhone|iPad|iPod/i.test(ua);
     var isAlipay = /AliApp\(AP\/([\d\.]+)\)/i.test(ua);
     var isKoubei = /AliApp\(KB\/([\d\.]+)\)/i.test(ua);
     var isKoubeiMerchant = /AliApp\(AM\/([\d\.]+)\)/i.test(ua);
@@ -46,7 +20,7 @@
 
     var detect = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        aliAppInfo: aliAppInfo,
+        isIOS: isIOS,
         isAlipay: isAlipay,
         isKoubei: isKoubei,
         isKoubeiMerchant: isKoubeiMerchant,
@@ -228,6 +202,55 @@
         });
     };
 
+    var fromColor = function (color) {
+        if (color.indexOf('#') !== 0)
+            return color;
+        return parseInt(color.slice(1), 16);
+    };
+    /**
+     * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+     * @param title
+     * @param onClickTitle
+     */
+    var setTitle = function (title, onClickTitle) {
+        return pcall$1('setTitle', {
+            title: title
+        }, onClickTitle);
+    };
+    /**
+     * setTitleColor
+     * @param color
+     * @param reset
+     * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
+     */
+    var setTitleColor = function (color, reset) {
+        if (reset === void 0) { reset = false; }
+        if (typeof color === 'string') {
+            color = fromColor(color);
+        }
+        return pcall$1('setTitleColor', { color: color, reset: reset });
+    };
+    /**
+     * setTransparentTitle
+     * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
+     */
+    var setTransparentTitle = function (options) {
+        return pcall$1('setTransparentTitle', options);
+    };
+    /**
+     * getTitleAndStatusbarHeight
+     * @docs http://jsapi.alipay.net/jsapi/ui/get-title-and-statusbar-height.html
+     */
+    var getTitleAndStatusbarHeight = function () {
+        return pcall$1('getTitleAndStatusbarHeight');
+    };
+    var hideBackButton = function () {
+        return pcall$1('hideBackButton');
+    };
+    var showBackButton = function () {
+        return pcall$1('showBackButton');
+    };
+
     var confirm$1 = function (message, _a) {
         var _b = _a === void 0 ? {} : _a, title = _b.title, okButton = _b.okButton, cancelButton = _b.cancelButton;
         return pcall$1('confirm', {
@@ -277,17 +300,6 @@
         return pcall$1('restorePullToRefresh');
     };
 
-    /**
-     * https://myjsapi.alipay.com/jsapi/ui/set-title.html
-     * @param title
-     * @param onClickTitle
-     */
-    var setTitle = function (title, onClickTitle) {
-        return call$1('setTitle', {
-            title: title
-        }, onClickTitle);
-    };
-
     var alipay = /*#__PURE__*/Object.freeze({
         __proto__: null,
         ready: ready,
@@ -296,6 +308,12 @@
         handleResponse: handleResponse,
         toast: toast$1,
         alert: alert$1,
+        setTitle: setTitle,
+        setTitleColor: setTitleColor,
+        setTransparentTitle: setTransparentTitle,
+        getTitleAndStatusbarHeight: getTitleAndStatusbarHeight,
+        hideBackButton: hideBackButton,
+        showBackButton: showBackButton,
         confirm: confirm$1,
         showLoading: showLoading$1,
         hideLoading: hideLoading$1,
@@ -303,8 +321,7 @@
         pushWindow: pushWindow,
         closeWebview: closeWebview,
         openInBrowser: openInBrowser,
-        restorePullToRefresh: restorePullToRefresh,
-        setTitle: setTitle
+        restorePullToRefresh: restorePullToRefresh
     });
 
     var mybank = /*#__PURE__*/Object.freeze({
@@ -315,6 +332,12 @@
         handleResponse: handleResponse,
         toast: toast$1,
         alert: alert$1,
+        setTitle: setTitle,
+        setTitleColor: setTitleColor,
+        setTransparentTitle: setTransparentTitle,
+        getTitleAndStatusbarHeight: getTitleAndStatusbarHeight,
+        hideBackButton: hideBackButton,
+        showBackButton: showBackButton,
         confirm: confirm$1,
         showLoading: showLoading$1,
         hideLoading: hideLoading$1,
@@ -322,8 +345,7 @@
         pushWindow: pushWindow,
         closeWebview: closeWebview,
         openInBrowser: openInBrowser,
-        restorePullToRefresh: restorePullToRefresh,
-        setTitle: setTitle
+        restorePullToRefresh: restorePullToRefresh
     });
 
     var koubei = /*#__PURE__*/Object.freeze({
@@ -334,6 +356,12 @@
         handleResponse: handleResponse,
         toast: toast$1,
         alert: alert$1,
+        setTitle: setTitle,
+        setTitleColor: setTitleColor,
+        setTransparentTitle: setTransparentTitle,
+        getTitleAndStatusbarHeight: getTitleAndStatusbarHeight,
+        hideBackButton: hideBackButton,
+        showBackButton: showBackButton,
         confirm: confirm$1,
         showLoading: showLoading$1,
         hideLoading: hideLoading$1,
@@ -341,8 +369,7 @@
         pushWindow: pushWindow,
         closeWebview: closeWebview,
         openInBrowser: openInBrowser,
-        restorePullToRefresh: restorePullToRefresh,
-        setTitle: setTitle
+        restorePullToRefresh: restorePullToRefresh
     });
 
     var taobao = /*#__PURE__*/Object.freeze({
@@ -438,6 +465,18 @@
     var closeWebview$1 = function () {
         return call$2('closeWebview');
     };
+    var restorePullToRefresh$1 = function () {
+        return call$2('restorePullToRefresh');
+    };
+    var setTransparentTitle$1 = function (options) {
+        return call$2('setTransparentTitle', options);
+    };
+    var getTitleAndStatusbarHeight$1 = function () {
+        return call$2('getTitleAndStatusbarHeight');
+    };
+    var setTitleColor$1 = function (color, reset) {
+        return call$2('setTitleColor', color, reset);
+    };
     var onReady = function (fn) {
         return call$2('ready', fn);
     };
@@ -460,16 +499,17 @@
     };
 
     exports.alert = alert$2;
-    exports.aliAppInfo = aliAppInfo;
     exports.alipay = alipay;
     exports.call = call$2;
     exports.closeWebview = closeWebview$1;
     exports.confirm = confirm$2;
     exports.detect = detect;
+    exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight$1;
     exports.hideLoading = hideLoading$2;
     exports.isAlipay = isAlipay;
     exports.isAmap = isAmap;
     exports.isDingTalk = isDingTalk;
+    exports.isIOS = isIOS;
     exports.isInside = isInside;
     exports.isKoubei = isKoubei;
     exports.isKoubeiMerchant = isKoubeiMerchant;
@@ -488,6 +528,9 @@
     exports.popWindow = popWindow$2;
     exports.pushWindow = pushWindow$2;
     exports.qianniu = qianniu;
+    exports.restorePullToRefresh = restorePullToRefresh$1;
+    exports.setTitleColor = setTitleColor$1;
+    exports.setTransparentTitle = setTransparentTitle$1;
     exports.showLoading = showLoading$2;
     exports.taobao = taobao;
     exports.tmall = tmall;
