@@ -65,16 +65,20 @@ type TitleAndStatusbarHeightType = {
   statusBarHeight: number,
 };
 
+export const setTitle = title => {
+  return call('setTitle', title);
+};
+
+export const setTitleColor = (color, reset?) => {
+  return call('setTitleColor', color, reset);
+};
+
 export const setTransparentTitle = (options?: TransparentTitleOption) => {
   return call('setTransparentTitle', options);
 };
 
 export const getTitleAndStatusbarHeight = (): Promise<TitleAndStatusbarHeightType> => {
   return call('getTitleAndStatusbarHeight');
-};
-
-export const setTitleColor = (color, reset) => {
-  return call('setTitleColor', color, reset);
 };
 
 export interface EventHandler {

@@ -468,14 +468,17 @@
     var restorePullToRefresh$1 = function () {
         return call$2('restorePullToRefresh');
     };
+    var setTitle$1 = function (title) {
+        return call$2('setTitle', title);
+    };
+    var setTitleColor$1 = function (color, reset) {
+        return call$2('setTitleColor', color, reset);
+    };
     var setTransparentTitle$1 = function (options) {
         return call$2('setTransparentTitle', options);
     };
     var getTitleAndStatusbarHeight$1 = function () {
         return call$2('getTitleAndStatusbarHeight');
-    };
-    var setTitleColor$1 = function (color, reset) {
-        return call$2('setTitleColor', color, reset);
     };
     var onReady = function (fn) {
         return call$2('ready', fn);
@@ -529,6 +532,7 @@
     exports.pushWindow = pushWindow$2;
     exports.qianniu = qianniu;
     exports.restorePullToRefresh = restorePullToRefresh$1;
+    exports.setTitle = setTitle$1;
     exports.setTitleColor = setTitleColor$1;
     exports.setTransparentTitle = setTransparentTitle$1;
     exports.showLoading = showLoading$2;
