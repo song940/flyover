@@ -104,8 +104,22 @@ declare const pushWindow: (url: string, param?: PushWindowParam) => Promise<any>
 
 declare const closeWebview: () => Promise<any>;
 
+declare type OptionMenuItem = {
+    icontype?: "scan" | "user";
+    redDot?: string;
+};
+declare type OptionMenuType = {
+    menus: Array<OptionMenuItem>;
+    override?: boolean;
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/events/option-menu.html
+ */
+declare const optionMenu: (options: OptionMenuItem | OptionMenuType, fn: any) => () => void;
+declare const hideOptionMenu: () => void;
+
 declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-export { alert, call, closeWebview, confirm, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, openInBrowser, pcall, popWindow, pushWindow, ready, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { alert, call, closeWebview, confirm, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, pushWindow, ready, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };

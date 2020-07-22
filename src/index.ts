@@ -81,6 +81,20 @@ export const getTitleAndStatusbarHeight = (): Promise<TitleAndStatusbarHeightTyp
   return call('getTitleAndStatusbarHeight');
 };
 
+type OptionMenuItem = {
+  icontype?: "scan" | "user",
+  redDot?: string,
+};
+
+type OptionMenuType = {
+  menus: Array<OptionMenuItem>,
+  override?: boolean,
+};
+
+export const optionMenu = (options: OptionMenuItem | OptionMenuType, fn: EventHandler) => {
+  return call('optionMenu', options, fn);
+};
+
 export interface EventHandler {
   (event: any): void
 }

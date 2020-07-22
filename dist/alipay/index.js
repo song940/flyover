@@ -174,6 +174,24 @@ var closeWebview = function () {
     return pcall('closeWebview');
 };
 
+var addEventListener = function (type, fn) {
+    document.addEventListener(type, fn, false);
+    return function () { return document.removeEventListener(type, fn); };
+};
+
+/**
+ * https://myjsapi.alipay.com/jsapi/events/option-menu.html
+ */
+var optionMenu = function (options, fn) {
+    call('setOptionMenu', options);
+    call('showOptionMenu');
+    addEventListener('optionMenu', fn);
+    return hideOptionMenu;
+};
+var hideOptionMenu = function () {
+    return call('hideOptionMenu');
+};
+
 var openInBrowser = function (url) {
     return pcall('openInBrowser', { url: url });
 };
@@ -190,7 +208,9 @@ exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight;
 exports.handleResponse = handleResponse;
 exports.hideBackButton = hideBackButton;
 exports.hideLoading = hideLoading;
+exports.hideOptionMenu = hideOptionMenu;
 exports.openInBrowser = openInBrowser;
+exports.optionMenu = optionMenu;
 exports.pcall = pcall;
 exports.popWindow = popWindow;
 exports.pushWindow = pushWindow;

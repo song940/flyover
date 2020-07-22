@@ -181,6 +181,20 @@ declare const pushWindow: (url: string, param?: PushWindowParam) => Promise<any>
 
 declare const closeWebview: () => Promise<any>;
 
+declare type OptionMenuItem = {
+    icontype?: "scan" | "user";
+    redDot?: string;
+};
+declare type OptionMenuType = {
+    menus: Array<OptionMenuItem>;
+    override?: boolean;
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/events/option-menu.html
+ */
+declare const optionMenu: (options: OptionMenuItem | OptionMenuType, fn: any) => () => void;
+declare const hideOptionMenu: () => void;
+
 declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
@@ -198,6 +212,8 @@ declare const index$1_showBackButton: typeof showBackButton;
 declare const index$1_popWindow: typeof popWindow;
 declare const index$1_pushWindow: typeof pushWindow;
 declare const index$1_closeWebview: typeof closeWebview;
+declare const index$1_optionMenu: typeof optionMenu;
+declare const index$1_hideOptionMenu: typeof hideOptionMenu;
 declare const index$1_openInBrowser: typeof openInBrowser;
 declare const index$1_restorePullToRefresh: typeof restorePullToRefresh;
 declare namespace index$1 {
@@ -220,6 +236,8 @@ declare namespace index$1 {
     index$1_popWindow as popWindow,
     index$1_pushWindow as pushWindow,
     index$1_closeWebview as closeWebview,
+    index$1_optionMenu as optionMenu,
+    index$1_hideOptionMenu as hideOptionMenu,
     index$1_openInBrowser as openInBrowser,
     index$1_restorePullToRefresh as restorePullToRefresh,
   };
@@ -238,6 +256,8 @@ declare const index$2_showBackButton: typeof showBackButton;
 declare const index$2_popWindow: typeof popWindow;
 declare const index$2_pushWindow: typeof pushWindow;
 declare const index$2_closeWebview: typeof closeWebview;
+declare const index$2_optionMenu: typeof optionMenu;
+declare const index$2_hideOptionMenu: typeof hideOptionMenu;
 declare const index$2_openInBrowser: typeof openInBrowser;
 declare const index$2_restorePullToRefresh: typeof restorePullToRefresh;
 declare namespace index$2 {
@@ -260,6 +280,8 @@ declare namespace index$2 {
     index$2_popWindow as popWindow,
     index$2_pushWindow as pushWindow,
     index$2_closeWebview as closeWebview,
+    index$2_optionMenu as optionMenu,
+    index$2_hideOptionMenu as hideOptionMenu,
     index$2_openInBrowser as openInBrowser,
     index$2_restorePullToRefresh as restorePullToRefresh,
   };
@@ -278,6 +300,8 @@ declare const index$3_showBackButton: typeof showBackButton;
 declare const index$3_popWindow: typeof popWindow;
 declare const index$3_pushWindow: typeof pushWindow;
 declare const index$3_closeWebview: typeof closeWebview;
+declare const index$3_optionMenu: typeof optionMenu;
+declare const index$3_hideOptionMenu: typeof hideOptionMenu;
 declare const index$3_openInBrowser: typeof openInBrowser;
 declare const index$3_restorePullToRefresh: typeof restorePullToRefresh;
 declare namespace index$3 {
@@ -300,6 +324,8 @@ declare namespace index$3 {
     index$3_popWindow as popWindow,
     index$3_pushWindow as pushWindow,
     index$3_closeWebview as closeWebview,
+    index$3_optionMenu as optionMenu,
+    index$3_hideOptionMenu as hideOptionMenu,
     index$3_openInBrowser as openInBrowser,
     index$3_restorePullToRefresh as restorePullToRefresh,
   };
@@ -366,6 +392,15 @@ declare const setTitle$1: (title: any) => any;
 declare const setTitleColor$1: (color: any, reset?: any) => any;
 declare const setTransparentTitle$1: (options?: TransparentTitleOption$1) => any;
 declare const getTitleAndStatusbarHeight$1: () => Promise<TitleAndStatusbarHeightType$1>;
+declare type OptionMenuItem$1 = {
+    icontype?: "scan" | "user";
+    redDot?: string;
+};
+declare type OptionMenuType$1 = {
+    menus: Array<OptionMenuItem$1>;
+    override?: boolean;
+};
+declare const optionMenu$1: (options: OptionMenuItem$1 | OptionMenuType$1, fn: EventHandler) => any;
 interface EventHandler {
     (event: any): void;
 }
@@ -380,4 +415,4 @@ declare const onBack: (fn: EventHandler) => void;
  */
 declare const onPullToRefresh: (fn: EventHandler) => void;
 
-export { EventHandler, alert$2 as alert, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };
+export { EventHandler, alert$2 as alert, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu$1 as optionMenu, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };

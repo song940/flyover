@@ -292,6 +292,19 @@
         return pcall$1('closeWebview');
     };
 
+    /**
+     * https://myjsapi.alipay.com/jsapi/events/option-menu.html
+     */
+    var optionMenu = function (options, fn) {
+        call$1('setOptionMenu', options);
+        call$1('showOptionMenu');
+        addEventListener$1('optionMenu', fn);
+        return hideOptionMenu;
+    };
+    var hideOptionMenu = function () {
+        return call$1('hideOptionMenu');
+    };
+
     var openInBrowser = function (url) {
         return pcall$1('openInBrowser', { url: url });
     };
@@ -320,6 +333,8 @@
         popWindow: popWindow,
         pushWindow: pushWindow,
         closeWebview: closeWebview,
+        optionMenu: optionMenu,
+        hideOptionMenu: hideOptionMenu,
         openInBrowser: openInBrowser,
         restorePullToRefresh: restorePullToRefresh
     });
@@ -344,6 +359,8 @@
         popWindow: popWindow,
         pushWindow: pushWindow,
         closeWebview: closeWebview,
+        optionMenu: optionMenu,
+        hideOptionMenu: hideOptionMenu,
         openInBrowser: openInBrowser,
         restorePullToRefresh: restorePullToRefresh
     });
@@ -368,6 +385,8 @@
         popWindow: popWindow,
         pushWindow: pushWindow,
         closeWebview: closeWebview,
+        optionMenu: optionMenu,
+        hideOptionMenu: hideOptionMenu,
         openInBrowser: openInBrowser,
         restorePullToRefresh: restorePullToRefresh
     });
@@ -480,6 +499,9 @@
     var getTitleAndStatusbarHeight$1 = function () {
         return call$2('getTitleAndStatusbarHeight');
     };
+    var optionMenu$1 = function (options, fn) {
+        return call$2('optionMenu', options, fn);
+    };
     var onReady = function (fn) {
         return call$2('ready', fn);
     };
@@ -528,6 +550,7 @@
     exports.onPullToRefresh = onPullToRefresh;
     exports.onReady = onReady;
     exports.onResume = onResume;
+    exports.optionMenu = optionMenu$1;
     exports.popWindow = popWindow$2;
     exports.pushWindow = pushWindow$2;
     exports.qianniu = qianniu;
