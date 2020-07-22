@@ -14,11 +14,14 @@ type OptionMenuType = {
 /**
  * https://myjsapi.alipay.com/jsapi/events/option-menu.html
  */
-export const optionMenu = (options: OptionMenuItem | OptionMenuType, fn) => {
+export const optionMenu = (options: OptionMenuItem | OptionMenuType, fn?) => {
   call('setOptionMenu', options);
   call('showOptionMenu');
-  addEventListener('optionMenu', fn);
-  return hideOptionMenu;
+  const removeEventListener = addEventListener('optionMenu', fn);
+  return () => {
+    hideOptionMenu();
+    removeEventListener();
+  };
 };
 
 export const hideOptionMenu = () => {

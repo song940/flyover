@@ -91,7 +91,7 @@ type OptionMenuType = {
   override?: boolean,
 };
 
-export const optionMenu = (options: OptionMenuItem | OptionMenuType, fn: EventHandler) => {
+export const optionMenu = (options: OptionMenuItem | OptionMenuType, fn?: EventHandler) => {
   return call('optionMenu', options, fn);
 };
 
