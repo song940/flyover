@@ -35,6 +35,9 @@
 </body>
 <script src="../dist/flyover.js"></script>
 <script>
+
+  Flyover.onResume(() => console.log('resume'));
+
   document.getElementById('toast').addEventListener('click', () => {
     Flyover.toast('hello world');
   });

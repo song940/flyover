@@ -185,8 +185,11 @@ var addEventListener = function (type, fn) {
 var optionMenu = function (options, fn) {
     call('setOptionMenu', options);
     call('showOptionMenu');
-    addEventListener('optionMenu', fn);
-    return hideOptionMenu;
+    var removeEventListener = addEventListener('optionMenu', fn);
+    return function () {
+        hideOptionMenu();
+        removeEventListener();
+    };
 };
 var hideOptionMenu = function () {
     return call('hideOptionMenu');

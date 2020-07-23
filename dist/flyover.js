@@ -58,13 +58,13 @@
         });
     };
 
-    var addEventListener$1 = function (type, fn) {
+    var addEventListener = function (type, fn) {
         document.addEventListener(type, fn, false);
         return function () { return document.removeEventListener(type, fn); };
     };
 
     var waittingEvent = function (id) { return new Promise(function (done) {
-        var removeListener = addEventListener$1('WV.Event.Alert', function (e) {
+        var removeListener = addEventListener('WV.Event.Alert', function (e) {
             var identifier = (e.param || {}).identifier;
             if (identifier && id === identifier) {
                 done(e);
@@ -84,7 +84,7 @@
     };
 
     var waittingEvent$1 = function (id, text) { return new Promise(function (done) {
-        var removeListener = addEventListener$1('wv.dialog', function (e) {
+        var removeListener = addEventListener('wv.dialog', function (e) {
             var _a = e.param || {}, type = _a.type, _index = _a._index;
             if (_index === id) {
                 done(type === text);
@@ -298,8 +298,11 @@
     var optionMenu = function (options, fn) {
         call$1('setOptionMenu', options);
         call$1('showOptionMenu');
-        addEventListener$1('optionMenu', fn);
-        return hideOptionMenu;
+        var removeEventListener = addEventListener('optionMenu', fn);
+        return function () {
+            hideOptionMenu();
+            removeEventListener();
+        };
     };
     var hideOptionMenu = function () {
         return call$1('hideOptionMenu');
@@ -502,17 +505,20 @@
     var optionMenu$1 = function (options, fn) {
         return call$2('optionMenu', options, fn);
     };
+    var addEventListener$1 = function (type, fn) {
+        document.addEventListener(type, fn);
+    };
     var onReady = function (fn) {
         return call$2('ready', fn);
     };
     var onResume = function (fn) {
-        return addEventListener('resume', fn);
+        return addEventListener$1('resume', fn);
     };
     var onPause = function (fn) {
-        return addEventListener('pause', fn);
+        return addEventListener$1('pause', fn);
     };
     var onBack = function (fn) {
-        return addEventListener('back', fn);
+        return addEventListener$1('back', fn);
     };
     /**
      * onPullToRefresh
@@ -520,9 +526,10 @@
      * @docs http://jsapi.alipay.net/jsapi/events/fire-pull-to-refresh.html
      */
     var onPullToRefresh = function (fn) {
-        return addEventListener('firePullToRefresh', fn);
+        return addEventListener$1('firePullToRefresh', fn);
     };
 
+    exports.addEventListener = addEventListener$1;
     exports.alert = alert$2;
     exports.alipay = alipay;
     exports.call = call$2;

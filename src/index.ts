@@ -39,7 +39,7 @@ export const hideLoading = () => {
   return call('hideLoading');
 };
 
-export const pushWindow = (url, options?) => {
+export const pushWindow = (url: string, options?) => {
   return call('pushWindow', url, options);
 };
 
@@ -69,7 +69,7 @@ export const setTitle = title => {
   return call('setTitle', title);
 };
 
-export const setTitleColor = (color, reset?) => {
+export const setTitleColor = (color: number | string, reset?: boolean) => {
   return call('setTitleColor', color, reset);
 };
 
@@ -99,6 +99,10 @@ export interface EventHandler {
   (event: any): void
 }
 
+export const addEventListener = (type: string, fn: EventHandler) => {
+  document.addEventListener(type, fn);
+};
+
 export const onReady = (fn: EventHandler) => {
   return call('ready', fn);
 };
@@ -114,6 +118,7 @@ export const onPause = (fn: EventHandler) => {
 export const onBack = (fn: EventHandler) => {
   return addEventListener('back', fn);
 };
+
 /**
  * onPullToRefresh
  * @param fn

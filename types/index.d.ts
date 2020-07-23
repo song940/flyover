@@ -192,7 +192,7 @@ declare type OptionMenuType = {
 /**
  * https://myjsapi.alipay.com/jsapi/events/option-menu.html
  */
-declare const optionMenu: (options: OptionMenuItem | OptionMenuType, fn: any) => () => void;
+declare const optionMenu: (options: OptionMenuItem | OptionMenuType, fn?: any) => () => void;
 declare const hideOptionMenu: () => void;
 
 declare const openInBrowser: (url: string) => Promise<any>;
@@ -376,7 +376,7 @@ declare const alert$2: (content: any, options?: any) => any;
 declare const confirm$2: (content: any, options?: any) => any;
 declare const showLoading$2: () => any;
 declare const hideLoading$2: () => any;
-declare const pushWindow$2: (url: any, options?: any) => any;
+declare const pushWindow$2: (url: string, options?: any) => any;
 declare const popWindow$2: () => any;
 declare const closeWebview$1: () => any;
 declare const restorePullToRefresh$1: () => any;
@@ -389,7 +389,7 @@ declare type TitleAndStatusbarHeightType$1 = {
     statusBarHeight: number;
 };
 declare const setTitle$1: (title: any) => any;
-declare const setTitleColor$1: (color: any, reset?: any) => any;
+declare const setTitleColor$1: (color: string | number, reset?: boolean) => any;
 declare const setTransparentTitle$1: (options?: TransparentTitleOption$1) => any;
 declare const getTitleAndStatusbarHeight$1: () => Promise<TitleAndStatusbarHeightType$1>;
 declare type OptionMenuItem$1 = {
@@ -400,10 +400,11 @@ declare type OptionMenuType$1 = {
     menus: Array<OptionMenuItem$1>;
     override?: boolean;
 };
-declare const optionMenu$1: (options: OptionMenuItem$1 | OptionMenuType$1, fn: EventHandler) => any;
+declare const optionMenu$1: (options: OptionMenuItem$1 | OptionMenuType$1, fn?: EventHandler) => any;
 interface EventHandler {
     (event: any): void;
 }
+declare const addEventListener: (type: string, fn: EventHandler) => void;
 declare const onReady: (fn: EventHandler) => any;
 declare const onResume: (fn: EventHandler) => void;
 declare const onPause: (fn: EventHandler) => void;
@@ -415,4 +416,4 @@ declare const onBack: (fn: EventHandler) => void;
  */
 declare const onPullToRefresh: (fn: EventHandler) => void;
 
-export { EventHandler, alert$2 as alert, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu$1 as optionMenu, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };
+export { EventHandler, addEventListener, alert$2 as alert, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu$1 as optionMenu, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };

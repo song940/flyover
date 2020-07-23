@@ -115,7 +115,7 @@ declare type OptionMenuType = {
 /**
  * https://myjsapi.alipay.com/jsapi/events/option-menu.html
  */
-declare const optionMenu: (options: OptionMenuItem | OptionMenuType, fn: any) => () => void;
+declare const optionMenu: (options: OptionMenuItem | OptionMenuType, fn?: any) => () => void;
 declare const hideOptionMenu: () => void;
 
 declare const openInBrowser: (url: string) => Promise<any>;
