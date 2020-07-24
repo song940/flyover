@@ -1,5 +1,5 @@
 import { call } from './core';
-import { addEventListener } from '../utils';
+import { addEventListener } from '../common';
 
 type OptionMenuItem = {
   icontype?: "scan" | "user",

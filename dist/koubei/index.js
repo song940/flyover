@@ -3,18 +3,18 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 /*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) Microsoft Corporation.
 
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
 var __assign = function() {
@@ -82,6 +82,35 @@ var alert = function (message, _a) {
         message: message,
         button: button,
     });
+};
+
+/**
+ * addNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/add-notify-listener.html
+ * @param name s
+ * @param options
+ * @param fn
+ */
+var addNotifyListener = function (name, options, fn) {
+    call('addNotifyListener', __assign({ name: name }, options), fn);
+    return function () { return removeNotifyListener(name); };
+};
+/**
+ * removeNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/remove-notify-listener.html
+ * @param name
+ */
+var removeNotifyListener = function (name) {
+    return pcall('removeNotifyListener', { name: name });
+};
+/**
+ * postNotification
+ * @docs http://jsapi.alipay.net/jsapi/events/post-notification.html
+ * @param name
+ * @param data
+ */
+var postNotification = function (name, data) {
+    return pcall('postNotification', { name: name, data: data });
 };
 
 var fromColor = function (color) {
@@ -174,6 +203,11 @@ var closeWebview = function () {
     return pcall('closeWebview');
 };
 
+// export const NebulaBridgeUrl = '//a.alipayobjects.com/g/h5-lib/alipayjsapi/3.0.5/alipayjsapi.inc.min.js';
+// export const WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';
+// export const DingTalkBridgeUrl = '//g.alicdn.com/dingding/dingtalk-jsapi/2.4.3/dingtalk.open.js';
+// export const AmapBridgeUrl = '//as.alipayobjects.com/g/insuranceprod/amap-util/1.0.0/amap.js';
+// export const QianniuBridgeUrl = '//g.alicdn.com/x-bridge/qap-sdk/2.4.2/qn.min.js';
 var addEventListener = function (type, fn) {
     document.addEventListener(type, fn, false);
     return function () { return document.removeEventListener(type, fn); };
@@ -203,6 +237,7 @@ var restorePullToRefresh = function () {
     return pcall('restorePullToRefresh');
 };
 
+exports.addNotifyListener = addNotifyListener;
 exports.alert = alert;
 exports.call = call;
 exports.closeWebview = closeWebview;
@@ -216,8 +251,10 @@ exports.openInBrowser = openInBrowser;
 exports.optionMenu = optionMenu;
 exports.pcall = pcall;
 exports.popWindow = popWindow;
+exports.postNotification = postNotification;
 exports.pushWindow = pushWindow;
 exports.ready = ready;
+exports.removeNotifyListener = removeNotifyListener;
 exports.restorePullToRefresh = restorePullToRefresh;
 exports.setTitle = setTitle;
 exports.setTitleColor = setTitleColor;

@@ -40,6 +40,11 @@ declare namespace detect {
   };
 }
 
+interface EventHandler {
+    (event: any): void;
+}
+declare const addEventListener: (type: string, fn: EventHandler) => () => void;
+
 declare type ToastOption = {
     duration?: number;
 };
@@ -57,8 +62,8 @@ declare type ConfirmOption = {
 };
 declare const confirm: (message: any, options?: ConfirmOption) => Promise<unknown>;
 
-declare const showLoading: () => Promise<unknown>;
-declare const hideLoading: () => Promise<unknown>;
+declare const showLoading: () => Promise<any>;
+declare const hideLoading: () => Promise<any>;
 
 declare const index_toast: typeof toast;
 declare const index_alert: typeof alert;
@@ -94,6 +99,31 @@ declare type AlertOption$1 = {
 };
 declare const alert$1: (message: string, { title, buttonText: button }?: AlertOption$1) => Promise<void>;
 
+declare type NotifyOption = {
+    keep?: boolean;
+};
+/**
+ * addNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/add-notify-listener.html
+ * @param name s
+ * @param options
+ * @param fn
+ */
+declare const addNotifyListener: (name: string, options: NotifyOption, fn?: any) => () => Promise<any>;
+/**
+ * removeNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/remove-notify-listener.html
+ * @param name
+ */
+declare const removeNotifyListener: (name: string) => Promise<any>;
+/**
+ * postNotification
+ * @docs http://jsapi.alipay.net/jsapi/events/post-notification.html
+ * @param name
+ * @param data
+ */
+declare const postNotification: (name: string, data: any) => Promise<any>;
+
 declare type TransparentTitleOption = {
     mode?: "auto" | "always" | "custom" | "none";
 };
@@ -109,7 +139,7 @@ declare const setTitle: (title: any, onClickTitle: any) => Promise<any>;
  * @param reset
  * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
  */
-declare const setTitleColor: (color: string | number, reset?: boolean) => Promise<any>;
+declare const setTitleColor: (color: number | string, reset?: boolean) => Promise<any>;
 /**
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
@@ -203,6 +233,9 @@ declare const index$1_ready: typeof ready;
 declare const index$1_call: typeof call;
 declare const index$1_pcall: typeof pcall;
 declare const index$1_handleResponse: typeof handleResponse;
+declare const index$1_addNotifyListener: typeof addNotifyListener;
+declare const index$1_removeNotifyListener: typeof removeNotifyListener;
+declare const index$1_postNotification: typeof postNotification;
 declare const index$1_setTitle: typeof setTitle;
 declare const index$1_setTitleColor: typeof setTitleColor;
 declare const index$1_setTransparentTitle: typeof setTransparentTitle;
@@ -224,6 +257,9 @@ declare namespace index$1 {
     index$1_handleResponse as handleResponse,
     toast$1 as toast,
     alert$1 as alert,
+    index$1_addNotifyListener as addNotifyListener,
+    index$1_removeNotifyListener as removeNotifyListener,
+    index$1_postNotification as postNotification,
     index$1_setTitle as setTitle,
     index$1_setTitleColor as setTitleColor,
     index$1_setTransparentTitle as setTransparentTitle,
@@ -243,10 +279,15 @@ declare namespace index$1 {
   };
 }
 
+declare const getAlipayUserId: () => Promise<any>;
+
 declare const index$2_ready: typeof ready;
 declare const index$2_call: typeof call;
 declare const index$2_pcall: typeof pcall;
 declare const index$2_handleResponse: typeof handleResponse;
+declare const index$2_addNotifyListener: typeof addNotifyListener;
+declare const index$2_removeNotifyListener: typeof removeNotifyListener;
+declare const index$2_postNotification: typeof postNotification;
 declare const index$2_setTitle: typeof setTitle;
 declare const index$2_setTitleColor: typeof setTitleColor;
 declare const index$2_setTransparentTitle: typeof setTransparentTitle;
@@ -260,6 +301,7 @@ declare const index$2_optionMenu: typeof optionMenu;
 declare const index$2_hideOptionMenu: typeof hideOptionMenu;
 declare const index$2_openInBrowser: typeof openInBrowser;
 declare const index$2_restorePullToRefresh: typeof restorePullToRefresh;
+declare const index$2_getAlipayUserId: typeof getAlipayUserId;
 declare namespace index$2 {
   export {
     index$2_ready as ready,
@@ -268,6 +310,9 @@ declare namespace index$2 {
     index$2_handleResponse as handleResponse,
     toast$1 as toast,
     alert$1 as alert,
+    index$2_addNotifyListener as addNotifyListener,
+    index$2_removeNotifyListener as removeNotifyListener,
+    index$2_postNotification as postNotification,
     index$2_setTitle as setTitle,
     index$2_setTitleColor as setTitleColor,
     index$2_setTransparentTitle as setTransparentTitle,
@@ -284,6 +329,7 @@ declare namespace index$2 {
     index$2_hideOptionMenu as hideOptionMenu,
     index$2_openInBrowser as openInBrowser,
     index$2_restorePullToRefresh as restorePullToRefresh,
+    index$2_getAlipayUserId as getAlipayUserId,
   };
 }
 
@@ -291,6 +337,9 @@ declare const index$3_ready: typeof ready;
 declare const index$3_call: typeof call;
 declare const index$3_pcall: typeof pcall;
 declare const index$3_handleResponse: typeof handleResponse;
+declare const index$3_addNotifyListener: typeof addNotifyListener;
+declare const index$3_removeNotifyListener: typeof removeNotifyListener;
+declare const index$3_postNotification: typeof postNotification;
 declare const index$3_setTitle: typeof setTitle;
 declare const index$3_setTitleColor: typeof setTitleColor;
 declare const index$3_setTransparentTitle: typeof setTransparentTitle;
@@ -312,6 +361,9 @@ declare namespace index$3 {
     index$3_handleResponse as handleResponse,
     toast$1 as toast,
     alert$1 as alert,
+    index$3_addNotifyListener as addNotifyListener,
+    index$3_removeNotifyListener as removeNotifyListener,
+    index$3_postNotification as postNotification,
     index$3_setTitle as setTitle,
     index$3_setTitleColor as setTitleColor,
     index$3_setTransparentTitle as setTransparentTitle,
@@ -389,7 +441,7 @@ declare type TitleAndStatusbarHeightType$1 = {
     statusBarHeight: number;
 };
 declare const setTitle$1: (title: any) => any;
-declare const setTitleColor$1: (color: string | number, reset?: boolean) => any;
+declare const setTitleColor$1: (color: number | string, reset?: boolean) => any;
 declare const setTransparentTitle$1: (options?: TransparentTitleOption$1) => any;
 declare const getTitleAndStatusbarHeight$1: () => Promise<TitleAndStatusbarHeightType$1>;
 declare type OptionMenuItem$1 = {
@@ -401,19 +453,15 @@ declare type OptionMenuType$1 = {
     override?: boolean;
 };
 declare const optionMenu$1: (options: OptionMenuItem$1 | OptionMenuType$1, fn?: EventHandler) => any;
-interface EventHandler {
-    (event: any): void;
-}
-declare const addEventListener: (type: string, fn: EventHandler) => void;
 declare const onReady: (fn: EventHandler) => any;
-declare const onResume: (fn: EventHandler) => void;
-declare const onPause: (fn: EventHandler) => void;
-declare const onBack: (fn: EventHandler) => void;
+declare const onResume: (fn: EventHandler) => () => void;
+declare const onPause: (fn: EventHandler) => () => void;
+declare const onBack: (fn: EventHandler) => () => void;
 /**
  * onPullToRefresh
  * @param fn
  * @docs http://jsapi.alipay.net/jsapi/events/fire-pull-to-refresh.html
  */
-declare const onPullToRefresh: (fn: EventHandler) => void;
+declare const onPullToRefresh: (fn: EventHandler) => () => void;
 
 export { EventHandler, addEventListener, alert$2 as alert, index$1 as alipay, call$1 as call, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu$1 as optionMenu, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };

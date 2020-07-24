@@ -15,7 +15,7 @@ declare type ConfirmOption = {
 };
 declare const confirm: (message: any, options?: ConfirmOption) => Promise<unknown>;
 
-declare const showLoading: () => Promise<unknown>;
-declare const hideLoading: () => Promise<unknown>;
+declare const showLoading: () => Promise<any>;
+declare const hideLoading: () => Promise<any>;
 
 export { alert, confirm, hideLoading, showLoading, toast };

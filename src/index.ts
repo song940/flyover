@@ -1,12 +1,15 @@
 export * from './detect';
-import * as detect from './detect';
+export * from './common';
+
 import * as tmall from './tmall';
+import * as detect from './detect';
 import * as alipay from './alipay';
 import * as mybank from './mybank';
 import * as koubei from './koubei';
 import * as taobao from './taobao';
 import * as qianniu from './qianniu';
 import * as tinyapp from './tinyapp';
+import { addEventListener, EventHandler } from './common';
 
 export const call = (method, ...params) => {
   if (detect.isTmall) return tmall[method](...params);
@@ -93,14 +96,6 @@ type OptionMenuType = {
 
 export const optionMenu = (options: OptionMenuItem | OptionMenuType, fn?: EventHandler) => {
   return call('optionMenu', options, fn);
-};
-
-export interface EventHandler {
-  (event: any): void
-}
-
-export const addEventListener = (type: string, fn: EventHandler) => {
-  document.addEventListener(type, fn);
 };
 
 export const onReady = (fn: EventHandler) => {

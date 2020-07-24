@@ -17,6 +17,31 @@ declare type AlertOption = {
 };
 declare const alert: (message: string, { title, buttonText: button }?: AlertOption) => Promise<void>;
 
+declare type NotifyOption = {
+    keep?: boolean;
+};
+/**
+ * addNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/add-notify-listener.html
+ * @param name s
+ * @param options
+ * @param fn
+ */
+declare const addNotifyListener: (name: string, options: NotifyOption, fn?: any) => () => Promise<any>;
+/**
+ * removeNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/remove-notify-listener.html
+ * @param name
+ */
+declare const removeNotifyListener: (name: string) => Promise<any>;
+/**
+ * postNotification
+ * @docs http://jsapi.alipay.net/jsapi/events/post-notification.html
+ * @param name
+ * @param data
+ */
+declare const postNotification: (name: string, data: any) => Promise<any>;
+
 declare type TransparentTitleOption = {
     mode?: "auto" | "always" | "custom" | "none";
 };
@@ -32,7 +57,7 @@ declare const setTitle: (title: any, onClickTitle: any) => Promise<any>;
  * @param reset
  * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
  */
-declare const setTitleColor: (color: string | number, reset?: boolean) => Promise<any>;
+declare const setTitleColor: (color: number | string, reset?: boolean) => Promise<any>;
 /**
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
@@ -122,4 +147,4 @@ declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-export { alert, call, closeWebview, confirm, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, pushWindow, ready, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { addNotifyListener, alert, call, closeWebview, confirm, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
