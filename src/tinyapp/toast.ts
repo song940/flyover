@@ -1,4 +1,4 @@
-import { call } from './core';
+import { pcall } from './core';
 
 /**
  * showToast
@@ -7,5 +7,5 @@ import { call } from './core';
  * @param {*} options
  */
 export const toast = (content: string, options) => {
-  return call('showToast', { content, ...options });
+  return pcall('showToast', { content, ...options });
 };

@@ -1,8 +1,13 @@
+export * from './rpc';
+export * from './cdp';
 export * from './toast';
 export * from './alert';
+export * from './tabbar';
 export * from './loading';
 export * from './confirm';
 export * from './storage';
+export * from './navigateTo';
+export * from './pushWindow';
 
 declare const getCurrentPages: () => Array<any>;
 

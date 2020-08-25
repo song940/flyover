@@ -17,6 +17,12 @@ var pcall = function (api, params) { return new Promise(function (resolve, rejec
     });
 }); };
 
+/**
+ * WVUIToast
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUIToast-toast
+ * @param message
+ * @param options
+ */
 var toast = function (message, options) {
     if (options === void 0) { options = {}; }
     var duration = options.duration;
@@ -45,6 +51,12 @@ var waittingEvent = function (id) { return new Promise(function (done) {
         }
     });
 }); };
+/**
+ * alert
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUIDialog-alert
+ * @param message
+ * @param options
+ */
 var alert = function (message, options) {
     if (options === void 0) { options = {}; }
     var _a = options.buttonText, buttonText = _a === void 0 ? '确定' : _a;
@@ -65,6 +77,12 @@ var waittingEvent$1 = function (id, text) { return new Promise(function (done) {
         }
     });
 }); };
+/**
+ * confirm
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUIDialog-confirm
+ * @param message
+ * @param options
+ */
 var confirm = function (message, options) {
     if (options === void 0) { options = {}; }
     var _a = options.okbutton, okbutton = _a === void 0 ? '确定' : _a, _b = options.canclebutton, canclebutton = _b === void 0 ? '取消' : _b;
@@ -77,11 +95,26 @@ var confirm = function (message, options) {
     }).then(function () { return waittingEvent$1(_index, okbutton); });
 };
 
+/**
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUI-showLoadingBox
+ */
 var showLoading = function () {
     return pcall('WVUI.showLoadingBox');
 };
+/**
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUI-hideLoadingBox
+ */
 var hideLoading = function () {
     return pcall('WVUI.hideLoadingBox');
+};
+
+/**
+ * copyToClipboard
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#Base-copyToClipboard
+ * @param text
+ */
+var copyToClipboard = function (text) {
+    return pcall('Base.copyToClipboard', { text: text });
 };
 
 var popWindow = function () {
@@ -114,6 +147,7 @@ var pushWindow = function (url, options) {
 
 exports.alert = alert;
 exports.confirm = confirm;
+exports.copyToClipboard = copyToClipboard;
 exports.getAbsoluteURL = getAbsoluteURL;
 exports.hideLoading = hideLoading;
 exports.popWindow = popWindow;

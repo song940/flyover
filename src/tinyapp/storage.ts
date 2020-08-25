@@ -1,4 +1,4 @@
-import { call } from './core';
+import { pcall } from './core';
 
 /**
  * setStorage
@@ -7,7 +7,7 @@ import { call } from './core';
  * @param {*} data
  */
 export const setStorage = (key, data) => {
-  return call('setStorage', {
+  return pcall('setStorage', {
     key, data
   });
 };
@@ -18,14 +18,14 @@ export const setStorage = (key, data) => {
  * @param {*} key
  */
 export const getStorage = key => {
-  return call('getStorage', { key }).then(res => {
+  return pcall('getStorage', { key }).then(res => {
     if (res.success) return res.data;
     throw new Error();
   });
 };
 
 export const removeStorage = key => {
-  return call('removeStorage', { key });
+  return pcall('removeStorage', { key });
 };
 
 /**
@@ -33,5 +33,5 @@ export const removeStorage = key => {
  * @docs https://opendocs.alipay.com/mini/api/storage
  */
 export const clearStorage = () => {
-  return call('clearStorage');
+  return pcall('clearStorage');
 };

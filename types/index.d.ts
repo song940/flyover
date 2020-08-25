@@ -48,11 +48,23 @@ declare const addEventListener: (type: string, fn: EventHandler) => () => void;
 declare type ToastOption = {
     duration?: number;
 };
+/**
+ * WVUIToast
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUIToast-toast
+ * @param message
+ * @param options
+ */
 declare const toast: (message: any, options?: ToastOption) => void;
 
 declare type AlertOption = {
     buttonText?: string;
 };
+/**
+ * alert
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUIDialog-alert
+ * @param message
+ * @param options
+ */
 declare const alert: (message: any, options?: AlertOption) => Promise<unknown>;
 
 declare type ConfirmOption = {
@@ -60,16 +72,36 @@ declare type ConfirmOption = {
     canclebutton?: string;
     _index?: any;
 };
-declare const confirm: (message: any, options?: ConfirmOption) => Promise<unknown>;
+/**
+ * confirm
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUIDialog-confirm
+ * @param message
+ * @param options
+ */
+declare const confirm: (message: string, options?: ConfirmOption) => Promise<unknown>;
 
+/**
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUI-showLoadingBox
+ */
 declare const showLoading: () => Promise<any>;
+/**
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUI-hideLoadingBox
+ */
 declare const hideLoading: () => Promise<any>;
+
+/**
+ * copyToClipboard
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#Base-copyToClipboard
+ * @param text
+ */
+declare const copyToClipboard: (text: string) => Promise<any>;
 
 declare const index_toast: typeof toast;
 declare const index_alert: typeof alert;
 declare const index_confirm: typeof confirm;
 declare const index_showLoading: typeof showLoading;
 declare const index_hideLoading: typeof hideLoading;
+declare const index_copyToClipboard: typeof copyToClipboard;
 declare namespace index {
   export {
     index_toast as toast,
@@ -77,6 +109,7 @@ declare namespace index {
     index_confirm as confirm,
     index_showLoading as showLoading,
     index_hideLoading as hideLoading,
+    index_copyToClipboard as copyToClipboard,
   };
 }
 
@@ -388,6 +421,7 @@ declare const index$4_alert: typeof alert;
 declare const index$4_confirm: typeof confirm;
 declare const index$4_showLoading: typeof showLoading;
 declare const index$4_hideLoading: typeof hideLoading;
+declare const index$4_copyToClipboard: typeof copyToClipboard;
 declare namespace index$4 {
   export {
     index$4_toast as toast,
@@ -395,6 +429,7 @@ declare namespace index$4 {
     index$4_confirm as confirm,
     index$4_showLoading as showLoading,
     index$4_hideLoading as hideLoading,
+    index$4_copyToClipboard as copyToClipboard,
   };
 }
 
@@ -408,6 +443,7 @@ declare const index$5_alert: typeof alert;
 declare const index$5_confirm: typeof confirm;
 declare const index$5_showLoading: typeof showLoading;
 declare const index$5_hideLoading: typeof hideLoading;
+declare const index$5_copyToClipboard: typeof copyToClipboard;
 declare const index$5_getAbsoluteURL: typeof getAbsoluteURL;
 declare namespace index$5 {
   export {
@@ -416,6 +452,7 @@ declare namespace index$5 {
     index$5_confirm as confirm,
     index$5_showLoading as showLoading,
     index$5_hideLoading as hideLoading,
+    index$5_copyToClipboard as copyToClipboard,
     popWindow$1 as popWindow,
     index$5_getAbsoluteURL as getAbsoluteURL,
     pushWindow$1 as pushWindow,

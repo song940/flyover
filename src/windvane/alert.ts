@@ -15,6 +15,12 @@ const waittingEvent = id => new Promise(done => {
   });
 });
 
+/**
+ * alert
+ * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUIDialog-alert
+ * @param message
+ * @param options
+ */
 export const alert = (message, options: AlertOption = {}) => {
   const { buttonText = '确定' } = options;
   const identifier = Date.now();
