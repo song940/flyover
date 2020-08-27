@@ -71,9 +71,23 @@ var handleResponse = function (res) {
     throw new Error();
 };
 
-var getCdpSpaceInfo = function (spaceCode, extInfo) {
-    if (extInfo === void 0) { extInfo = null; }
-    return pcall('getCdpSpaceInfo', { spaceCode: spaceCode, extInfo: extInfo });
+var getCdpSpaceInfos = function (spaceCodes, options) {
+    var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
+    return pcall('getCdpSpaceInfos', {
+        spaceCodes: spaceCodes,
+        extInfo: extInfo,
+        immediately: immediately,
+        multiCallback: multiCallback,
+    });
+};
+var getCdpSpaceInfo = function (spaceCode, options) {
+    var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
+    return pcall('getCdpSpaceInfo', {
+        spaceCode: spaceCode,
+        extInfo: extInfo,
+        immediately: immediately,
+        multiCallback: multiCallback,
+    });
 };
 var cdpFeedback = function (spaceCode, objectId, behavior) {
     if (behavior === void 0) { behavior = 'SHOW'; }
@@ -258,6 +272,7 @@ exports.closeWebview = closeWebview;
 exports.confirm = confirm;
 exports.getAlipayUserId = getAlipayUserId;
 exports.getCdpSpaceInfo = getCdpSpaceInfo;
+exports.getCdpSpaceInfos = getCdpSpaceInfos;
 exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight;
 exports.handleResponse = handleResponse;
 exports.hideBackButton = hideBackButton;

@@ -228,9 +228,23 @@
         throw new Error();
     };
 
-    var getCdpSpaceInfo = function (spaceCode, extInfo) {
-        if (extInfo === void 0) { extInfo = null; }
-        return pcall$1('getCdpSpaceInfo', { spaceCode: spaceCode, extInfo: extInfo });
+    var getCdpSpaceInfos = function (spaceCodes, options) {
+        var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
+        return pcall$1('getCdpSpaceInfos', {
+            spaceCodes: spaceCodes,
+            extInfo: extInfo,
+            immediately: immediately,
+            multiCallback: multiCallback,
+        });
+    };
+    var getCdpSpaceInfo = function (spaceCode, options) {
+        var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
+        return pcall$1('getCdpSpaceInfo', {
+            spaceCode: spaceCode,
+            extInfo: extInfo,
+            immediately: immediately,
+            multiCallback: multiCallback,
+        });
     };
     var cdpFeedback = function (spaceCode, objectId, behavior) {
         if (behavior === void 0) { behavior = 'SHOW'; }
@@ -399,6 +413,7 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        getCdpSpaceInfos: getCdpSpaceInfos,
         getCdpSpaceInfo: getCdpSpaceInfo,
         cdpFeedback: cdpFeedback,
         toast: toast$1,
@@ -434,6 +449,7 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        getCdpSpaceInfos: getCdpSpaceInfos,
         getCdpSpaceInfo: getCdpSpaceInfo,
         cdpFeedback: cdpFeedback,
         toast: toast$1,
@@ -466,6 +482,7 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        getCdpSpaceInfos: getCdpSpaceInfos,
         getCdpSpaceInfo: getCdpSpaceInfo,
         cdpFeedback: cdpFeedback,
         toast: toast$1,
@@ -624,9 +641,11 @@
     var onPullToRefresh = function (fn) {
         return addEventListener('firePullToRefresh', fn);
     };
-    var getCdpSpaceInfo$1 = function (spaceCode, extInfo) {
-        if (extInfo === void 0) { extInfo = null; }
-        return call$2('getCdpSpaceInfo', spaceCode, extInfo);
+    var getCdpSpaceInfos$1 = function (spaceCodes, options) {
+        return call$2('getCdpSpaceInfos', spaceCodes, options);
+    };
+    var getCdpSpaceInfo$1 = function (spaceCode, options) {
+        return call$2('getCdpSpaceInfo', spaceCode, options);
     };
     var cdpFeedback$1 = function (spaceCode, objectId, behavior) {
         if (behavior === void 0) { behavior = 'SHOW'; }
@@ -642,6 +661,7 @@
     exports.confirm = confirm$2;
     exports.detect = detect;
     exports.getCdpSpaceInfo = getCdpSpaceInfo$1;
+    exports.getCdpSpaceInfos = getCdpSpaceInfos$1;
     exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight$1;
     exports.hideLoading = hideLoading$2;
     exports.isAlipay = isAlipay;

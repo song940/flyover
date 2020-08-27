@@ -3,7 +3,13 @@ declare const call: (method: string, ...params: any) => void;
 declare const pcall: (method: string, ...params: any) => Promise<any>;
 declare const handleResponse: (res: any) => any;
 
-declare const getCdpSpaceInfo: (spaceCode: string, extInfo?: any) => Promise<any>;
+declare type CdpOption = {
+    extInfo: any;
+    immediately: boolean;
+    multiCallback: boolean;
+};
+declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<any>;
+declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
 declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
 
 declare type ToastOption = {
@@ -152,4 +158,4 @@ declare const restorePullToRefresh: () => Promise<any>;
 
 declare const getAlipayUserId: () => Promise<any>;
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getAlipayUserId, getCdpSpaceInfo, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getAlipayUserId, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };

@@ -67,9 +67,23 @@ var handleResponse = function (res) {
     throw new Error();
 };
 
-var getCdpSpaceInfo = function (spaceCode, extInfo) {
-    if (extInfo === void 0) { extInfo = null; }
-    return pcall('getCdpSpaceInfo', { spaceCode: spaceCode, extInfo: extInfo });
+var getCdpSpaceInfos = function (spaceCodes, options) {
+    var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
+    return pcall('getCdpSpaceInfos', {
+        spaceCodes: spaceCodes,
+        extInfo: extInfo,
+        immediately: immediately,
+        multiCallback: multiCallback,
+    });
+};
+var getCdpSpaceInfo = function (spaceCode, options) {
+    var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
+    return pcall('getCdpSpaceInfo', {
+        spaceCode: spaceCode,
+        extInfo: extInfo,
+        immediately: immediately,
+        multiCallback: multiCallback,
+    });
 };
 var cdpFeedback = function (spaceCode, objectId, behavior) {
     if (behavior === void 0) { behavior = 'SHOW'; }
@@ -242,4 +256,4 @@ var restorePullToRefresh = function () {
     return pcall('restorePullToRefresh');
 };
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };

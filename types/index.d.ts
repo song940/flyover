@@ -118,7 +118,13 @@ declare const call: (method: string, ...params: any) => void;
 declare const pcall: (method: string, ...params: any) => Promise<any>;
 declare const handleResponse: (res: any) => any;
 
-declare const getCdpSpaceInfo: (spaceCode: string, extInfo?: any) => Promise<any>;
+declare type CdpOption = {
+    extInfo: any;
+    immediately: boolean;
+    multiCallback: boolean;
+};
+declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<any>;
+declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
 declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
 
 declare type ToastOption$1 = {
@@ -269,6 +275,7 @@ declare const index$1_ready: typeof ready;
 declare const index$1_call: typeof call;
 declare const index$1_pcall: typeof pcall;
 declare const index$1_handleResponse: typeof handleResponse;
+declare const index$1_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$1_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$1_cdpFeedback: typeof cdpFeedback;
 declare const index$1_addNotifyListener: typeof addNotifyListener;
@@ -293,6 +300,7 @@ declare namespace index$1 {
     index$1_call as call,
     index$1_pcall as pcall,
     index$1_handleResponse as handleResponse,
+    index$1_getCdpSpaceInfos as getCdpSpaceInfos,
     index$1_getCdpSpaceInfo as getCdpSpaceInfo,
     index$1_cdpFeedback as cdpFeedback,
     toast$1 as toast,
@@ -325,6 +333,7 @@ declare const index$2_ready: typeof ready;
 declare const index$2_call: typeof call;
 declare const index$2_pcall: typeof pcall;
 declare const index$2_handleResponse: typeof handleResponse;
+declare const index$2_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$2_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$2_cdpFeedback: typeof cdpFeedback;
 declare const index$2_addNotifyListener: typeof addNotifyListener;
@@ -350,6 +359,7 @@ declare namespace index$2 {
     index$2_call as call,
     index$2_pcall as pcall,
     index$2_handleResponse as handleResponse,
+    index$2_getCdpSpaceInfos as getCdpSpaceInfos,
     index$2_getCdpSpaceInfo as getCdpSpaceInfo,
     index$2_cdpFeedback as cdpFeedback,
     toast$1 as toast,
@@ -381,6 +391,7 @@ declare const index$3_ready: typeof ready;
 declare const index$3_call: typeof call;
 declare const index$3_pcall: typeof pcall;
 declare const index$3_handleResponse: typeof handleResponse;
+declare const index$3_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$3_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$3_cdpFeedback: typeof cdpFeedback;
 declare const index$3_addNotifyListener: typeof addNotifyListener;
@@ -405,6 +416,7 @@ declare namespace index$3 {
     index$3_call as call,
     index$3_pcall as pcall,
     index$3_handleResponse as handleResponse,
+    index$3_getCdpSpaceInfos as getCdpSpaceInfos,
     index$3_getCdpSpaceInfo as getCdpSpaceInfo,
     index$3_cdpFeedback as cdpFeedback,
     toast$1 as toast,
@@ -515,7 +527,13 @@ declare const onBack: (fn: EventHandler) => () => void;
  * @docs http://jsapi.alipay.net/jsapi/events/fire-pull-to-refresh.html
  */
 declare const onPullToRefresh: (fn: EventHandler) => () => void;
-declare const getCdpSpaceInfo$1: (spaceCode: string, extInfo?: any) => any;
+declare type CdpOption$1 = {
+    extInfo: any;
+    immediately: boolean;
+    multiCallback: boolean;
+};
+declare const getCdpSpaceInfos$1: (spaceCodes: string | string[], options?: CdpOption$1) => any;
+declare const getCdpSpaceInfo$1: (spaceCode: string, options?: CdpOption$1) => any;
 declare const cdpFeedback$1: (spaceCode: string, objectId: string, behavior?: string) => any;
 
-export { EventHandler, addEventListener, alert$2 as alert, index$1 as alipay, call$1 as call, cdpFeedback$1 as cdpFeedback, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getCdpSpaceInfo$1 as getCdpSpaceInfo, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu$1 as optionMenu, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };
+export { EventHandler, addEventListener, alert$2 as alert, index$1 as alipay, call$1 as call, cdpFeedback$1 as cdpFeedback, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getCdpSpaceInfo$1 as getCdpSpaceInfo, getCdpSpaceInfos$1 as getCdpSpaceInfos, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, index$3 as koubei, index$2 as mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu$1 as optionMenu, popWindow$2 as popWindow, pushWindow$2 as pushWindow, index$5 as qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, index$4 as taobao, index as tmall, toast$2 as toast };
