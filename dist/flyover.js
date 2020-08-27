@@ -624,14 +624,24 @@
     var onPullToRefresh = function (fn) {
         return addEventListener('firePullToRefresh', fn);
     };
+    var getCdpSpaceInfo$1 = function (spaceCode, extInfo) {
+        if (extInfo === void 0) { extInfo = null; }
+        return call$2('getCdpSpaceInfo', spaceCode, extInfo);
+    };
+    var cdpFeedback$1 = function (spaceCode, objectId, behavior) {
+        if (behavior === void 0) { behavior = 'SHOW'; }
+        return call$2('cdpFeedback', spaceCode, objectId, behavior);
+    };
 
     exports.addEventListener = addEventListener;
     exports.alert = alert$2;
     exports.alipay = alipay;
     exports.call = call$2;
+    exports.cdpFeedback = cdpFeedback$1;
     exports.closeWebview = closeWebview$1;
     exports.confirm = confirm$2;
     exports.detect = detect;
+    exports.getCdpSpaceInfo = getCdpSpaceInfo$1;
     exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight$1;
     exports.hideLoading = hideLoading$2;
     exports.isAlipay = isAlipay;

@@ -123,6 +123,14 @@ export const onPullToRefresh = (fn: EventHandler) => {
   return addEventListener('firePullToRefresh', fn);
 };
 
+export const getCdpSpaceInfo = (spaceCode: string, extInfo = null) => {
+  return call('getCdpSpaceInfo', spaceCode, extInfo);
+};
+
+export const cdpFeedback = (spaceCode: string, objectId: string, behavior = 'SHOW') => {
+  return call('cdpFeedback', spaceCode, objectId, behavior);
+};
+
 export {
   detect,
   tmall,
