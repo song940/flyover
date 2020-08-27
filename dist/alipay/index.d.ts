@@ -3,6 +3,9 @@ declare const call: (method: string, ...params: any) => void;
 declare const pcall: (method: string, ...params: any) => Promise<any>;
 declare const handleResponse: (res: any) => any;
 
+declare const getCdpSpaceInfo: (spaceCode: string, extInfo?: any) => Promise<any>;
+declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
+
 declare type ToastOption = {
     type: 'none' | 'success' | 'fail' | 'exception';
     duration: number;
@@ -147,4 +150,4 @@ declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-export { addNotifyListener, alert, call, closeWebview, confirm, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };

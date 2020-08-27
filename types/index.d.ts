@@ -118,6 +118,9 @@ declare const call: (method: string, ...params: any) => void;
 declare const pcall: (method: string, ...params: any) => Promise<any>;
 declare const handleResponse: (res: any) => any;
 
+declare const getCdpSpaceInfo: (spaceCode: string, extInfo?: any) => Promise<any>;
+declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
+
 declare type ToastOption$1 = {
     type: 'none' | 'success' | 'fail' | 'exception';
     duration: number;
@@ -266,6 +269,8 @@ declare const index$1_ready: typeof ready;
 declare const index$1_call: typeof call;
 declare const index$1_pcall: typeof pcall;
 declare const index$1_handleResponse: typeof handleResponse;
+declare const index$1_getCdpSpaceInfo: typeof getCdpSpaceInfo;
+declare const index$1_cdpFeedback: typeof cdpFeedback;
 declare const index$1_addNotifyListener: typeof addNotifyListener;
 declare const index$1_removeNotifyListener: typeof removeNotifyListener;
 declare const index$1_postNotification: typeof postNotification;
@@ -288,6 +293,8 @@ declare namespace index$1 {
     index$1_call as call,
     index$1_pcall as pcall,
     index$1_handleResponse as handleResponse,
+    index$1_getCdpSpaceInfo as getCdpSpaceInfo,
+    index$1_cdpFeedback as cdpFeedback,
     toast$1 as toast,
     alert$1 as alert,
     index$1_addNotifyListener as addNotifyListener,
@@ -318,6 +325,8 @@ declare const index$2_ready: typeof ready;
 declare const index$2_call: typeof call;
 declare const index$2_pcall: typeof pcall;
 declare const index$2_handleResponse: typeof handleResponse;
+declare const index$2_getCdpSpaceInfo: typeof getCdpSpaceInfo;
+declare const index$2_cdpFeedback: typeof cdpFeedback;
 declare const index$2_addNotifyListener: typeof addNotifyListener;
 declare const index$2_removeNotifyListener: typeof removeNotifyListener;
 declare const index$2_postNotification: typeof postNotification;
@@ -341,6 +350,8 @@ declare namespace index$2 {
     index$2_call as call,
     index$2_pcall as pcall,
     index$2_handleResponse as handleResponse,
+    index$2_getCdpSpaceInfo as getCdpSpaceInfo,
+    index$2_cdpFeedback as cdpFeedback,
     toast$1 as toast,
     alert$1 as alert,
     index$2_addNotifyListener as addNotifyListener,
@@ -370,6 +381,8 @@ declare const index$3_ready: typeof ready;
 declare const index$3_call: typeof call;
 declare const index$3_pcall: typeof pcall;
 declare const index$3_handleResponse: typeof handleResponse;
+declare const index$3_getCdpSpaceInfo: typeof getCdpSpaceInfo;
+declare const index$3_cdpFeedback: typeof cdpFeedback;
 declare const index$3_addNotifyListener: typeof addNotifyListener;
 declare const index$3_removeNotifyListener: typeof removeNotifyListener;
 declare const index$3_postNotification: typeof postNotification;
@@ -392,6 +405,8 @@ declare namespace index$3 {
     index$3_call as call,
     index$3_pcall as pcall,
     index$3_handleResponse as handleResponse,
+    index$3_getCdpSpaceInfo as getCdpSpaceInfo,
+    index$3_cdpFeedback as cdpFeedback,
     toast$1 as toast,
     alert$1 as alert,
     index$3_addNotifyListener as addNotifyListener,

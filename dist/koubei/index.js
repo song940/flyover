@@ -71,6 +71,15 @@ var handleResponse = function (res) {
     throw new Error();
 };
 
+var getCdpSpaceInfo = function (spaceCode, extInfo) {
+    if (extInfo === void 0) { extInfo = null; }
+    return pcall('getCdpSpaceInfo', { spaceCode: spaceCode, extInfo: extInfo });
+};
+var cdpFeedback = function (spaceCode, objectId, behavior) {
+    if (behavior === void 0) { behavior = 'SHOW'; }
+    return pcall('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
+};
+
 var toast = function (content, options) {
     return pcall('toast', __assign({ content: content }, options));
 };
@@ -240,8 +249,10 @@ var restorePullToRefresh = function () {
 exports.addNotifyListener = addNotifyListener;
 exports.alert = alert;
 exports.call = call;
+exports.cdpFeedback = cdpFeedback;
 exports.closeWebview = closeWebview;
 exports.confirm = confirm;
+exports.getCdpSpaceInfo = getCdpSpaceInfo;
 exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight;
 exports.handleResponse = handleResponse;
 exports.hideBackButton = hideBackButton;

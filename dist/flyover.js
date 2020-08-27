@@ -228,6 +228,15 @@
         throw new Error();
     };
 
+    var getCdpSpaceInfo = function (spaceCode, extInfo) {
+        if (extInfo === void 0) { extInfo = null; }
+        return pcall$1('getCdpSpaceInfo', { spaceCode: spaceCode, extInfo: extInfo });
+    };
+    var cdpFeedback = function (spaceCode, objectId, behavior) {
+        if (behavior === void 0) { behavior = 'SHOW'; }
+        return pcall$1('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
+    };
+
     var toast$1 = function (content, options) {
         return pcall$1('toast', __assign({ content: content }, options));
     };
@@ -390,6 +399,8 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        getCdpSpaceInfo: getCdpSpaceInfo,
+        cdpFeedback: cdpFeedback,
         toast: toast$1,
         alert: alert$1,
         addNotifyListener: addNotifyListener,
@@ -423,6 +434,8 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        getCdpSpaceInfo: getCdpSpaceInfo,
+        cdpFeedback: cdpFeedback,
         toast: toast$1,
         alert: alert$1,
         addNotifyListener: addNotifyListener,
@@ -453,6 +466,8 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        getCdpSpaceInfo: getCdpSpaceInfo,
+        cdpFeedback: cdpFeedback,
         toast: toast$1,
         alert: alert$1,
         addNotifyListener: addNotifyListener,

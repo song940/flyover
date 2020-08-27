@@ -1,7 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -246,30 +242,8 @@ var restorePullToRefresh = function () {
     return pcall('restorePullToRefresh');
 };
 
-exports.addNotifyListener = addNotifyListener;
-exports.alert = alert;
-exports.call = call;
-exports.cdpFeedback = cdpFeedback;
-exports.closeWebview = closeWebview;
-exports.confirm = confirm;
-exports.getCdpSpaceInfo = getCdpSpaceInfo;
-exports.getTitleAndStatusbarHeight = getTitleAndStatusbarHeight;
-exports.handleResponse = handleResponse;
-exports.hideBackButton = hideBackButton;
-exports.hideLoading = hideLoading;
-exports.hideOptionMenu = hideOptionMenu;
-exports.openInBrowser = openInBrowser;
-exports.optionMenu = optionMenu;
-exports.pcall = pcall;
-exports.popWindow = popWindow;
-exports.postNotification = postNotification;
-exports.pushWindow = pushWindow;
-exports.ready = ready;
-exports.removeNotifyListener = removeNotifyListener;
-exports.restorePullToRefresh = restorePullToRefresh;
-exports.setTitle = setTitle;
-exports.setTitleColor = setTitleColor;
-exports.setTransparentTitle = setTransparentTitle;
-exports.showBackButton = showBackButton;
-exports.showLoading = showLoading;
-exports.toast = toast;
+var getAlipayUserId = function () {
+    return pcall('getAlipayUserId').then(function (user) { return user.alipayUserId; });
+};
+
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getAlipayUserId, getCdpSpaceInfo, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };

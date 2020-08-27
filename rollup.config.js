@@ -1,20 +1,17 @@
 import dts from 'rollup-plugin-dts';
 import ts from '@rollup/plugin-typescript';
 
-const typescript = ({ input, output, types, ...options }) => {
+const typescript = ({ input, output, types }) => {
   return [
     {
       input,
-      output: {
-        file: `${output}.js`,
-        ...options,
-      },
+      output,
       plugins: [ts()]
     },
     {
       input,
       output: {
-        file: types || `${output}.d.ts`
+        file: types
       },
       plugins: [dts()]
     }
@@ -22,37 +19,46 @@ const typescript = ({ input, output, types, ...options }) => {
 };
 
 
+const cjs_es = output => {
+  return [
+    { format: 'es', file: `${output}.esm.js` },
+    { format: 'cjs', file: `${output}.js` },
+  ]
+};
+
 export default [].concat(
   typescript({
-    format: 'umd',
-    name: 'Flyover',
     input: 'src/index.ts',
-    output: 'dist/flyover',
+    output: {
+      format: 'umd',
+      name: 'Flyover',
+      file: 'dist/flyover.js'
+    },
     types: './types/index.d.ts'
   }),
   typescript({
     input: 'src/alipay/index.ts',
-    output: 'dist/alipay/index',
-    format: 'cjs'
+    output: cjs_es('dist/alipay/index'),
+    types: 'dist/alipay/index.d.ts'
   }),
   typescript({
     input: 'src/mybank/index.ts',
-    output: 'dist/mybank/index',
-    format: 'cjs'
+    output: cjs_es('dist/mybank/index'),
+    types: 'dist/mybank/index.d.ts'
   }),
   typescript({
     input: 'src/koubei/index.ts',
-    output: 'dist/koubei/index',
-    format: 'cjs'
+    output: cjs_es('dist/koubei/index'),
+    types: 'dist/koubei/index.d.ts'
   }),
   typescript({
     input: 'src/qianniu/index.ts',
-    output: 'dist/qianniu/index',
-    format: 'cjs'
+    output: cjs_es('dist/qianniu/index'),
+    types: 'dist/qianniu/index.d.ts'
   }),
   typescript({
     input: 'src/taobao/index.ts',
-    output: 'dist/taobao/index',
-    format: 'cjs'
+    output: cjs_es('dist/taobao/index'),
+    types: 'dist/taobao/index.d.ts'
   }),
 );
