@@ -71,6 +71,10 @@ var handleResponse = function (res) {
     throw new Error();
 };
 
+var rpc = function (operationType, body, options) {
+    return pcall('rpc', __assign({ operationType: operationType, requestData: [body] }, options));
+};
+
 var getCdpSpaceInfos = function (spaceCodes, options) {
     var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
     return pcall('getCdpSpaceInfos', {
@@ -287,6 +291,7 @@ exports.pushWindow = pushWindow;
 exports.ready = ready;
 exports.removeNotifyListener = removeNotifyListener;
 exports.restorePullToRefresh = restorePullToRefresh;
+exports.rpc = rpc;
 exports.setTitle = setTitle;
 exports.setTitleColor = setTitleColor;
 exports.setTransparentTitle = setTransparentTitle;

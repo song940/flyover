@@ -67,6 +67,10 @@ var handleResponse = function (res) {
     throw new Error();
 };
 
+var rpc = function (operationType, body, options) {
+    return pcall('rpc', __assign({ operationType: operationType, requestData: [body] }, options));
+};
+
 var getCdpSpaceInfos = function (spaceCodes, options) {
     var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
     return pcall('getCdpSpaceInfos', {
@@ -256,4 +260,4 @@ var restorePullToRefresh = function () {
     return pcall('restorePullToRefresh');
 };
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };

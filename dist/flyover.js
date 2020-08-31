@@ -228,6 +228,10 @@
         throw new Error();
     };
 
+    var rpc = function (operationType, body, options) {
+        return pcall$1('rpc', __assign({ operationType: operationType, requestData: [body] }, options));
+    };
+
     var getCdpSpaceInfos = function (spaceCodes, options) {
         var extInfo = options.extInfo, immediately = options.immediately, multiCallback = options.multiCallback;
         return pcall$1('getCdpSpaceInfos', {
@@ -413,6 +417,7 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        rpc: rpc,
         getCdpSpaceInfos: getCdpSpaceInfos,
         getCdpSpaceInfo: getCdpSpaceInfo,
         cdpFeedback: cdpFeedback,
@@ -449,6 +454,7 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        rpc: rpc,
         getCdpSpaceInfos: getCdpSpaceInfos,
         getCdpSpaceInfo: getCdpSpaceInfo,
         cdpFeedback: cdpFeedback,
@@ -482,6 +488,7 @@
         call: call$1,
         pcall: pcall$1,
         handleResponse: handleResponse,
+        rpc: rpc,
         getCdpSpaceInfos: getCdpSpaceInfos,
         getCdpSpaceInfo: getCdpSpaceInfo,
         cdpFeedback: cdpFeedback,

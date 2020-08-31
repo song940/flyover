@@ -118,6 +118,8 @@ declare const call: (method: string, ...params: any) => void;
 declare const pcall: (method: string, ...params: any) => Promise<any>;
 declare const handleResponse: (res: any) => any;
 
+declare const rpc: (operationType: string, body: any, options?: any) => Promise<any>;
+
 declare type CdpOption = {
     extInfo: any;
     immediately: boolean;
@@ -275,6 +277,7 @@ declare const index$1_ready: typeof ready;
 declare const index$1_call: typeof call;
 declare const index$1_pcall: typeof pcall;
 declare const index$1_handleResponse: typeof handleResponse;
+declare const index$1_rpc: typeof rpc;
 declare const index$1_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$1_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$1_cdpFeedback: typeof cdpFeedback;
@@ -300,6 +303,7 @@ declare namespace index$1 {
     index$1_call as call,
     index$1_pcall as pcall,
     index$1_handleResponse as handleResponse,
+    index$1_rpc as rpc,
     index$1_getCdpSpaceInfos as getCdpSpaceInfos,
     index$1_getCdpSpaceInfo as getCdpSpaceInfo,
     index$1_cdpFeedback as cdpFeedback,
@@ -333,6 +337,7 @@ declare const index$2_ready: typeof ready;
 declare const index$2_call: typeof call;
 declare const index$2_pcall: typeof pcall;
 declare const index$2_handleResponse: typeof handleResponse;
+declare const index$2_rpc: typeof rpc;
 declare const index$2_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$2_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$2_cdpFeedback: typeof cdpFeedback;
@@ -359,6 +364,7 @@ declare namespace index$2 {
     index$2_call as call,
     index$2_pcall as pcall,
     index$2_handleResponse as handleResponse,
+    index$2_rpc as rpc,
     index$2_getCdpSpaceInfos as getCdpSpaceInfos,
     index$2_getCdpSpaceInfo as getCdpSpaceInfo,
     index$2_cdpFeedback as cdpFeedback,
@@ -391,6 +397,7 @@ declare const index$3_ready: typeof ready;
 declare const index$3_call: typeof call;
 declare const index$3_pcall: typeof pcall;
 declare const index$3_handleResponse: typeof handleResponse;
+declare const index$3_rpc: typeof rpc;
 declare const index$3_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$3_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$3_cdpFeedback: typeof cdpFeedback;
@@ -416,6 +423,7 @@ declare namespace index$3 {
     index$3_call as call,
     index$3_pcall as pcall,
     index$3_handleResponse as handleResponse,
+    index$3_rpc as rpc,
     index$3_getCdpSpaceInfos as getCdpSpaceInfos,
     index$3_getCdpSpaceInfo as getCdpSpaceInfo,
     index$3_cdpFeedback as cdpFeedback,

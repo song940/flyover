@@ -21,19 +21,25 @@ const typescript = ({ input, output, types }) => {
 
 const cjs_es = output => {
   return [
-    { format: 'es', file: `${output}.esm.js` },
     { format: 'cjs', file: `${output}.js` },
-  ]
+    { format: 'esm', file: `${output}.esm.js` },
+  ];
 };
 
 export default [].concat(
   typescript({
     input: 'src/index.ts',
-    output: {
-      format: 'umd',
-      name: 'Flyover',
-      file: 'dist/flyover.js'
-    },
+    output: [
+      {
+        format: 'umd',
+        name: 'Flyover',
+        file: 'dist/flyover.js'
+      },
+      {
+        format: 'esm',
+        file: 'dist/flyover.esm.js'
+      }
+    ],
     types: './types/index.d.ts'
   }),
   typescript({
