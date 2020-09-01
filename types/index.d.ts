@@ -255,6 +255,8 @@ declare const pushWindow: (url: string, param?: PushWindowParam) => Promise<any>
 
 declare const closeWebview: () => Promise<any>;
 
+declare const subscribeMsgbox: (serviceCode: string) => Promise<any>;
+
 declare type OptionMenuItem = {
     icontype?: "scan" | "user";
     redDot?: string;
@@ -293,6 +295,7 @@ declare const index$1_showBackButton: typeof showBackButton;
 declare const index$1_popWindow: typeof popWindow;
 declare const index$1_pushWindow: typeof pushWindow;
 declare const index$1_closeWebview: typeof closeWebview;
+declare const index$1_subscribeMsgbox: typeof subscribeMsgbox;
 declare const index$1_optionMenu: typeof optionMenu;
 declare const index$1_hideOptionMenu: typeof hideOptionMenu;
 declare const index$1_openInBrowser: typeof openInBrowser;
@@ -324,6 +327,7 @@ declare namespace index$1 {
     index$1_popWindow as popWindow,
     index$1_pushWindow as pushWindow,
     index$1_closeWebview as closeWebview,
+    index$1_subscribeMsgbox as subscribeMsgbox,
     index$1_optionMenu as optionMenu,
     index$1_hideOptionMenu as hideOptionMenu,
     index$1_openInBrowser as openInBrowser,
@@ -353,6 +357,7 @@ declare const index$2_showBackButton: typeof showBackButton;
 declare const index$2_popWindow: typeof popWindow;
 declare const index$2_pushWindow: typeof pushWindow;
 declare const index$2_closeWebview: typeof closeWebview;
+declare const index$2_subscribeMsgbox: typeof subscribeMsgbox;
 declare const index$2_optionMenu: typeof optionMenu;
 declare const index$2_hideOptionMenu: typeof hideOptionMenu;
 declare const index$2_openInBrowser: typeof openInBrowser;
@@ -385,6 +390,7 @@ declare namespace index$2 {
     index$2_popWindow as popWindow,
     index$2_pushWindow as pushWindow,
     index$2_closeWebview as closeWebview,
+    index$2_subscribeMsgbox as subscribeMsgbox,
     index$2_optionMenu as optionMenu,
     index$2_hideOptionMenu as hideOptionMenu,
     index$2_openInBrowser as openInBrowser,
@@ -413,6 +419,7 @@ declare const index$3_showBackButton: typeof showBackButton;
 declare const index$3_popWindow: typeof popWindow;
 declare const index$3_pushWindow: typeof pushWindow;
 declare const index$3_closeWebview: typeof closeWebview;
+declare const index$3_subscribeMsgbox: typeof subscribeMsgbox;
 declare const index$3_optionMenu: typeof optionMenu;
 declare const index$3_hideOptionMenu: typeof hideOptionMenu;
 declare const index$3_openInBrowser: typeof openInBrowser;
@@ -444,6 +451,7 @@ declare namespace index$3 {
     index$3_popWindow as popWindow,
     index$3_pushWindow as pushWindow,
     index$3_closeWebview as closeWebview,
+    index$3_subscribeMsgbox as subscribeMsgbox,
     index$3_optionMenu as optionMenu,
     index$3_hideOptionMenu as hideOptionMenu,
     index$3_openInBrowser as openInBrowser,

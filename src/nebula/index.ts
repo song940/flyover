@@ -10,7 +10,7 @@ export * from './loading';
 export * from './popWindow';
 export * from './pushWindow';
 export * from './closeWebview';
+export * from './subscribe';
 export * from './optionMenu';
 export * from './openInBrowser';
 export * from './pullToRefresh';
-

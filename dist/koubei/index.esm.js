@@ -226,6 +226,10 @@ var closeWebview = function () {
     return pcall('closeWebview');
 };
 
+var subscribeMsgbox = function (serviceCode) {
+    return pcall('subscribeMsgbox', { serviceCode: serviceCode });
+};
+
 // export const NebulaBridgeUrl = '//a.alipayobjects.com/g/h5-lib/alipayjsapi/3.0.5/alipayjsapi.inc.min.js';
 // export const WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';
 // export const DingTalkBridgeUrl = '//g.alicdn.com/dingding/dingtalk-jsapi/2.4.3/dingtalk.open.js';
@@ -260,4 +264,4 @@ var restorePullToRefresh = function () {
     return pcall('restorePullToRefresh');
 };
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, subscribeMsgbox, toast };

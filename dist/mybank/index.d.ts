@@ -140,6 +140,8 @@ declare const pushWindow: (url: string, param?: PushWindowParam) => Promise<any>
 
 declare const closeWebview: () => Promise<any>;
 
+declare const subscribeMsgbox: (serviceCode: string) => Promise<any>;
+
 declare type OptionMenuItem = {
     icontype?: "scan" | "user";
     redDot?: string;
@@ -160,4 +162,4 @@ declare const restorePullToRefresh: () => Promise<any>;
 
 declare const getAlipayUserId: () => Promise<any>;
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getAlipayUserId, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getAlipayUserId, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, subscribeMsgbox, toast };

@@ -381,6 +381,10 @@ var closeWebview = function () {
     return pcall$1('closeWebview');
 };
 
+var subscribeMsgbox = function (serviceCode) {
+    return pcall$1('subscribeMsgbox', { serviceCode: serviceCode });
+};
+
 /**
  * https://myjsapi.alipay.com/jsapi/events/option-menu.html
  */
@@ -432,6 +436,7 @@ var alipay = /*#__PURE__*/Object.freeze({
     popWindow: popWindow,
     pushWindow: pushWindow,
     closeWebview: closeWebview,
+    subscribeMsgbox: subscribeMsgbox,
     optionMenu: optionMenu,
     hideOptionMenu: hideOptionMenu,
     openInBrowser: openInBrowser,
@@ -469,6 +474,7 @@ var mybank = /*#__PURE__*/Object.freeze({
     popWindow: popWindow,
     pushWindow: pushWindow,
     closeWebview: closeWebview,
+    subscribeMsgbox: subscribeMsgbox,
     optionMenu: optionMenu,
     hideOptionMenu: hideOptionMenu,
     openInBrowser: openInBrowser,
@@ -503,6 +509,7 @@ var koubei = /*#__PURE__*/Object.freeze({
     popWindow: popWindow,
     pushWindow: pushWindow,
     closeWebview: closeWebview,
+    subscribeMsgbox: subscribeMsgbox,
     optionMenu: optionMenu,
     hideOptionMenu: hideOptionMenu,
     openInBrowser: openInBrowser,

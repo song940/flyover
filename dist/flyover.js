@@ -387,6 +387,10 @@
         return pcall$1('closeWebview');
     };
 
+    var subscribeMsgbox = function (serviceCode) {
+        return pcall$1('subscribeMsgbox', { serviceCode: serviceCode });
+    };
+
     /**
      * https://myjsapi.alipay.com/jsapi/events/option-menu.html
      */
@@ -438,6 +442,7 @@
         popWindow: popWindow,
         pushWindow: pushWindow,
         closeWebview: closeWebview,
+        subscribeMsgbox: subscribeMsgbox,
         optionMenu: optionMenu,
         hideOptionMenu: hideOptionMenu,
         openInBrowser: openInBrowser,
@@ -475,6 +480,7 @@
         popWindow: popWindow,
         pushWindow: pushWindow,
         closeWebview: closeWebview,
+        subscribeMsgbox: subscribeMsgbox,
         optionMenu: optionMenu,
         hideOptionMenu: hideOptionMenu,
         openInBrowser: openInBrowser,
@@ -509,6 +515,7 @@
         popWindow: popWindow,
         pushWindow: pushWindow,
         closeWebview: closeWebview,
+        subscribeMsgbox: subscribeMsgbox,
         optionMenu: optionMenu,
         hideOptionMenu: hideOptionMenu,
         openInBrowser: openInBrowser,
