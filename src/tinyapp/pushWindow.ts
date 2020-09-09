@@ -1,5 +1,5 @@
-import { pcall } from './core';
+import { call } from './core';
 
 export const pushWindow = (url: string, options?: any) => {
-  return pcall('pushWindow', { url, ...options });
+  return call('pushWindow', { url, ...options });
 };

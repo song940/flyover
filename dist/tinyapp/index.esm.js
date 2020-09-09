@@ -24,6 +24,14 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
+var call = function (method, params) { return new Promise(function (resolve, reject) {
+    my.call(method, params, function (res) {
+        console.log("my.call(" + method + ")", params, res);
+        if (res.error)
+            return reject(res);
+        resolve(res);
+    });
+}); };
 var pcall = function (method, params) { return new Promise(function (resolve, reject) {
     params.fail = reject;
     params.success = resolve;
@@ -38,15 +46,21 @@ var pcall = function (method, params) { return new Promise(function (resolve, re
 var getConfig = function (configKeys) {
     if (!Array.isArray(configKeys))
         configKeys = [configKeys];
-    return pcall('getConfig', { configKeys: configKeys }).then(function (res) { return res.data; });
+    return call('getConfig', { configKeys: configKeys }).then(function (res) { return res.data; });
 };
 
 var getRpcGateway = function () {
     return getConfig('rpcUrl').then(function (res) { return res.rpcUrl; });
 };
+/**
+ * rpc
+ * @param operationType
+ * @param body
+ * @param options
+ */
 var rpc = function (operationType, body, options) {
     if (options === void 0) { options = {}; }
-    return pcall('rpc', __assign({ operationType: operationType, requestData: [body] }, options)).then(function (res) {
+    return call('rpc', __assign({ operationType: operationType, requestData: [body] }, options)).then(function (res) {
         if (res.success)
             return res;
         var err = new Error();
@@ -60,14 +74,14 @@ var rpc = function (operationType, body, options) {
 };
 
 var getCdpSpaceInfos = function (spaceCodes, options) {
-    return pcall('getCdpSpaceInfos', __assign({ spaceCodes: spaceCodes }, options));
+    return call('getCdpSpaceInfos', __assign({ spaceCodes: spaceCodes }, options));
 };
 var getCdpSpaceInfo = function (spaceCode, options) {
-    return pcall('getCdpSpaceInfo', __assign({ spaceCode: spaceCode }, options));
+    return call('getCdpSpaceInfo', __assign({ spaceCode: spaceCode }, options));
 };
 var cdpFeedback = function (spaceCode, objectId, behavior) {
     if (behavior === void 0) { behavior = 'SHOW'; }
-    return pcall('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
+    return call('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
 };
 
 /**
@@ -181,7 +195,7 @@ var navigateTo = function (url) {
 };
 
 var pushWindow = function (url, options) {
-    return pcall('pushWindow', __assign({ url: url }, options));
+    return call('pushWindow', __assign({ url: url }, options));
 };
 
 export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateTo, pushWindow, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, toast };

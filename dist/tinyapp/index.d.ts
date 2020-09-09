@@ -1,4 +1,10 @@
 declare const getRpcGateway: () => Promise<any>;
+/**
+ * rpc
+ * @param operationType
+ * @param body
+ * @param options
+ */
 declare const rpc: (operationType: string, body: any, options?: {}) => Promise<any>;
 
 declare type CdpOption = {
@@ -6,9 +12,9 @@ declare type CdpOption = {
     immediately: boolean;
     multiCallback: boolean;
 };
-declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<any>;
-declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
-declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
+declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<unknown>;
+declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<unknown>;
+declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<unknown>;
 
 declare type ToastOption = {
     type?: "none" | "success" | "fail" | "exception";
@@ -97,6 +103,6 @@ declare const clearStorage: () => Promise<any>;
  */
 declare const navigateTo: (url: string) => Promise<any>;
 
-declare const pushWindow: (url: string, options?: any) => Promise<any>;
+declare const pushWindow: (url: string, options?: any) => Promise<unknown>;
 
 export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateTo, pushWindow, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, toast };

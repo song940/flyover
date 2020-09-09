@@ -1,5 +1,5 @@
 
-import { pcall } from './core';
+import { call } from './core';
 
 type CdpOption = {
   extInfo: any,
@@ -8,13 +8,13 @@ type CdpOption = {
 };
 
 export const getCdpSpaceInfos = (spaceCodes: string | string[], options?: CdpOption) => {
-  return pcall('getCdpSpaceInfos', { spaceCodes, ...options });
+  return call('getCdpSpaceInfos', { spaceCodes, ...options });
 };
 
 export const getCdpSpaceInfo = (spaceCode: string, options?: CdpOption) => {
-  return pcall('getCdpSpaceInfo', { spaceCode, ...options });
+  return call('getCdpSpaceInfo', { spaceCode, ...options });
 };
 
 export const cdpFeedback = (spaceCode: string, objectId: string, behavior = 'SHOW') => {
-  return pcall('cdpFeedback', { spaceCode, objectId, behavior });
+  return call('cdpFeedback', { spaceCode, objectId, behavior });
 };
