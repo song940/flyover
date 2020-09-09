@@ -6,7 +6,7 @@ import { pcall } from './core';
  * @param {*} key
  * @param {*} data
  */
-export const setStorage = (key, data) => {
+export const setStorage = (key: string, data: any) => {
   return pcall('setStorage', {
     key, data
   });
@@ -17,14 +17,14 @@ export const setStorage = (key, data) => {
  * @docs https://opendocs.alipay.com/mini/api/azfobl
  * @param {*} key
  */
-export const getStorage = key => {
+export const getStorage = (key: string) => {
   return pcall('getStorage', { key }).then(res => {
     if (res.success) return res.data;
     throw new Error();
   });
 };
 
-export const removeStorage = key => {
+export const removeStorage = (key: string) => {
   return pcall('removeStorage', { key });
 };
 

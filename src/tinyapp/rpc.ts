@@ -5,7 +5,7 @@ export const getRpcGateway = () => {
   return getConfig('rpcUrl').then(res => res.rpcUrl);
 };
 
-export const rpc = (operationType, body, options = {}) => {
+export const rpc = (operationType: string, body: any, options = {}) => {
   return pcall('rpc', { operationType, requestData: [body], ...options  }).then(res => {
     if(res.success) return res;
     const err = new Error() as any;

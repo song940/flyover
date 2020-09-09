@@ -1,7 +1,7 @@
 
 declare const my: any;
 
-export const call = (method, params) => new Promise((resolve, reject) => {
+export const call = (method: string, params) => new Promise((resolve, reject) => {
   my.call(method, params, res => {
     console.log(`my.call(${method})`, params, res);
     if(res.error) return reject(res);

@@ -1,5 +1,5 @@
 import { pcall } from './core';
 
-export const confirm = (content, options = {}) => {
+export const confirm = (content: string, options = {}) => {
   return pcall('confirm', { content, ...options });
 };

@@ -67,4 +67,9 @@ export default [].concat(
     output: cjs_es('dist/taobao/index'),
     types: 'dist/taobao/index.d.ts'
   }),
+  typescript({
+    input: 'src/tinyapp/index.ts',
+    output: cjs_es('dist/tinyapp/index'),
+    types: 'dist/tinyapp/index.d.ts'
+  }),
 );
