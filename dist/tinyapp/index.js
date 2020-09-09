@@ -189,6 +189,14 @@ var clearStorage = function () {
 };
 
 /**
+ * redirectTo
+ * @docs https://opendocs.alipay.com/mini/api/fh18ky
+ * @param url
+ */
+var redirectTo = function (url) {
+    return pcall('redirectTo', { url: url });
+};
+/**
  * navigateTo
  * https://opendocs.alipay.com/mini/component/navigator
  * @param {*} url
@@ -196,6 +204,29 @@ var clearStorage = function () {
  */
 var navigateTo = function (url) {
     return pcall('navigateTo', { url: url });
+};
+/**
+ * navigateBack
+ * @docs https://opendocs.alipay.com/mini/api/kc5zbx
+ */
+var navigateBack = function () {
+    return pcall('navigateBack');
+};
+/**
+ * switchTab
+ * @docs https://opendocs.alipay.com/mini/api/ui-tabbar
+ * @param url
+ */
+var switchTab = function (url) {
+    return pcall('switchTab', { url: url });
+};
+/**
+ * reLaunch
+ * @docs https://opendocs.alipay.com/mini/api/hmn54z
+ * @param url
+ */
+var reLaunch = function (url) {
+    return pcall('reLaunch', { url: url });
 };
 
 var pushWindow = function (url, options) {
@@ -213,12 +244,16 @@ exports.getStorage = getStorage;
 exports.hideLoading = hideLoading;
 exports.hideTabBar = hideTabBar;
 exports.hideToast = hideToast;
+exports.navigateBack = navigateBack;
 exports.navigateTo = navigateTo;
 exports.pushWindow = pushWindow;
+exports.reLaunch = reLaunch;
+exports.redirectTo = redirectTo;
 exports.removeStorage = removeStorage;
 exports.rpc = rpc;
 exports.setStorage = setStorage;
 exports.showLoading = showLoading;
 exports.showTabBar = showTabBar;
 exports.showToast = showToast;
+exports.switchTab = switchTab;
 exports.toast = toast;

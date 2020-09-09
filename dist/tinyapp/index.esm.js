@@ -185,6 +185,14 @@ var clearStorage = function () {
 };
 
 /**
+ * redirectTo
+ * @docs https://opendocs.alipay.com/mini/api/fh18ky
+ * @param url
+ */
+var redirectTo = function (url) {
+    return pcall('redirectTo', { url: url });
+};
+/**
  * navigateTo
  * https://opendocs.alipay.com/mini/component/navigator
  * @param {*} url
@@ -193,9 +201,32 @@ var clearStorage = function () {
 var navigateTo = function (url) {
     return pcall('navigateTo', { url: url });
 };
+/**
+ * navigateBack
+ * @docs https://opendocs.alipay.com/mini/api/kc5zbx
+ */
+var navigateBack = function () {
+    return pcall('navigateBack');
+};
+/**
+ * switchTab
+ * @docs https://opendocs.alipay.com/mini/api/ui-tabbar
+ * @param url
+ */
+var switchTab = function (url) {
+    return pcall('switchTab', { url: url });
+};
+/**
+ * reLaunch
+ * @docs https://opendocs.alipay.com/mini/api/hmn54z
+ * @param url
+ */
+var reLaunch = function (url) {
+    return pcall('reLaunch', { url: url });
+};
 
 var pushWindow = function (url, options) {
     return call('pushWindow', __assign({ url: url }, options));
 };
 
-export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateTo, pushWindow, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, toast };
+export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, pushWindow, reLaunch, redirectTo, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };

@@ -96,13 +96,36 @@ declare const removeStorage: (key: string) => Promise<any>;
 declare const clearStorage: () => Promise<any>;
 
 /**
+ * redirectTo
+ * @docs https://opendocs.alipay.com/mini/api/fh18ky
+ * @param url
+ */
+declare const redirectTo: (url: string) => Promise<any>;
+/**
  * navigateTo
  * https://opendocs.alipay.com/mini/component/navigator
  * @param {*} url
  * @param {*} query
  */
 declare const navigateTo: (url: string) => Promise<any>;
+/**
+ * navigateBack
+ * @docs https://opendocs.alipay.com/mini/api/kc5zbx
+ */
+declare const navigateBack: () => Promise<any>;
+/**
+ * switchTab
+ * @docs https://opendocs.alipay.com/mini/api/ui-tabbar
+ * @param url
+ */
+declare const switchTab: (url: string) => Promise<any>;
+/**
+ * reLaunch
+ * @docs https://opendocs.alipay.com/mini/api/hmn54z
+ * @param url
+ */
+declare const reLaunch: (url: string) => Promise<any>;
 
 declare const pushWindow: (url: string, options?: any) => Promise<unknown>;
 
-export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateTo, pushWindow, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, toast };
+export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, pushWindow, reLaunch, redirectTo, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
