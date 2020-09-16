@@ -103,6 +103,13 @@ var cdpFeedback = function (spaceCode, objectId, behavior) {
     return call('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
 };
 
+var getUserInfo = function () {
+    return call('getUserInfo');
+};
+var getUserId = function () {
+    return getUserInfo().then(function (user) { return user.userId; });
+};
+
 /**
  * showToast
  * @docs https://opendocs.alipay.com/mini/api/fhur8f
@@ -267,6 +274,8 @@ exports.getCdpSpaceInfo = getCdpSpaceInfo;
 exports.getCdpSpaceInfos = getCdpSpaceInfos;
 exports.getRpcGateway = getRpcGateway;
 exports.getStorage = getStorage;
+exports.getUserId = getUserId;
+exports.getUserInfo = getUserInfo;
 exports.hideLoading = hideLoading;
 exports.hideTabBar = hideTabBar;
 exports.hideToast = hideToast;

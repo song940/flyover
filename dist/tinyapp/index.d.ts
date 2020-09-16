@@ -16,6 +16,9 @@ declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOpt
 declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
 declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
 
+declare const getUserInfo: () => Promise<any>;
+declare const getUserId: () => Promise<any>;
+
 declare type ToastOption = {
     type?: "none" | "success" | "fail" | "exception";
     duration?: number;
@@ -151,4 +154,4 @@ declare const reLaunch: (url: string) => Promise<any>;
 
 declare const pushWindow: (url: string, options?: any) => Promise<any>;
 
-export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
+export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };

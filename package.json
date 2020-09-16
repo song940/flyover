@@ -1,6 +1,6 @@
 {
   "name": "@alipay/flyover",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "flyover",
   "main": "./dist/flyover.js",
   "module": "./dist/flyover.esm.js",

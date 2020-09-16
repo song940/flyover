@@ -99,6 +99,13 @@ var cdpFeedback = function (spaceCode, objectId, behavior) {
     return call('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
 };
 
+var getUserInfo = function () {
+    return call('getUserInfo');
+};
+var getUserId = function () {
+    return getUserInfo().then(function (user) { return user.userId; });
+};
+
 /**
  * showToast
  * @docs https://opendocs.alipay.com/mini/api/fhur8f
@@ -254,4 +261,4 @@ var pushWindow = function (url, options) {
     return call('pushWindow', __assign({ url: url }, options));
 };
 
-export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
+export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
