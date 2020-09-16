@@ -28,14 +28,29 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-var call = function (method, params) { return new Promise(function (resolve, reject) {
-    my.call(method, params, function (res) {
-        console.log("my.call(" + method + ")", params, res);
-        if (res.error)
-            return reject(res);
-        resolve(res);
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+var call = function (method) {
+    var params = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        params[_i - 1] = arguments[_i];
+    }
+    return new Promise(function (resolve, reject) {
+        params.push(function (res) {
+            console.log("my.call(" + method + ")", params, res);
+            if (res.error)
+                return reject(res);
+            resolve(res);
+        });
+        return my.call.apply(my, __spreadArrays([method], params));
     });
-}); };
+};
 var pcall = function (method, params) { return new Promise(function (resolve, reject) {
     params.fail = reject;
     params.success = resolve;
@@ -154,6 +169,16 @@ var confirm = function (content, options) {
     return pcall('confirm', __assign({ content: content }, options));
 };
 
+var request = function (url, options) {
+    return pcall('request', __assign({ url: url }, options));
+};
+var get = function (url, options) {
+    return request(url, options);
+};
+var post = function (url, data, options) {
+    return request(url, __assign({ method: 'POST', data: data }, options));
+};
+
 /**
  * setStorage
  * @docs https://opendocs.alipay.com/mini/api/eocm6v
@@ -237,6 +262,7 @@ exports.alert = alert;
 exports.cdpFeedback = cdpFeedback;
 exports.clearStorage = clearStorage;
 exports.confirm = confirm;
+exports.get = get;
 exports.getCdpSpaceInfo = getCdpSpaceInfo;
 exports.getCdpSpaceInfos = getCdpSpaceInfos;
 exports.getRpcGateway = getRpcGateway;
@@ -246,10 +272,12 @@ exports.hideTabBar = hideTabBar;
 exports.hideToast = hideToast;
 exports.navigateBack = navigateBack;
 exports.navigateTo = navigateTo;
+exports.post = post;
 exports.pushWindow = pushWindow;
 exports.reLaunch = reLaunch;
 exports.redirectTo = redirectTo;
 exports.removeStorage = removeStorage;
+exports.request = request;
 exports.rpc = rpc;
 exports.setStorage = setStorage;
 exports.showLoading = showLoading;

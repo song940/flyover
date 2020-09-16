@@ -5,6 +5,7 @@ export * from './alert';
 export * from './tabbar';
 export * from './loading';
 export * from './confirm';
+export * from './request';
 export * from './storage';
 export * from './navigateTo';
 export * from './pushWindow';

@@ -1,15 +1,16 @@
 
 declare const my: any;
 
-export const call = (method: string, params) => new Promise((resolve, reject) => {
-  my.call(method, params, res => {
+export const call = (method: string, ...params: any): Promise<any> => new Promise((resolve, reject) => {
+  params.push((res: any) => {
     console.log(`my.call(${method})`, params, res);
-    if(res.error) return reject(res);
+    if (res.error) return reject(res);
     resolve(res);
   });
+  return my.call(method, ...params);
 });
 
-export const pcall = (method: string, params?): Promise<any> => new Promise((resolve, reject) => {
+export const pcall = (method: string, params?: any): Promise<any> => new Promise((resolve, reject) => {
   params.fail = reject;
   params.success = resolve;
   if (my.canIUse(method)) {

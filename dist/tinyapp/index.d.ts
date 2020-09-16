@@ -12,9 +12,9 @@ declare type CdpOption = {
     immediately: boolean;
     multiCallback: boolean;
 };
-declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<unknown>;
-declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<unknown>;
-declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<unknown>;
+declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<any>;
+declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
+declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
 
 declare type ToastOption = {
     type?: "none" | "success" | "fail" | "exception";
@@ -75,6 +75,29 @@ declare const hideLoading: () => Promise<any>;
 
 declare const confirm: (content: string, options?: {}) => Promise<any>;
 
+declare type RequestOption = {
+    /**
+     * 默认 GET，目前支持 GET/POST/PUT/DELETE。
+     */
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    /**
+     * @docs https://opendocs.alipay.com/mini/api/owycmh#data%20%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E
+     */
+    data?: any;
+    /**
+     * 期望返回的数据格式
+     * 默认 JSON，支持 JSON、text、base64、arraybuffer（10.1.70 版本开始支持）。
+     */
+    dataType?: 'json' | 'text' | 'base64' | 'arraybuffer';
+    /**
+     * 超时时间，单位 ms，默认 30000。
+     */
+    timeout?: number;
+};
+declare const request: (url: string, options?: RequestOption) => Promise<any>;
+declare const get: (url: string, options?: RequestOption) => Promise<any>;
+declare const post: (url: string, data: any, options?: RequestOption) => Promise<any>;
+
 /**
  * setStorage
  * @docs https://opendocs.alipay.com/mini/api/eocm6v
@@ -126,6 +149,6 @@ declare const switchTab: (url: string) => Promise<any>;
  */
 declare const reLaunch: (url: string) => Promise<any>;
 
-declare const pushWindow: (url: string, options?: any) => Promise<unknown>;
+declare const pushWindow: (url: string, options?: any) => Promise<any>;
 
-export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, pushWindow, reLaunch, redirectTo, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
+export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };

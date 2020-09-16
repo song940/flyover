@@ -24,14 +24,29 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-var call = function (method, params) { return new Promise(function (resolve, reject) {
-    my.call(method, params, function (res) {
-        console.log("my.call(" + method + ")", params, res);
-        if (res.error)
-            return reject(res);
-        resolve(res);
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+var call = function (method) {
+    var params = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        params[_i - 1] = arguments[_i];
+    }
+    return new Promise(function (resolve, reject) {
+        params.push(function (res) {
+            console.log("my.call(" + method + ")", params, res);
+            if (res.error)
+                return reject(res);
+            resolve(res);
+        });
+        return my.call.apply(my, __spreadArrays([method], params));
     });
-}); };
+};
 var pcall = function (method, params) { return new Promise(function (resolve, reject) {
     params.fail = reject;
     params.success = resolve;
@@ -150,6 +165,16 @@ var confirm = function (content, options) {
     return pcall('confirm', __assign({ content: content }, options));
 };
 
+var request = function (url, options) {
+    return pcall('request', __assign({ url: url }, options));
+};
+var get = function (url, options) {
+    return request(url, options);
+};
+var post = function (url, data, options) {
+    return request(url, __assign({ method: 'POST', data: data }, options));
+};
+
 /**
  * setStorage
  * @docs https://opendocs.alipay.com/mini/api/eocm6v
@@ -229,4 +254,4 @@ var pushWindow = function (url, options) {
     return call('pushWindow', __assign({ url: url }, options));
 };
 
-export { alert, cdpFeedback, clearStorage, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, pushWindow, reLaunch, redirectTo, removeStorage, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
+export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
