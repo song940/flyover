@@ -157,6 +157,24 @@ var showTabBar = function (options) {
 };
 
 /**
+ * setNavigationBar
+ * @docs https://opendocs.alipay.com/mini/api/xwq8e6
+ * @param options
+ */
+var setNavigationBar = function (options) {
+    return pcall("setNavigationBar", options);
+};
+var setTitle = function (title) {
+    return setNavigationBar({ title: title });
+};
+var setTitleAsImage = function (image) {
+    return setNavigationBar({ image: image });
+};
+var resetNavigationBarColor = function () {
+    return setNavigationBar({ reset: true });
+};
+
+/**
  * showLoading
  * @docs https://opendocs.alipay.com/mini/api/bm69kb
  */
@@ -287,8 +305,12 @@ exports.reLaunch = reLaunch;
 exports.redirectTo = redirectTo;
 exports.removeStorage = removeStorage;
 exports.request = request;
+exports.resetNavigationBarColor = resetNavigationBarColor;
 exports.rpc = rpc;
+exports.setNavigationBar = setNavigationBar;
 exports.setStorage = setStorage;
+exports.setTitle = setTitle;
+exports.setTitleAsImage = setTitleAsImage;
 exports.showLoading = showLoading;
 exports.showTabBar = showTabBar;
 exports.showToast = showToast;

@@ -153,6 +153,24 @@ var showTabBar = function (options) {
 };
 
 /**
+ * setNavigationBar
+ * @docs https://opendocs.alipay.com/mini/api/xwq8e6
+ * @param options
+ */
+var setNavigationBar = function (options) {
+    return pcall("setNavigationBar", options);
+};
+var setTitle = function (title) {
+    return setNavigationBar({ title: title });
+};
+var setTitleAsImage = function (image) {
+    return setNavigationBar({ image: image });
+};
+var resetNavigationBarColor = function () {
+    return setNavigationBar({ reset: true });
+};
+
+/**
  * showLoading
  * @docs https://opendocs.alipay.com/mini/api/bm69kb
  */
@@ -261,4 +279,4 @@ var pushWindow = function (url, options) {
     return call('pushWindow', __assign({ url: url }, options));
 };
 
-export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
+export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, resetNavigationBarColor, rpc, setNavigationBar, setStorage, setTitle, setTitleAsImage, showLoading, showTabBar, showToast, switchTab, toast };

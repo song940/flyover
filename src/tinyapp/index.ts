@@ -4,6 +4,7 @@ export * from './user';
 export * from './toast';
 export * from './alert';
 export * from './tabbar';
+export * from './navbar';
 export * from './loading';
 export * from './confirm';
 export * from './request';

@@ -65,6 +65,23 @@ declare const hideTabBar: (options?: TabBarOption) => Promise<any>;
  */
 declare const showTabBar: (options?: TabBarOption) => Promise<any>;
 
+declare type NavbarOption = {
+    title?: string;
+    image?: string;
+    backgroundColor?: string;
+    borderBottomColor?: string;
+    reset?: boolean;
+};
+/**
+ * setNavigationBar
+ * @docs https://opendocs.alipay.com/mini/api/xwq8e6
+ * @param options
+ */
+declare const setNavigationBar: (options: NavbarOption) => Promise<any>;
+declare const setTitle: (title: string) => Promise<any>;
+declare const setTitleAsImage: (image: string) => Promise<any>;
+declare const resetNavigationBarColor: () => Promise<any>;
+
 /**
  * showLoading
  * @docs https://opendocs.alipay.com/mini/api/bm69kb
@@ -154,4 +171,4 @@ declare const reLaunch: (url: string) => Promise<any>;
 
 declare const pushWindow: (url: string, options?: any) => Promise<any>;
 
-export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, rpc, setStorage, showLoading, showTabBar, showToast, switchTab, toast };
+export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, resetNavigationBarColor, rpc, setNavigationBar, setStorage, setTitle, setTitleAsImage, showLoading, showTabBar, showToast, switchTab, toast };
