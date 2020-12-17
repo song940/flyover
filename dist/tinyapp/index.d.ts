@@ -16,6 +16,10 @@ declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOpt
 declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
 declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
 
+declare const call: (method: string, ...params: any) => Promise<any>;
+declare const pcall: (method: string, params?: any) => Promise<any>;
+declare const addEventListener: (eventName: string, fn: any) => any;
+
 declare const getUserInfo: () => Promise<any>;
 declare const getUserId: () => Promise<any>;
 
@@ -139,6 +143,20 @@ declare const removeStorage: (key: string) => Promise<any>;
 declare const clearStorage: () => Promise<any>;
 
 /**
+ * https://opendocs.alipay.com/mini/api/as9kin
+ */
+declare const getLocation: () => Promise<any>;
+declare const chooseLocation: () => Promise<any>;
+declare type LocationType = {
+    name: string;
+    latitude: string;
+    longitude: string;
+    address: string;
+    scale?: number;
+};
+declare const openLocation: (locate: LocationType) => Promise<any>;
+
+/**
  * redirectTo
  * @docs https://opendocs.alipay.com/mini/api/fh18ky
  * @param url
@@ -171,4 +189,4 @@ declare const reLaunch: (url: string) => Promise<any>;
 
 declare const pushWindow: (url: string, options?: any) => Promise<any>;
 
-export { alert, cdpFeedback, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, post, pushWindow, reLaunch, redirectTo, removeStorage, request, resetNavigationBarColor, rpc, setNavigationBar, setStorage, setTitle, setTitleAsImage, showLoading, showTabBar, showToast, switchTab, toast };
+export { addEventListener, alert, call, cdpFeedback, chooseLocation, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getLocation, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, openLocation, pcall, post, pushWindow, reLaunch, redirectTo, removeStorage, request, resetNavigationBarColor, rpc, setNavigationBar, setStorage, setTitle, setTitleAsImage, showLoading, showTabBar, showToast, switchTab, toast };

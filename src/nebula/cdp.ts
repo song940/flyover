@@ -1,13 +1,13 @@
 import { pcall } from './core';
 
 type CdpOption = {
-  extInfo: any,
-  immediately: boolean,
-  multiCallback: boolean,
+  extInfo?: any,
+  immediately?: boolean,
+  multiCallback?: boolean,
 };
 
 export const getCdpSpaceInfos = (spaceCodes: string | string[], options?: CdpOption) => {
-  const { extInfo, immediately, multiCallback } = options;
+  const { extInfo, immediately, multiCallback } = options || {};
   return pcall('getCdpSpaceInfos', {
     spaceCodes,
     extInfo,
@@ -17,7 +17,7 @@ export const getCdpSpaceInfos = (spaceCodes: string | string[], options?: CdpOpt
 };
 
 export const getCdpSpaceInfo = (spaceCode: string, options?: CdpOption) => {
-  const { extInfo, immediately, multiCallback } = options;
+  const { extInfo, immediately, multiCallback } = options || {};
   return pcall('getCdpSpaceInfo', {
     spaceCode,
     extInfo,

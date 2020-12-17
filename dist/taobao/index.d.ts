@@ -7,7 +7,7 @@ declare type ToastOption = {
  * @param message
  * @param options
  */
-declare const toast: (message: any, options?: ToastOption) => void;
+declare const toast: (message: any, options?: ToastOption) => any;
 
 declare type AlertOption = {
     buttonText?: string;

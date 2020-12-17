@@ -4,7 +4,8 @@ export const call = (api, params?, callback?) => {
   const success = o => callback && callback(null, o);
   const failure = e => callback && callback(e);
   // @ts-ignore
-  window.lib.windvane.call(className, methodName, params, success, failure);
+  const WindVane = window.WindVane || (window.lib && window.lib.windvane);
+  return WindVane.call(className, methodName, params, success, failure);
 };
 
 export const pcall = (api: string, params?): Promise<any> => new Promise((resolve, reject) => {

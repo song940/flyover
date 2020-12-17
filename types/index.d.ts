@@ -54,7 +54,7 @@ declare type ToastOption = {
  * @param message
  * @param options
  */
-declare const toast: (message: any, options?: ToastOption) => void;
+declare const toast: (message: any, options?: ToastOption) => any;
 
 declare type AlertOption = {
     buttonText?: string;
@@ -121,13 +121,19 @@ declare const handleResponse: (res: any) => any;
 declare const rpc: (operationType: string, body: any, options?: any) => Promise<any>;
 
 declare type CdpOption = {
-    extInfo: any;
-    immediately: boolean;
-    multiCallback: boolean;
+    extInfo?: any;
+    immediately?: boolean;
+    multiCallback?: boolean;
 };
 declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<any>;
 declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
 declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
+
+declare type UserOption = {
+    configKeys?: [];
+    [key: string]: any;
+};
+declare const getUserInfo: (options: UserOption) => Promise<any>;
 
 declare type ToastOption$1 = {
     type: 'none' | 'success' | 'fail' | 'exception';
@@ -283,6 +289,7 @@ declare const index$1_rpc: typeof rpc;
 declare const index$1_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$1_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$1_cdpFeedback: typeof cdpFeedback;
+declare const index$1_getUserInfo: typeof getUserInfo;
 declare const index$1_addNotifyListener: typeof addNotifyListener;
 declare const index$1_removeNotifyListener: typeof removeNotifyListener;
 declare const index$1_postNotification: typeof postNotification;
@@ -310,6 +317,7 @@ declare namespace index$1 {
     index$1_getCdpSpaceInfos as getCdpSpaceInfos,
     index$1_getCdpSpaceInfo as getCdpSpaceInfo,
     index$1_cdpFeedback as cdpFeedback,
+    index$1_getUserInfo as getUserInfo,
     toast$1 as toast,
     alert$1 as alert,
     index$1_addNotifyListener as addNotifyListener,
@@ -345,6 +353,7 @@ declare const index$2_rpc: typeof rpc;
 declare const index$2_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$2_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$2_cdpFeedback: typeof cdpFeedback;
+declare const index$2_getUserInfo: typeof getUserInfo;
 declare const index$2_addNotifyListener: typeof addNotifyListener;
 declare const index$2_removeNotifyListener: typeof removeNotifyListener;
 declare const index$2_postNotification: typeof postNotification;
@@ -373,6 +382,7 @@ declare namespace index$2 {
     index$2_getCdpSpaceInfos as getCdpSpaceInfos,
     index$2_getCdpSpaceInfo as getCdpSpaceInfo,
     index$2_cdpFeedback as cdpFeedback,
+    index$2_getUserInfo as getUserInfo,
     toast$1 as toast,
     alert$1 as alert,
     index$2_addNotifyListener as addNotifyListener,
@@ -407,6 +417,7 @@ declare const index$3_rpc: typeof rpc;
 declare const index$3_getCdpSpaceInfos: typeof getCdpSpaceInfos;
 declare const index$3_getCdpSpaceInfo: typeof getCdpSpaceInfo;
 declare const index$3_cdpFeedback: typeof cdpFeedback;
+declare const index$3_getUserInfo: typeof getUserInfo;
 declare const index$3_addNotifyListener: typeof addNotifyListener;
 declare const index$3_removeNotifyListener: typeof removeNotifyListener;
 declare const index$3_postNotification: typeof postNotification;
@@ -434,6 +445,7 @@ declare namespace index$3 {
     index$3_getCdpSpaceInfos as getCdpSpaceInfos,
     index$3_getCdpSpaceInfo as getCdpSpaceInfo,
     index$3_cdpFeedback as cdpFeedback,
+    index$3_getUserInfo as getUserInfo,
     toast$1 as toast,
     alert$1 as alert,
     index$3_addNotifyListener as addNotifyListener,

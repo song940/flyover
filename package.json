@@ -1,11 +1,12 @@
 {
   "name": "@alipay/flyover",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "flyover",
   "main": "./dist/flyover.js",
   "module": "./dist/flyover.esm.js",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
   },
   "publishConfig": {
     "registry": "https://registry.npm.alibaba-inc.com"
+  },
+  "dependencies": {
+    "rollup-plugin-terser": "^7.0.2"
   }
 }

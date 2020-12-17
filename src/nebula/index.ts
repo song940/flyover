@@ -1,6 +1,7 @@
 export * from './core';
 export * from './rpc';
 export * from './cdp';
+export * from './user';
 export * from './toast';
 export * from './alert';
 export * from './notify';

@@ -1,5 +1,6 @@
 export * from './rpc';
 export * from './cdp';
+export * from './core';
 export * from './user';
 export * from './toast';
 export * from './alert';
@@ -9,5 +10,6 @@ export * from './loading';
 export * from './confirm';
 export * from './request';
 export * from './storage';
+export * from './location';
 export * from './navigateTo';
 export * from './pushWindow';

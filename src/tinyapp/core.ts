@@ -19,3 +19,7 @@ export const pcall = (method: string, params?: any): Promise<any> => new Promise
     reject(new Error(`can not call my.${method}`));
   }
 });
+
+export const addEventListener = (eventName: string, fn: any) => {
+  return my.on(eventName, fn);
+};

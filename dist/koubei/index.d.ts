@@ -6,13 +6,19 @@ declare const handleResponse: (res: any) => any;
 declare const rpc: (operationType: string, body: any, options?: any) => Promise<any>;
 
 declare type CdpOption = {
-    extInfo: any;
-    immediately: boolean;
-    multiCallback: boolean;
+    extInfo?: any;
+    immediately?: boolean;
+    multiCallback?: boolean;
 };
 declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOption) => Promise<any>;
 declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
 declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
+
+declare type UserOption = {
+    configKeys?: [];
+    [key: string]: any;
+};
+declare const getUserInfo: (options: UserOption) => Promise<any>;
 
 declare type ToastOption = {
     type: 'none' | 'success' | 'fail' | 'exception';
@@ -160,4 +166,4 @@ declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, subscribeMsgbox, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, getUserInfo, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, subscribeMsgbox, toast };

@@ -1,12 +1,16 @@
 import dts from 'rollup-plugin-dts';
 import ts from '@rollup/plugin-typescript';
+import { terser } from 'rollup-plugin-terser';
 
 const typescript = ({ input, output, types }) => {
   return [
     {
       input,
       output,
-      plugins: [ts()]
+      plugins: [
+        ts(),
+        terser(),
+      ]
     },
     {
       input,
