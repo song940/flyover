@@ -1,7 +1,22 @@
 import { pcall } from './core';
 
-type TransparentTitleOption = {
-  mode?: "auto" | "always" | "custom" | "none"
+type TitleOption = {
+  subtitle?: string,
+  image?: string,
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+ * @param title
+ * @param onClickTitle
+ */
+export const setTitle = (title: string, options: TitleOption, onClickTitle) => {
+  // 安卓10.0.18版本之前不支持设置空的title，可以通过设置一个不可见字符串绕过去，10.0.20版本已经去掉这个限制
+  // https://myjsapi.alipay.com/jsapi/ui/set-title.html#3__E6_B3_A8_E6_84_8F
+  if (!title) title = '\u200b';
+  return pcall('setTitle', {
+    title,
+    ...options
+  }, onClickTitle);
 };
 
 const fromColor = color => {
@@ -9,15 +24,10 @@ const fromColor = color => {
   return parseInt(color.slice(1), 16);
 };
 
-/**
- * https://myjsapi.alipay.com/jsapi/ui/set-title.html
- * @param title
- * @param onClickTitle
- */
-export const setTitle = (title, onClickTitle) => {
-  return pcall('setTitle', {
-    title
-  }, onClickTitle);
+type TitleColorOption = {
+  color?: string,
+  reset?: boolean,
+  resetTransparent?: boolean,
 };
 
 /**
@@ -26,19 +36,32 @@ export const setTitle = (title, onClickTitle) => {
  * @param reset
  * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
  */
-export const setTitleColor = (color: number | string, reset = false) => {
-  if (typeof color === 'string') {
-    color = fromColor(color);
+export const setTitleColor = (options: TitleColorOption) => {
+  if (typeof options === 'string') {
+    options = {
+      color: fromColor(options)
+    };
   }
-  return pcall('setTitleColor', { color, reset });
+  const { color, reset = false, resetTransparent = false } = options;
+  return pcall('setTitleColor', { color, reset, resetTransparent });
+};
+
+export const resetTitleColor = () => {
+  return setTitleColor({ reset: true });
 };
 
 /**
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
  */
-export const setTransparentTitle = (options?: TransparentTitleOption) => {
-  return pcall('setTransparentTitle', options);
+export const setTransparentTitle = (mode: "auto" | "always" | "custom" | "none") => {
+  return pcall('setTransparentTitle', {
+    transparentTitle: mode
+  });
+};
+
+export const resetTransparentTitle = () => {
+  return setTitleColor({ resetTransparent: true });
 };
 
 type TitleAndStatusbarHeightType = {
@@ -61,4 +84,18 @@ export const hideBackButton = () => {
 
 export const showBackButton = () => {
   return pcall('showBackButton');
+};
+
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/show-title-loading.html
+ */
+export const showTitleLoading = () => {
+  return pcall('showTitleLoading');
+};
+
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/hide-title-loading.html
+ */
+export const hideTitleLoading = () => {
+  return pcall('hideTitleLoading');
 };

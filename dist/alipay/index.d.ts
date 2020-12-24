@@ -59,27 +59,35 @@ declare const removeNotifyListener: (name: string) => Promise<any>;
  */
 declare const postNotification: (name: string, data: any) => Promise<any>;
 
-declare type TransparentTitleOption = {
-    mode?: "auto" | "always" | "custom" | "none";
+declare type TitleOption = {
+    subtitle?: string;
+    image?: string;
 };
 /**
  * https://myjsapi.alipay.com/jsapi/ui/set-title.html
  * @param title
  * @param onClickTitle
  */
-declare const setTitle: (title: any, onClickTitle: any) => Promise<any>;
+declare const setTitle: (title: string, options: TitleOption, onClickTitle: any) => Promise<any>;
+declare type TitleColorOption = {
+    color?: string;
+    reset?: boolean;
+    resetTransparent?: boolean;
+};
 /**
  * setTitleColor
  * @param color
  * @param reset
  * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
  */
-declare const setTitleColor: (color: number | string, reset?: boolean) => Promise<any>;
+declare const setTitleColor: (options: TitleColorOption) => Promise<any>;
+declare const resetTitleColor: () => Promise<any>;
 /**
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
  */
-declare const setTransparentTitle: (options?: TransparentTitleOption) => Promise<any>;
+declare const setTransparentTitle: (mode: "auto" | "always" | "custom" | "none") => Promise<any>;
+declare const resetTransparentTitle: () => Promise<any>;
 declare type TitleAndStatusbarHeightType = {
     density?: number;
     titleBarHeight: number;
@@ -92,6 +100,14 @@ declare type TitleAndStatusbarHeightType = {
 declare const getTitleAndStatusbarHeight: () => Promise<TitleAndStatusbarHeightType>;
 declare const hideBackButton: () => Promise<any>;
 declare const showBackButton: () => Promise<any>;
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/show-title-loading.html
+ */
+declare const showTitleLoading: () => Promise<any>;
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/hide-title-loading.html
+ */
+declare const hideTitleLoading: () => Promise<any>;
 
 declare type ConfirmOption = {
     title?: string;
@@ -166,4 +182,4 @@ declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, getUserInfo, handleResponse, hideBackButton, hideLoading, hideOptionMenu, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, subscribeMsgbox, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, getUserInfo, handleResponse, hideBackButton, hideLoading, hideOptionMenu, hideTitleLoading, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, resetTitleColor, resetTransparentTitle, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, showTitleLoading, subscribeMsgbox, toast };

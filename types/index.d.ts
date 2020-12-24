@@ -174,27 +174,35 @@ declare const removeNotifyListener: (name: string) => Promise<any>;
  */
 declare const postNotification: (name: string, data: any) => Promise<any>;
 
-declare type TransparentTitleOption = {
-    mode?: "auto" | "always" | "custom" | "none";
+declare type TitleOption = {
+    subtitle?: string;
+    image?: string;
 };
 /**
  * https://myjsapi.alipay.com/jsapi/ui/set-title.html
  * @param title
  * @param onClickTitle
  */
-declare const setTitle: (title: any, onClickTitle: any) => Promise<any>;
+declare const setTitle: (title: string, options: TitleOption, onClickTitle: any) => Promise<any>;
+declare type TitleColorOption = {
+    color?: string;
+    reset?: boolean;
+    resetTransparent?: boolean;
+};
 /**
  * setTitleColor
  * @param color
  * @param reset
  * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
  */
-declare const setTitleColor: (color: number | string, reset?: boolean) => Promise<any>;
+declare const setTitleColor: (options: TitleColorOption) => Promise<any>;
+declare const resetTitleColor: () => Promise<any>;
 /**
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
  */
-declare const setTransparentTitle: (options?: TransparentTitleOption) => Promise<any>;
+declare const setTransparentTitle: (mode: "auto" | "always" | "custom" | "none") => Promise<any>;
+declare const resetTransparentTitle: () => Promise<any>;
 declare type TitleAndStatusbarHeightType = {
     density?: number;
     titleBarHeight: number;
@@ -207,6 +215,14 @@ declare type TitleAndStatusbarHeightType = {
 declare const getTitleAndStatusbarHeight: () => Promise<TitleAndStatusbarHeightType>;
 declare const hideBackButton: () => Promise<any>;
 declare const showBackButton: () => Promise<any>;
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/show-title-loading.html
+ */
+declare const showTitleLoading: () => Promise<any>;
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/hide-title-loading.html
+ */
+declare const hideTitleLoading: () => Promise<any>;
 
 declare type ConfirmOption$1 = {
     title?: string;
@@ -295,10 +311,14 @@ declare const index$1_removeNotifyListener: typeof removeNotifyListener;
 declare const index$1_postNotification: typeof postNotification;
 declare const index$1_setTitle: typeof setTitle;
 declare const index$1_setTitleColor: typeof setTitleColor;
+declare const index$1_resetTitleColor: typeof resetTitleColor;
 declare const index$1_setTransparentTitle: typeof setTransparentTitle;
+declare const index$1_resetTransparentTitle: typeof resetTransparentTitle;
 declare const index$1_getTitleAndStatusbarHeight: typeof getTitleAndStatusbarHeight;
 declare const index$1_hideBackButton: typeof hideBackButton;
 declare const index$1_showBackButton: typeof showBackButton;
+declare const index$1_showTitleLoading: typeof showTitleLoading;
+declare const index$1_hideTitleLoading: typeof hideTitleLoading;
 declare const index$1_popWindow: typeof popWindow;
 declare const index$1_pushWindow: typeof pushWindow;
 declare const index$1_closeWebview: typeof closeWebview;
@@ -325,10 +345,14 @@ declare namespace index$1 {
     index$1_postNotification as postNotification,
     index$1_setTitle as setTitle,
     index$1_setTitleColor as setTitleColor,
+    index$1_resetTitleColor as resetTitleColor,
     index$1_setTransparentTitle as setTransparentTitle,
+    index$1_resetTransparentTitle as resetTransparentTitle,
     index$1_getTitleAndStatusbarHeight as getTitleAndStatusbarHeight,
     index$1_hideBackButton as hideBackButton,
     index$1_showBackButton as showBackButton,
+    index$1_showTitleLoading as showTitleLoading,
+    index$1_hideTitleLoading as hideTitleLoading,
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
@@ -359,10 +383,14 @@ declare const index$2_removeNotifyListener: typeof removeNotifyListener;
 declare const index$2_postNotification: typeof postNotification;
 declare const index$2_setTitle: typeof setTitle;
 declare const index$2_setTitleColor: typeof setTitleColor;
+declare const index$2_resetTitleColor: typeof resetTitleColor;
 declare const index$2_setTransparentTitle: typeof setTransparentTitle;
+declare const index$2_resetTransparentTitle: typeof resetTransparentTitle;
 declare const index$2_getTitleAndStatusbarHeight: typeof getTitleAndStatusbarHeight;
 declare const index$2_hideBackButton: typeof hideBackButton;
 declare const index$2_showBackButton: typeof showBackButton;
+declare const index$2_showTitleLoading: typeof showTitleLoading;
+declare const index$2_hideTitleLoading: typeof hideTitleLoading;
 declare const index$2_popWindow: typeof popWindow;
 declare const index$2_pushWindow: typeof pushWindow;
 declare const index$2_closeWebview: typeof closeWebview;
@@ -390,10 +418,14 @@ declare namespace index$2 {
     index$2_postNotification as postNotification,
     index$2_setTitle as setTitle,
     index$2_setTitleColor as setTitleColor,
+    index$2_resetTitleColor as resetTitleColor,
     index$2_setTransparentTitle as setTransparentTitle,
+    index$2_resetTransparentTitle as resetTransparentTitle,
     index$2_getTitleAndStatusbarHeight as getTitleAndStatusbarHeight,
     index$2_hideBackButton as hideBackButton,
     index$2_showBackButton as showBackButton,
+    index$2_showTitleLoading as showTitleLoading,
+    index$2_hideTitleLoading as hideTitleLoading,
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
@@ -423,10 +455,14 @@ declare const index$3_removeNotifyListener: typeof removeNotifyListener;
 declare const index$3_postNotification: typeof postNotification;
 declare const index$3_setTitle: typeof setTitle;
 declare const index$3_setTitleColor: typeof setTitleColor;
+declare const index$3_resetTitleColor: typeof resetTitleColor;
 declare const index$3_setTransparentTitle: typeof setTransparentTitle;
+declare const index$3_resetTransparentTitle: typeof resetTransparentTitle;
 declare const index$3_getTitleAndStatusbarHeight: typeof getTitleAndStatusbarHeight;
 declare const index$3_hideBackButton: typeof hideBackButton;
 declare const index$3_showBackButton: typeof showBackButton;
+declare const index$3_showTitleLoading: typeof showTitleLoading;
+declare const index$3_hideTitleLoading: typeof hideTitleLoading;
 declare const index$3_popWindow: typeof popWindow;
 declare const index$3_pushWindow: typeof pushWindow;
 declare const index$3_closeWebview: typeof closeWebview;
@@ -453,10 +489,14 @@ declare namespace index$3 {
     index$3_postNotification as postNotification,
     index$3_setTitle as setTitle,
     index$3_setTitleColor as setTitleColor,
+    index$3_resetTitleColor as resetTitleColor,
     index$3_setTransparentTitle as setTransparentTitle,
+    index$3_resetTransparentTitle as resetTransparentTitle,
     index$3_getTitleAndStatusbarHeight as getTitleAndStatusbarHeight,
     index$3_hideBackButton as hideBackButton,
     index$3_showBackButton as showBackButton,
+    index$3_showTitleLoading as showTitleLoading,
+    index$3_hideTitleLoading as hideTitleLoading,
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
@@ -524,7 +564,7 @@ declare const pushWindow$2: (url: string, options?: any) => any;
 declare const popWindow$2: () => any;
 declare const closeWebview$1: () => any;
 declare const restorePullToRefresh$1: () => any;
-declare type TransparentTitleOption$1 = {
+declare type TransparentTitleOption = {
     mode?: "auto" | "always" | "custom" | "none";
 };
 declare type TitleAndStatusbarHeightType$1 = {
@@ -534,7 +574,7 @@ declare type TitleAndStatusbarHeightType$1 = {
 };
 declare const setTitle$1: (title: any) => any;
 declare const setTitleColor$1: (color: number | string, reset?: boolean) => any;
-declare const setTransparentTitle$1: (options?: TransparentTitleOption$1) => any;
+declare const setTransparentTitle$1: (options?: TransparentTitleOption) => any;
 declare const getTitleAndStatusbarHeight$1: () => Promise<TitleAndStatusbarHeightType$1>;
 declare type OptionMenuItem$1 = {
     icontype?: "scan" | "user";
