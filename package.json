@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:zeus.ls/flyover.git"
+    "url": "http://gitlab.alipay-inc.com/mybank-fe/flyover"
   },
   "keywords": [
     "jsbridge",
