@@ -12,4 +12,325 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-var n=function(){return(n=Object.assign||function(n){for(var r,t=1,e=arguments.length;t<e;t++)for(var o in r=arguments[t])Object.prototype.hasOwnProperty.call(r,o)&&(n[o]=r[o]);return n}).apply(this,arguments)};function r(){for(var n=0,r=0,t=arguments.length;r<t;r++)n+=arguments[r].length;var e=Array(n),o=0;for(r=0;r<t;r++)for(var u=arguments[r],c=0,i=u.length;c<i;c++,o++)e[o]=u[c];return e}var t=function(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];return new Promise((function(e,o){return t.push((function(r){if(console.log("my.call("+n+")",t,r),r.error)return o(r);e(r)})),my.call.apply(my,r([n],t))}))},e=function(n,r){return new Promise((function(t,e){r.fail=e,r.success=t,my.canIUse(n)?my[n](r):e(new Error("can not call my."+n))}))},o=function(n,r){return my.on(n,r)},u=function(){return(n="rpcUrl",Array.isArray(n)||(n=[n]),t("getConfig",{configKeys:n}).then((function(n){return n.data}))).then((function(n){return n.rpcUrl}));var n},c=function(r,e,o){return void 0===o&&(o={}),t("rpc",n({operationType:r,requestData:[e]},o)).then((function(n){if(n.success)return n;var t=new Error;throw t.code=n.resultCode,t.message=n.resultMsg,t.operationType=r,t.requestData=e,t.response=n,t}))},i=function(r,e){return t("getCdpSpaceInfos",n({spaceCodes:r},e))},a=function(r,e){return t("getCdpSpaceInfo",n({spaceCode:r},e))},f=function(n,r,e){return void 0===e&&(e="SHOW"),t("cdpFeedback",{spaceCode:n,objectId:r,behavior:e})},s=function(){return t("getUserInfo")},l=function(){return s().then((function(n){return n.userId}))},g=function(r,t){return e("showToast",n({content:r},t))},h=function(){return e("hideToast")},p=g,d=function(r,t){return e("alert",n({content:r},t))},y=function(n){return e("hideTabBar",n)},v=function(n){return e("showTabBar",n)},m=function(n){return e("setNavigationBar",n)},w=function(n){return m({title:n})},T=function(n){return m({image:n})},b=function(){return m({reset:!0})},S=function(){return e("showLoading")},C=function(){return e("hideLoading")},I=function(r,t){return void 0===t&&(t={}),e("confirm",n({content:r},t))},L=function(r,t){return e("request",n({url:r},t))},k=function(n,r){return L(n,r)},O=function(r,t,e){return L(r,n({method:"POST",data:t},e))},B=function(n,r){return e("setStorage",{key:n,data:r})},P=function(n){return e("getStorage",{key:n}).then((function(n){if(n.success)return n.data;throw new Error}))},U=function(n){return e("removeStorage",{key:n})},j=function(){return e("clearStorage")},q=function(){return e("getLocation")},A=function(){return e("chooseLocation")},E=function(n){return e("openLocation",n)},D=function(n){return e("redirectTo",{url:n})},W=function(n){return e("navigateTo",{url:n})},x=function(){return e("navigateBack")},F=function(n){return e("switchTab",{url:n})},H=function(n){return e("reLaunch",{url:n})},K=function(r,e){return t("pushWindow",n({url:r},e))};export{o as addEventListener,d as alert,t as call,f as cdpFeedback,A as chooseLocation,j as clearStorage,I as confirm,k as get,a as getCdpSpaceInfo,i as getCdpSpaceInfos,q as getLocation,u as getRpcGateway,P as getStorage,l as getUserId,s as getUserInfo,C as hideLoading,y as hideTabBar,h as hideToast,x as navigateBack,W as navigateTo,E as openLocation,e as pcall,O as post,K as pushWindow,H as reLaunch,D as redirectTo,U as removeStorage,L as request,b as resetNavigationBarColor,c as rpc,m as setNavigationBar,B as setStorage,w as setTitle,T as setTitleAsImage,S as showLoading,v as showTabBar,g as showToast,F as switchTab,p as toast};
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+/**
+ * call
+ * @param method
+ * @param params
+ */
+var call = function (method) {
+    var params = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        params[_i - 1] = arguments[_i];
+    }
+    return new Promise(function (resolve, reject) {
+        params.push(function (res) {
+            console.log("my.call(" + method + ")", params, res);
+            if (res.error)
+                return reject(res);
+            resolve(res);
+        });
+        return my.call.apply(my, __spreadArrays([method], params));
+    });
+};
+/**
+ * pcall
+ * @param method
+ * @param params
+ */
+var pcall = function (method, params) {
+    if (params === void 0) { params = {}; }
+    return new Promise(function (resolve, reject) {
+        params.fail = reject;
+        params.success = resolve;
+        if (my.canIUse(method)) {
+            my[method](params);
+        }
+        else {
+            reject(new Error("can not call my." + method));
+        }
+    });
+};
+/**
+ * addEventListener
+ * @param eventName
+ * @param fn
+ */
+var addEventListener = function (eventName, fn) {
+    return my.on(eventName, fn);
+};
+
+var getConfig = function (configKeys) {
+    if (!Array.isArray(configKeys))
+        configKeys = [configKeys];
+    return call('getConfig', { configKeys: configKeys }).then(function (res) { return res.data; });
+};
+
+var getRpcGateway = function () {
+    return getConfig('rpcUrl').then(function (res) { return res.rpcUrl; });
+};
+/**
+ * rpc
+ * @param operationType
+ * @param body
+ * @param options
+ */
+var rpc = function (operationType, body, options) {
+    if (options === void 0) { options = {}; }
+    return call('rpc', __assign({ operationType: operationType, requestData: [body] }, options)).then(function (res) {
+        if (res.success)
+            return res;
+        var err = new Error();
+        err.code = res.resultCode;
+        err.message = res.resultMsg;
+        err.operationType = operationType;
+        err.requestData = body;
+        err.response = res;
+        throw err;
+    });
+};
+
+var getCdpSpaceInfos = function (spaceCodes, options) {
+    return call('getCdpSpaceInfos', __assign({ spaceCodes: spaceCodes }, options));
+};
+var getCdpSpaceInfo = function (spaceCode, options) {
+    return call('getCdpSpaceInfo', __assign({ spaceCode: spaceCode }, options));
+};
+var cdpFeedback = function (spaceCode, objectId, behavior) {
+    if (behavior === void 0) { behavior = 'SHOW'; }
+    return call('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
+};
+
+var getUserInfo = function () {
+    return call('getUserInfo');
+};
+var getUserId = function () {
+    return getUserInfo().then(function (user) { return user.userId; });
+};
+
+/**
+ * showToast
+ * @docs https://opendocs.alipay.com/mini/api/fhur8f
+ * @param {ToastOption} content
+ * @param {*} options
+ */
+var showToast = function (content, options) {
+    return pcall('showToast', __assign({ content: content }, options));
+};
+/**
+ * hideToast
+ * @docs https://opendocs.alipay.com/mini/api/iygd4e
+ */
+var hideToast = function () {
+    return pcall('hideToast');
+};
+// alias
+var toast = showToast;
+
+/**
+ * alert
+ * @docs https://opendocs.alipay.com/mini/api/ui-feedback
+ * @param {*} content
+ * @param {*} options
+ */
+var alert = function (content, options) {
+    return pcall('alert', __assign({ content: content }, options));
+};
+
+var prompt = function (option) {
+    if (option === void 0) { option = {}; }
+    return pcall('prompt', option).then(function (res) {
+        if (!res.ok)
+            throw new Error();
+        return res.inputValue;
+    });
+};
+
+/**
+ * hideTabBars
+ * @param {*} options
+ * @docs https://opendocs.alipay.com/mini/api/at18z8
+ */
+var hideTabBar = function (options) {
+    return pcall('hideTabBar', options);
+};
+/**
+ * showTabBar
+ * @param {*} options
+ * @docs https://opendocs.alipay.com/mini/api/dpq5dh
+ */
+var showTabBar = function (options) {
+    return pcall('showTabBar', options);
+};
+
+/**
+ * setNavigationBar
+ * @docs https://opendocs.alipay.com/mini/api/xwq8e6
+ * @param options
+ */
+var setNavigationBar = function (options) {
+    return pcall("setNavigationBar", options);
+};
+var setTitle = function (title) {
+    return setNavigationBar({ title: title });
+};
+var setTitleAsImage = function (image) {
+    return setNavigationBar({ image: image });
+};
+var resetNavigationBarColor = function () {
+    return setNavigationBar({ reset: true });
+};
+
+/**
+ * showLoading
+ * @docs https://opendocs.alipay.com/mini/api/bm69kb
+ */
+var showLoading = function () {
+    return pcall('showLoading');
+};
+/**
+ * hideLoading
+ * @docs https://opendocs.alipay.com/mini/api/nzf540
+ */
+var hideLoading = function () {
+    return pcall('hideLoading');
+};
+
+/**
+ * confirm
+ */
+var confirm = function (content, options) {
+    if (options === void 0) { options = {}; }
+    return pcall('confirm', __assign({ content: content }, options)).then(function (res) { return res.confirm; });
+};
+
+var request = function (url, options) {
+    return pcall('request', __assign({ url: url }, options));
+};
+var get = function (url, options) {
+    return request(url, options);
+};
+var post = function (url, data, options) {
+    return request(url, __assign({ method: 'POST', data: data }, options));
+};
+
+/**
+ * setStorage
+ * @docs https://opendocs.alipay.com/mini/api/eocm6v
+ * @param {*} key
+ * @param {*} data
+ */
+var setStorage = function (key, data) {
+    return pcall('setStorage', {
+        key: key, data: data
+    });
+};
+/**
+ * getStorage
+ * @docs https://opendocs.alipay.com/mini/api/azfobl
+ * @param {*} key
+ */
+var getStorage = function (key) {
+    return pcall('getStorage', { key: key }).then(function (res) {
+        if (res.success)
+            return res.data;
+        throw new Error();
+    });
+};
+var removeStorage = function (key) {
+    return pcall('removeStorage', { key: key });
+};
+/**
+ * clearStorage
+ * @docs https://opendocs.alipay.com/mini/api/storage
+ */
+var clearStorage = function () {
+    return pcall('clearStorage');
+};
+
+/**
+ * https://opendocs.alipay.com/mini/api/as9kin
+ */
+var getLocation = function () {
+    return pcall('getLocation');
+};
+var chooseLocation = function () {
+    return pcall('chooseLocation');
+};
+var openLocation = function (locate) {
+    return pcall('openLocation', locate);
+};
+
+/**
+ * redirectTo
+ * @docs https://opendocs.alipay.com/mini/api/fh18ky
+ * @param url
+ */
+var redirectTo = function (url) {
+    return pcall('redirectTo', { url: url });
+};
+/**
+ * navigateTo
+ * https://opendocs.alipay.com/mini/component/navigator
+ * @param {*} url
+ * @param {*} query
+ */
+var navigateTo = function (url) {
+    return pcall('navigateTo', { url: url });
+};
+/**
+ * navigateBack
+ * @docs https://opendocs.alipay.com/mini/api/kc5zbx
+ */
+var navigateBack = function () {
+    return pcall('navigateBack');
+};
+/**
+ * switchTab
+ * @docs https://opendocs.alipay.com/mini/api/ui-tabbar
+ * @param url
+ */
+var switchTab = function (url) {
+    return pcall('switchTab', { url: url });
+};
+/**
+ * reLaunch
+ * @docs https://opendocs.alipay.com/mini/api/hmn54z
+ * @param url
+ */
+var reLaunch = function (url) {
+    return pcall('reLaunch', { url: url });
+};
+
+var pushWindow = function (url, options) {
+    return call('pushWindow', __assign({ url: url }, options));
+};
+
+var datePicker = function (options) {
+    return pcall('datePicker', options).then(function (res) { return res.date; });
+};
+
+var showActionSheet = function (options) {
+    return pcall('showActionSheet', options);
+};
+
+export { addEventListener, alert, call, cdpFeedback, chooseLocation, clearStorage, confirm, datePicker, get, getCdpSpaceInfo, getCdpSpaceInfos, getLocation, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, openLocation, pcall, post, prompt, pushWindow, reLaunch, redirectTo, removeStorage, request, resetNavigationBarColor, rpc, setNavigationBar, setStorage, setTitle, setTitleAsImage, showActionSheet, showLoading, showTabBar, showToast, switchTab, toast };

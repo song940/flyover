@@ -133,7 +133,7 @@ declare type UserOption = {
     configKeys?: [];
     [key: string]: any;
 };
-declare const getUserInfo: (options: UserOption) => Promise<any>;
+declare const getUserInfo: (options?: UserOption) => Promise<any>;
 
 declare type ToastOption$1 = {
     type: 'none' | 'success' | 'fail' | 'exception';
@@ -201,7 +201,7 @@ declare const resetTitleColor: () => Promise<any>;
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
  */
-declare const setTransparentTitle: (mode: "auto" | "always" | "custom" | "none") => Promise<any>;
+declare const setTransparentTitle: (mode?: "auto" | "always" | "custom" | "none") => Promise<any>;
 declare const resetTransparentTitle: () => Promise<any>;
 declare type TitleAndStatusbarHeightType = {
     density?: number;
@@ -235,6 +235,22 @@ declare const confirm$1: (message: string, { title, okButton, cancelButton }?: C
 
 declare const showLoading$1: () => Promise<any>;
 declare const hideLoading$1: () => Promise<any>;
+
+/**
+ * tradePay
+ * https://myjsapi.alipay.com/jsapi/native/trade-pay.html
+ * @param param0
+ */
+declare const tradePay: ({ uuid, extern_token, app_name, biz_type, apiname, apiservice, tip, }: {
+    uuid: any;
+    extern_token: any;
+    app_name?: string;
+    biz_type?: string;
+    apiname?: string;
+    apiservice?: string;
+    tip?: string;
+}) => Promise<any>;
+declare const verifyIdentity: (verifyId: string) => Promise<any>;
 
 /**
  * https://myjsapi.alipay.com/jsapi/context/pop-window.html
@@ -319,6 +335,8 @@ declare const index$1_hideBackButton: typeof hideBackButton;
 declare const index$1_showBackButton: typeof showBackButton;
 declare const index$1_showTitleLoading: typeof showTitleLoading;
 declare const index$1_hideTitleLoading: typeof hideTitleLoading;
+declare const index$1_tradePay: typeof tradePay;
+declare const index$1_verifyIdentity: typeof verifyIdentity;
 declare const index$1_popWindow: typeof popWindow;
 declare const index$1_pushWindow: typeof pushWindow;
 declare const index$1_closeWebview: typeof closeWebview;
@@ -356,6 +374,8 @@ declare namespace index$1 {
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
+    index$1_tradePay as tradePay,
+    index$1_verifyIdentity as verifyIdentity,
     index$1_popWindow as popWindow,
     index$1_pushWindow as pushWindow,
     index$1_closeWebview as closeWebview,
@@ -391,6 +411,8 @@ declare const index$2_hideBackButton: typeof hideBackButton;
 declare const index$2_showBackButton: typeof showBackButton;
 declare const index$2_showTitleLoading: typeof showTitleLoading;
 declare const index$2_hideTitleLoading: typeof hideTitleLoading;
+declare const index$2_tradePay: typeof tradePay;
+declare const index$2_verifyIdentity: typeof verifyIdentity;
 declare const index$2_popWindow: typeof popWindow;
 declare const index$2_pushWindow: typeof pushWindow;
 declare const index$2_closeWebview: typeof closeWebview;
@@ -429,6 +451,8 @@ declare namespace index$2 {
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
+    index$2_tradePay as tradePay,
+    index$2_verifyIdentity as verifyIdentity,
     index$2_popWindow as popWindow,
     index$2_pushWindow as pushWindow,
     index$2_closeWebview as closeWebview,
@@ -463,6 +487,8 @@ declare const index$3_hideBackButton: typeof hideBackButton;
 declare const index$3_showBackButton: typeof showBackButton;
 declare const index$3_showTitleLoading: typeof showTitleLoading;
 declare const index$3_hideTitleLoading: typeof hideTitleLoading;
+declare const index$3_tradePay: typeof tradePay;
+declare const index$3_verifyIdentity: typeof verifyIdentity;
 declare const index$3_popWindow: typeof popWindow;
 declare const index$3_pushWindow: typeof pushWindow;
 declare const index$3_closeWebview: typeof closeWebview;
@@ -500,6 +526,8 @@ declare namespace index$3 {
     confirm$1 as confirm,
     showLoading$1 as showLoading,
     hideLoading$1 as hideLoading,
+    index$3_tradePay as tradePay,
+    index$3_verifyIdentity as verifyIdentity,
     index$3_popWindow as popWindow,
     index$3_pushWindow as pushWindow,
     index$3_closeWebview as closeWebview,

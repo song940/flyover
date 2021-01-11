@@ -18,7 +18,7 @@ declare type UserOption = {
     configKeys?: [];
     [key: string]: any;
 };
-declare const getUserInfo: (options: UserOption) => Promise<any>;
+declare const getUserInfo: (options?: UserOption) => Promise<any>;
 
 declare type ToastOption = {
     type: 'none' | 'success' | 'fail' | 'exception';
@@ -86,7 +86,7 @@ declare const resetTitleColor: () => Promise<any>;
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
  */
-declare const setTransparentTitle: (mode: "auto" | "always" | "custom" | "none") => Promise<any>;
+declare const setTransparentTitle: (mode?: "auto" | "always" | "custom" | "none") => Promise<any>;
 declare const resetTransparentTitle: () => Promise<any>;
 declare type TitleAndStatusbarHeightType = {
     density?: number;
@@ -120,6 +120,22 @@ declare const confirm: (message: string, { title, okButton, cancelButton }?: Con
 
 declare const showLoading: () => Promise<any>;
 declare const hideLoading: () => Promise<any>;
+
+/**
+ * tradePay
+ * https://myjsapi.alipay.com/jsapi/native/trade-pay.html
+ * @param param0
+ */
+declare const tradePay: ({ uuid, extern_token, app_name, biz_type, apiname, apiservice, tip, }: {
+    uuid: any;
+    extern_token: any;
+    app_name?: string;
+    biz_type?: string;
+    apiname?: string;
+    apiservice?: string;
+    tip?: string;
+}) => Promise<any>;
+declare const verifyIdentity: (verifyId: string) => Promise<any>;
 
 /**
  * https://myjsapi.alipay.com/jsapi/context/pop-window.html
@@ -182,4 +198,4 @@ declare const openInBrowser: (url: string) => Promise<any>;
 
 declare const restorePullToRefresh: () => Promise<any>;
 
-export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, getUserInfo, handleResponse, hideBackButton, hideLoading, hideOptionMenu, hideTitleLoading, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, resetTitleColor, resetTransparentTitle, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, showTitleLoading, subscribeMsgbox, toast };
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, getUserInfo, handleResponse, hideBackButton, hideLoading, hideOptionMenu, hideTitleLoading, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, resetTitleColor, resetTransparentTitle, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, showTitleLoading, subscribeMsgbox, toast, tradePay, verifyIdentity };

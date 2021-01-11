@@ -5,6 +5,6 @@ type UserOption = {
   [key: string]: any
 };
 
-export const getUserInfo = (options: UserOption) => {
+export const getUserInfo = (options?: UserOption) => {
   return pcall('getUserInfo', options);
 };

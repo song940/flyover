@@ -16,8 +16,23 @@ declare const getCdpSpaceInfos: (spaceCodes: string | string[], options?: CdpOpt
 declare const getCdpSpaceInfo: (spaceCode: string, options?: CdpOption) => Promise<any>;
 declare const cdpFeedback: (spaceCode: string, objectId: string, behavior?: string) => Promise<any>;
 
+/**
+ * call
+ * @param method
+ * @param params
+ */
 declare const call: (method: string, ...params: any) => Promise<any>;
+/**
+ * pcall
+ * @param method
+ * @param params
+ */
 declare const pcall: (method: string, params?: any) => Promise<any>;
+/**
+ * addEventListener
+ * @param eventName
+ * @param fn
+ */
 declare const addEventListener: (eventName: string, fn: any) => any;
 
 declare const getUserInfo: () => Promise<any>;
@@ -42,13 +57,27 @@ declare const showToast: (content: string, options?: ToastOption) => Promise<any
 declare const hideToast: () => Promise<any>;
 declare const toast: (content: string, options?: ToastOption) => Promise<any>;
 
+declare type AlertOption = {
+    title?: string;
+    buttonText?: string;
+};
 /**
  * alert
  * @docs https://opendocs.alipay.com/mini/api/ui-feedback
  * @param {*} content
  * @param {*} options
  */
-declare const alert: (content: string, options?: any) => Promise<any>;
+declare const alert: (content: string, options?: AlertOption) => Promise<any>;
+
+declare type PromptOption = {
+    title?: string;
+    message?: string;
+    placeholder?: string;
+    align?: 'left' | 'center' | 'right';
+    okButtonText?: string;
+    cancelButtonText?: string;
+};
+declare const prompt: (option?: PromptOption) => Promise<any>;
 
 declare type TabBarOption = {
     /**
@@ -97,7 +126,16 @@ declare const showLoading: () => Promise<any>;
  */
 declare const hideLoading: () => Promise<any>;
 
-declare const confirm: (content: string, options?: {}) => Promise<any>;
+declare type ConfirmOption = {
+    title?: string;
+    content?: string;
+    confirmButtonText?: string;
+    cancelButtonText?: string;
+};
+/**
+ * confirm
+ */
+declare const confirm: (content: string, options?: ConfirmOption) => Promise<any>;
 
 declare type RequestOption = {
     /**
@@ -189,4 +227,26 @@ declare const reLaunch: (url: string) => Promise<any>;
 
 declare const pushWindow: (url: string, options?: any) => Promise<any>;
 
-export { addEventListener, alert, call, cdpFeedback, chooseLocation, clearStorage, confirm, get, getCdpSpaceInfo, getCdpSpaceInfos, getLocation, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, openLocation, pcall, post, pushWindow, reLaunch, redirectTo, removeStorage, request, resetNavigationBarColor, rpc, setNavigationBar, setStorage, setTitle, setTitleAsImage, showLoading, showTabBar, showToast, switchTab, toast };
+declare type DatePickerOption = {
+    format?: string;
+    currentDate?: string;
+    startDate?: string;
+    endDate?: string;
+};
+declare const datePicker: (options: DatePickerOption) => Promise<any>;
+
+declare type BadgeType = {
+    index: number;
+    type: string;
+    text: string;
+};
+declare type ActionSheetOption = {
+    title?: string;
+    items: string[];
+    cancelButtonText?: string;
+    destructiveBtnIndex?: number;
+    badges: BadgeType[];
+};
+declare const showActionSheet: (options: ActionSheetOption) => Promise<any>;
+
+export { addEventListener, alert, call, cdpFeedback, chooseLocation, clearStorage, confirm, datePicker, get, getCdpSpaceInfo, getCdpSpaceInfos, getLocation, getRpcGateway, getStorage, getUserId, getUserInfo, hideLoading, hideTabBar, hideToast, navigateBack, navigateTo, openLocation, pcall, post, prompt, pushWindow, reLaunch, redirectTo, removeStorage, request, resetNavigationBarColor, rpc, setNavigationBar, setStorage, setTitle, setTitleAsImage, showActionSheet, showLoading, showTabBar, showToast, switchTab, toast };

@@ -8,6 +8,7 @@ export * from './notify';
 export * from './navbar';
 export * from './confirm';
 export * from './loading';
+export * from './tradePay';
 export * from './popWindow';
 export * from './pushWindow';
 export * from './closeWebview';

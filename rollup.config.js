@@ -2,6 +2,9 @@ import dts from 'rollup-plugin-dts';
 import ts from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 
+const { NODE_ENV = 'development' } = process.env;
+const isProduction = NODE_ENV === 'production';
+
 const typescript = ({ input, output, types }) => {
   return [
     {
@@ -9,7 +12,7 @@ const typescript = ({ input, output, types }) => {
       output,
       plugins: [
         ts(),
-        terser(),
+        isProduction && terser(),
       ]
     },
     {

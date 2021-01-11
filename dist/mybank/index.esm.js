@@ -12,4 +12,319 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-var n=function(){return(n=Object.assign||function(n){for(var t,e=1,r=arguments.length;e<r;e++)for(var o in t=arguments[e])Object.prototype.hasOwnProperty.call(t,o)&&(n[o]=t[o]);return n}).apply(this,arguments)};function t(){for(var n=0,t=0,e=arguments.length;t<e;t++)n+=arguments[t].length;var r=Array(n),o=0;for(t=0;t<e;t++)for(var i=arguments[t],u=0,a=i.length;u<a;u++,o++)r[o]=i[u];return r}function e(n){window.AlipayJSBridge?n&&n():document.addEventListener("AlipayJSBridgeReady",n,!1)}var r=function(n){for(var r=[],o=1;o<arguments.length;o++)r[o-1]=arguments[o];e((function(){return AlipayJSBridge.call.apply(AlipayJSBridge,t([n],r))}))},o=function(n){for(var e=[],o=1;o<arguments.length;o++)e[o-1]=arguments[o];return new Promise((function(o,i){return e.push((function(t){console.log("AlipayJSBridge.call("+n+")",t),o(t)})),r.apply(void 0,t([n],e))}))},i=function(n){if(n.success)return n.data;throw new Error},u=function(t,e,r){return o("rpc",n({operationType:t,requestData:[e]},r))},a=function(n,t){var e=t||{},r=e.extInfo,i=e.immediately,u=e.multiCallback;return o("getCdpSpaceInfos",{spaceCodes:n,extInfo:r,immediately:i,multiCallback:u})},c=function(n,t){var e=t||{},r=e.extInfo,i=e.immediately,u=e.multiCallback;return o("getCdpSpaceInfo",{spaceCode:n,extInfo:r,immediately:i,multiCallback:u})},f=function(n,t,e){return void 0===e&&(e="SHOW"),o("cdpFeedback",{spaceCode:n,objectId:t,behavior:e})},l=function(n){return o("getUserInfo",n)},s=function(t,e){return o("toast",n({content:t},e))},d=function(n,t){var e=void 0===t?{}:t,r=e.title,i=e.buttonText;return o("alert",{title:r,message:n,button:i})},p=function(t,e,o){return r("addNotifyListener",n({name:t},e),o),function(){return v(t)}},v=function(n){return o("removeNotifyListener",{name:n})},g=function(n,t){return o("postNotification",{name:n,data:t})},h=function(t,e,r){return t||(t="​"),o("setTitle",n({title:t},e),r)},m=function(n){return 0!==n.indexOf("#")?n:parseInt(n.slice(1),16)},y=function(n){"string"==typeof n&&(n={color:m(n)});var t=n.color,e=n.reset,r=void 0!==e&&e,i=n.resetTransparent;return o("setTitleColor",{color:t,reset:r,resetTransparent:void 0!==i&&i})},b=function(){return y({reset:!0})},w=function(n){return o("setTransparentTitle",{transparentTitle:n})},B=function(){return y({resetTransparent:!0})},T=function(){return o("getTitleAndStatusbarHeight")},I=function(){return o("hideBackButton")},C=function(){return o("showBackButton")},k=function(){return o("showTitleLoading")},L=function(){return o("hideTitleLoading")},S=function(n,t){var e=void 0===t?{}:t,r=e.title,i=e.okButton,u=e.cancelButton;return o("confirm",{title:r,message:n,okButton:i,cancelButton:u}).then((function(n){return n.ok}))},x=function(){return o("showLoading").then(i)},A=function(){return o("hideLoading").then(i)},O=function(){return o("popWindow")},J=function(n,t){return o("pushWindow",{url:n,param:t})},M=function(){return o("closeWebview")},E=function(n){return o("subscribeMsgbox",{serviceCode:n})},W=function(n,t){r("setOptionMenu",n),r("showOptionMenu");var e=function(n,t){return document.addEventListener(n,t,!1),function(){return document.removeEventListener(n,t)}}("optionMenu",t);return function(){j(),e()}},j=function(){return r("hideOptionMenu")},N=function(n){return o("openInBrowser",{url:n})},P=function(){return o("restorePullToRefresh")},U=function(){return o("getAlipayUserId").then((function(n){return n.alipayUserId}))};export{p as addNotifyListener,d as alert,r as call,f as cdpFeedback,M as closeWebview,S as confirm,U as getAlipayUserId,c as getCdpSpaceInfo,a as getCdpSpaceInfos,T as getTitleAndStatusbarHeight,l as getUserInfo,i as handleResponse,I as hideBackButton,A as hideLoading,j as hideOptionMenu,L as hideTitleLoading,N as openInBrowser,W as optionMenu,o as pcall,O as popWindow,g as postNotification,J as pushWindow,e as ready,v as removeNotifyListener,b as resetTitleColor,B as resetTransparentTitle,P as restorePullToRefresh,u as rpc,h as setTitle,y as setTitleColor,w as setTransparentTitle,C as showBackButton,x as showLoading,k as showTitleLoading,E as subscribeMsgbox,s as toast};
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+function ready(callback) {
+    // @ts-ignore
+    if (window.AlipayJSBridge) {
+        callback && callback();
+    }
+    else {
+        document.addEventListener('AlipayJSBridgeReady', callback, false);
+    }
+}
+var call = function (method) {
+    var params = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        params[_i - 1] = arguments[_i];
+    }
+    ready(function () { return AlipayJSBridge.call.apply(AlipayJSBridge, __spreadArrays([method], params)); });
+};
+var pcall = function (method) {
+    var params = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        params[_i - 1] = arguments[_i];
+    }
+    return new Promise(function (resolve, reject) {
+        params.push(function (res) {
+            console.log("AlipayJSBridge.call(" + method + ")", res);
+            resolve(res);
+        });
+        return call.apply(void 0, __spreadArrays([method], params));
+    });
+};
+var handleResponse = function (res) {
+    if (res.success)
+        return res.data;
+    throw new Error();
+};
+
+var rpc = function (operationType, body, options) {
+    return pcall('rpc', __assign({ operationType: operationType, requestData: [body] }, options));
+};
+
+var getCdpSpaceInfos = function (spaceCodes, options) {
+    var _a = options || {}, extInfo = _a.extInfo, immediately = _a.immediately, multiCallback = _a.multiCallback;
+    return pcall('getCdpSpaceInfos', {
+        spaceCodes: spaceCodes,
+        extInfo: extInfo,
+        immediately: immediately,
+        multiCallback: multiCallback,
+    });
+};
+var getCdpSpaceInfo = function (spaceCode, options) {
+    var _a = options || {}, extInfo = _a.extInfo, immediately = _a.immediately, multiCallback = _a.multiCallback;
+    return pcall('getCdpSpaceInfo', {
+        spaceCode: spaceCode,
+        extInfo: extInfo,
+        immediately: immediately,
+        multiCallback: multiCallback,
+    });
+};
+var cdpFeedback = function (spaceCode, objectId, behavior) {
+    if (behavior === void 0) { behavior = 'SHOW'; }
+    return pcall('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
+};
+
+var getUserInfo = function (options) {
+    return pcall('getUserInfo', options);
+};
+
+var toast = function (content, options) {
+    return pcall('toast', __assign({ content: content }, options));
+};
+
+var alert = function (message, _a) {
+    var _b = _a === void 0 ? {} : _a, title = _b.title, button = _b.buttonText;
+    return pcall('alert', {
+        title: title,
+        message: message,
+        button: button,
+    });
+};
+
+/**
+ * addNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/add-notify-listener.html
+ * @param name s
+ * @param options
+ * @param fn
+ */
+var addNotifyListener = function (name, options, fn) {
+    call('addNotifyListener', __assign({ name: name }, options), fn);
+    return function () { return removeNotifyListener(name); };
+};
+/**
+ * removeNotifyListener
+ * @docs http://jsapi.alipay.net/jsapi/events/remove-notify-listener.html
+ * @param name
+ */
+var removeNotifyListener = function (name) {
+    return pcall('removeNotifyListener', { name: name });
+};
+/**
+ * postNotification
+ * @docs http://jsapi.alipay.net/jsapi/events/post-notification.html
+ * @param name
+ * @param data
+ */
+var postNotification = function (name, data) {
+    return pcall('postNotification', { name: name, data: data });
+};
+
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/set-title.html
+ * @param title
+ * @param onClickTitle
+ */
+var setTitle = function (title, options, onClickTitle) {
+    // 安卓10.0.18版本之前不支持设置空的title，可以通过设置一个不可见字符串绕过去，10.0.20版本已经去掉这个限制
+    // https://myjsapi.alipay.com/jsapi/ui/set-title.html#3__E6_B3_A8_E6_84_8F
+    if (!title)
+        title = '\u200b';
+    return pcall('setTitle', __assign({ title: title }, options), onClickTitle);
+};
+var fromColor = function (color) {
+    if (color.indexOf('#') !== 0)
+        return color;
+    return parseInt(color.slice(1), 16);
+};
+/**
+ * setTitleColor
+ * @param color
+ * @param reset
+ * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
+ */
+var setTitleColor = function (options) {
+    if (typeof options === 'string') {
+        options = {
+            color: fromColor(options)
+        };
+    }
+    var color = options.color, _a = options.reset, reset = _a === void 0 ? false : _a, _b = options.resetTransparent, resetTransparent = _b === void 0 ? false : _b;
+    return pcall('setTitleColor', { color: color, reset: reset, resetTransparent: resetTransparent });
+};
+var resetTitleColor = function () {
+    return setTitleColor({ reset: true });
+};
+/**
+ * setTransparentTitle
+ * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
+ */
+var setTransparentTitle = function (mode) {
+    if (mode === void 0) { mode = "auto"; }
+    return pcall('setTransparentTitle', {
+        transparentTitle: mode
+    });
+};
+var resetTransparentTitle = function () {
+    return setTitleColor({ resetTransparent: true });
+};
+/**
+ * getTitleAndStatusbarHeight
+ * @docs http://jsapi.alipay.net/jsapi/ui/get-title-and-statusbar-height.html
+ */
+var getTitleAndStatusbarHeight = function () {
+    return pcall('getTitleAndStatusbarHeight');
+};
+var hideBackButton = function () {
+    return pcall('hideBackButton');
+};
+var showBackButton = function () {
+    return pcall('showBackButton');
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/show-title-loading.html
+ */
+var showTitleLoading = function () {
+    return pcall('showTitleLoading');
+};
+/**
+ * https://myjsapi.alipay.com/jsapi/ui/hide-title-loading.html
+ */
+var hideTitleLoading = function () {
+    return pcall('hideTitleLoading');
+};
+
+var confirm = function (message, _a) {
+    var _b = _a === void 0 ? {} : _a, title = _b.title, okButton = _b.okButton, cancelButton = _b.cancelButton;
+    return pcall('confirm', {
+        title: title,
+        message: message,
+        okButton: okButton,
+        cancelButton: cancelButton,
+    }).then(function (_a) {
+        var ok = _a.ok;
+        return ok;
+    });
+};
+
+var showLoading = function () {
+    return pcall('showLoading').then(handleResponse);
+};
+var hideLoading = function () {
+    return pcall('hideLoading').then(handleResponse);
+};
+
+/**
+ * tradePay
+ * https://myjsapi.alipay.com/jsapi/native/trade-pay.html
+ * @param param0
+ */
+var tradePay = function (_a) {
+    var uuid = _a.uuid, extern_token = _a.extern_token, _b = _a.app_name, app_name = _b === void 0 ? 'alipay' : _b, _c = _a.biz_type, biz_type = _c === void 0 ? 'openservice' : _c, _d = _a.apiname, apiname = _d === void 0 ? 'com.alipay.paypwd.validate' : _d, _e = _a.apiservice, apiservice = _e === void 0 ? 'com.alipay.loan.agreement.sign' : _e, _f = _a.tip, tip = _f === void 0 ? '请输入支付宝支付密码' : _f;
+    var orderStr = [
+        "uuid=" + uuid,
+        "extern_token=" + extern_token,
+        "app_name=" + app_name,
+        "biz_type=" + biz_type,
+        "apiname=" + apiname,
+        "apiservice=" + apiservice,
+        "tip=" + tip
+    ].join('&');
+    return pcall('tradePay', { orderStr: orderStr }).then(function (res) {
+        if (res.resultCode === '9000')
+            return res;
+        throw res;
+    });
+};
+var verifyIdentity = function (verifyId) {
+    return pcall('verifyIdentity', { verifyId: verifyId }).then(function (res) {
+        if (res.code === '1000')
+            return res;
+        throw res;
+    });
+};
+
+/**
+ * https://myjsapi.alipay.com/jsapi/context/pop-window.html
+ */
+var popWindow = function () {
+    return pcall('popWindow');
+};
+
+/**
+ * pushWindow
+ * https://myjsapi.alipay.com/jsapi/context/push-window.html
+ * @param url
+ * @param param
+ */
+var pushWindow = function (url, param) {
+    return pcall('pushWindow', { url: url, param: param });
+};
+
+var closeWebview = function () {
+    return pcall('closeWebview');
+};
+
+var subscribeMsgbox = function (serviceCode) {
+    return pcall('subscribeMsgbox', { serviceCode: serviceCode });
+};
+
+// export const NebulaBridgeUrl = '//a.alipayobjects.com/g/h5-lib/alipayjsapi/3.0.5/alipayjsapi.inc.min.js';
+// export const WindVaneBridgeUrl = '//g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js';
+// export const DingTalkBridgeUrl = '//g.alicdn.com/dingding/dingtalk-jsapi/2.4.3/dingtalk.open.js';
+// export const AmapBridgeUrl = '//as.alipayobjects.com/g/insuranceprod/amap-util/1.0.0/amap.js';
+// export const QianniuBridgeUrl = '//g.alicdn.com/x-bridge/qap-sdk/2.4.2/qn.min.js';
+var addEventListener = function (type, fn) {
+    document.addEventListener(type, fn, false);
+    return function () { return document.removeEventListener(type, fn); };
+};
+
+/**
+ * https://myjsapi.alipay.com/jsapi/events/option-menu.html
+ */
+var optionMenu = function (options, fn) {
+    call('setOptionMenu', options);
+    call('showOptionMenu');
+    var removeEventListener = addEventListener('optionMenu', fn);
+    return function () {
+        hideOptionMenu();
+        removeEventListener();
+    };
+};
+var hideOptionMenu = function () {
+    return call('hideOptionMenu');
+};
+
+var openInBrowser = function (url) {
+    return pcall('openInBrowser', { url: url });
+};
+
+var restorePullToRefresh = function () {
+    return pcall('restorePullToRefresh');
+};
+
+var getAlipayUserId = function () {
+    return pcall('getAlipayUserId').then(function (user) { return user.alipayUserId; });
+};
+
+export { addNotifyListener, alert, call, cdpFeedback, closeWebview, confirm, getAlipayUserId, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, getUserInfo, handleResponse, hideBackButton, hideLoading, hideOptionMenu, hideTitleLoading, openInBrowser, optionMenu, pcall, popWindow, postNotification, pushWindow, ready, removeNotifyListener, resetTitleColor, resetTransparentTitle, restorePullToRefresh, rpc, setTitle, setTitleColor, setTransparentTitle, showBackButton, showLoading, showTitleLoading, subscribeMsgbox, toast, tradePay, verifyIdentity };

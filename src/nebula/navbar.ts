@@ -54,7 +54,7 @@ export const resetTitleColor = () => {
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
  */
-export const setTransparentTitle = (mode: "auto" | "always" | "custom" | "none") => {
+export const setTransparentTitle = (mode: "auto" | "always" | "custom" | "none" = "auto") => {
   return pcall('setTransparentTitle', {
     transparentTitle: mode
   });

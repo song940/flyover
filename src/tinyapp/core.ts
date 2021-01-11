@@ -1,6 +1,11 @@
 
 declare const my: any;
 
+/**
+ * call
+ * @param method
+ * @param params
+ */
 export const call = (method: string, ...params: any): Promise<any> => new Promise((resolve, reject) => {
   params.push((res: any) => {
     console.log(`my.call(${method})`, params, res);
@@ -10,7 +15,12 @@ export const call = (method: string, ...params: any): Promise<any> => new Promis
   return my.call(method, ...params);
 });
 
-export const pcall = (method: string, params?: any): Promise<any> => new Promise((resolve, reject) => {
+/**
+ * pcall
+ * @param method
+ * @param params
+ */
+export const pcall = (method: string, params: any = {}): Promise<any> => new Promise((resolve, reject) => {
   params.fail = reject;
   params.success = resolve;
   if (my.canIUse(method)) {
@@ -20,6 +30,11 @@ export const pcall = (method: string, params?: any): Promise<any> => new Promise
   }
 });
 
+/**
+ * addEventListener
+ * @param eventName
+ * @param fn
+ */
 export const addEventListener = (eventName: string, fn: any) => {
   return my.on(eventName, fn);
 };
