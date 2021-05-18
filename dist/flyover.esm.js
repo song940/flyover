@@ -38,7 +38,7 @@ var addEventListener = function (type, fn) {
     return function () { return document.removeEventListener(type, fn); };
 };
 
-var call = function (api, params, callback) {
+var call$2 = function (api, params, callback) {
     var _a = api.split('.'), className = _a[0], methodName = _a[1];
     var success = function (o) { return callback && callback(null, o); };
     var failure = function (e) { return callback && callback(e); };
@@ -46,8 +46,8 @@ var call = function (api, params, callback) {
     var WindVane = window.WindVane || (window.lib && window.lib.windvane);
     return WindVane.call(className, methodName, params, success, failure);
 };
-var pcall = function (api, params) { return new Promise(function (resolve, reject) {
-    return call(api, params, function (err, res) {
+var pcall$1 = function (api, params) { return new Promise(function (resolve, reject) {
+    return call$2(api, params, function (err, res) {
         if (err)
             return reject(err);
         resolve(res);
@@ -60,16 +60,16 @@ var pcall = function (api, params) { return new Promise(function (resolve, rejec
  * @param message
  * @param options
  */
-var toast = function (message, options) {
+var toast$2 = function (message, options) {
     if (options === void 0) { options = {}; }
     var duration = options.duration;
-    return call('WVUIToast.toast', {
+    return call$2('WVUIToast.toast', {
         message: message,
         duration: duration,
     });
 };
 
-var waittingEvent = function (id) { return new Promise(function (done) {
+var waittingEvent$1 = function (id) { return new Promise(function (done) {
     var removeListener = addEventListener('WV.Event.Alert', function (e) {
         var identifier = (e.param || {}).identifier;
         if (identifier && id === identifier) {
@@ -84,18 +84,18 @@ var waittingEvent = function (id) { return new Promise(function (done) {
  * @param message
  * @param options
  */
-var alert = function (message, options) {
+var alert$2 = function (message, options) {
     if (options === void 0) { options = {}; }
     var _a = options.buttonText, buttonText = _a === void 0 ? '确定' : _a;
     var identifier = Date.now();
-    return pcall('WVUIDialog.alert', {
+    return pcall$1('WVUIDialog.alert', {
         message: message,
         okbutton: buttonText,
         identifier: identifier,
-    }).then(function () { return waittingEvent(identifier); });
+    }).then(function () { return waittingEvent$1(identifier); });
 };
 
-var waittingEvent$1 = function (id, text) { return new Promise(function (done) {
+var waittingEvent = function (id, text) { return new Promise(function (done) {
     var removeListener = addEventListener('wv.dialog', function (e) {
         var _a = e.param || {}, type = _a.type, _index = _a._index;
         if (_index === id) {
@@ -110,29 +110,29 @@ var waittingEvent$1 = function (id, text) { return new Promise(function (done) {
  * @param message
  * @param options
  */
-var confirm = function (message, options) {
+var confirm$2 = function (message, options) {
     if (options === void 0) { options = {}; }
     var _a = options.okbutton, okbutton = _a === void 0 ? '确定' : _a, _b = options.canclebutton, canclebutton = _b === void 0 ? '取消' : _b;
     var _index = Date.now();
-    return pcall('WVUIDialog.confirm', {
+    return pcall$1('WVUIDialog.confirm', {
         message: message,
         okbutton: okbutton,
         canclebutton: canclebutton,
         _index: _index,
-    }).then(function () { return waittingEvent$1(_index, okbutton); });
+    }).then(function () { return waittingEvent(_index, okbutton); });
 };
 
 /**
  * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUI-showLoadingBox
  */
-var showLoading = function () {
-    return pcall('WVUI.showLoadingBox');
+var showLoading$2 = function () {
+    return pcall$1('WVUI.showLoadingBox');
 };
 /**
  * @docs http://h5.alibaba-inc.com/api/WindVane-API.html#WVUI-hideLoadingBox
  */
-var hideLoading = function () {
-    return pcall('WVUI.hideLoadingBox');
+var hideLoading$2 = function () {
+    return pcall$1('WVUI.hideLoadingBox');
 };
 
 /**
@@ -141,16 +141,16 @@ var hideLoading = function () {
  * @param text
  */
 var copyToClipboard = function (text) {
-    return pcall('Base.copyToClipboard', { text: text });
+    return pcall$1('Base.copyToClipboard', { text: text });
 };
 
 var tmall = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    toast: toast,
-    alert: alert,
-    confirm: confirm,
-    showLoading: showLoading,
-    hideLoading: hideLoading,
+    toast: toast$2,
+    alert: alert$2,
+    confirm: confirm$2,
+    showLoading: showLoading$2,
+    hideLoading: hideLoading$2,
     copyToClipboard: copyToClipboard
 });
 
@@ -204,7 +204,7 @@ var call$1 = function (method) {
     }
     ready(function () { return AlipayJSBridge.call.apply(AlipayJSBridge, __spreadArrays([method], params)); });
 };
-var pcall$1 = function (method) {
+var pcall = function (method) {
     var params = [];
     for (var _i = 1; _i < arguments.length; _i++) {
         params[_i - 1] = arguments[_i];
@@ -224,43 +224,43 @@ var handleResponse = function (res) {
 };
 
 var rpc = function (operationType, body, options) {
-    return pcall$1('rpc', __assign({ operationType: operationType, requestData: [body] }, options));
+    return pcall('rpc', __assign({ operationType: operationType, requestData: [body] }, options));
 };
 
-var getCdpSpaceInfos = function (spaceCodes, options) {
+var getCdpSpaceInfos$1 = function (spaceCodes, options) {
     var _a = options || {}, extInfo = _a.extInfo, immediately = _a.immediately, multiCallback = _a.multiCallback;
-    return pcall$1('getCdpSpaceInfos', {
+    return pcall('getCdpSpaceInfos', {
         spaceCodes: spaceCodes,
         extInfo: extInfo,
         immediately: immediately,
         multiCallback: multiCallback,
     });
 };
-var getCdpSpaceInfo = function (spaceCode, options) {
+var getCdpSpaceInfo$1 = function (spaceCode, options) {
     var _a = options || {}, extInfo = _a.extInfo, immediately = _a.immediately, multiCallback = _a.multiCallback;
-    return pcall$1('getCdpSpaceInfo', {
+    return pcall('getCdpSpaceInfo', {
         spaceCode: spaceCode,
         extInfo: extInfo,
         immediately: immediately,
         multiCallback: multiCallback,
     });
 };
-var cdpFeedback = function (spaceCode, objectId, behavior) {
+var cdpFeedback$1 = function (spaceCode, objectId, behavior) {
     if (behavior === void 0) { behavior = 'SHOW'; }
-    return pcall$1('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
+    return pcall('cdpFeedback', { spaceCode: spaceCode, objectId: objectId, behavior: behavior });
 };
 
 var getUserInfo = function (options) {
-    return pcall$1('getUserInfo', options);
+    return pcall('getUserInfo', options);
 };
 
 var toast$1 = function (content, options) {
-    return pcall$1('toast', __assign({ content: content }, options));
+    return pcall('toast', __assign({ content: content }, options));
 };
 
 var alert$1 = function (message, _a) {
     var _b = _a === void 0 ? {} : _a, title = _b.title, button = _b.buttonText;
-    return pcall$1('alert', {
+    return pcall('alert', {
         title: title,
         message: message,
         button: button,
@@ -284,7 +284,7 @@ var addNotifyListener = function (name, options, fn) {
  * @param name
  */
 var removeNotifyListener = function (name) {
-    return pcall$1('removeNotifyListener', { name: name });
+    return pcall('removeNotifyListener', { name: name });
 };
 /**
  * postNotification
@@ -293,7 +293,7 @@ var removeNotifyListener = function (name) {
  * @param data
  */
 var postNotification = function (name, data) {
-    return pcall$1('postNotification', { name: name, data: data });
+    return pcall('postNotification', { name: name, data: data });
 };
 
 /**
@@ -301,12 +301,12 @@ var postNotification = function (name, data) {
  * @param title
  * @param onClickTitle
  */
-var setTitle = function (title, options, onClickTitle) {
+var setTitle$1 = function (title, options, onClickTitle) {
     // 安卓10.0.18版本之前不支持设置空的title，可以通过设置一个不可见字符串绕过去，10.0.20版本已经去掉这个限制
     // https://myjsapi.alipay.com/jsapi/ui/set-title.html#3__E6_B3_A8_E6_84_8F
     if (!title)
         title = '\u200b';
-    return pcall$1('setTitle', __assign({ title: title }, options), onClickTitle);
+    return pcall('setTitle', __assign({ title: title }, options), onClickTitle);
 };
 var fromColor = function (color) {
     if (color.indexOf('#') !== 0)
@@ -319,60 +319,60 @@ var fromColor = function (color) {
  * @param reset
  * @docs http://jsapi.alipay.net/jsapi/ui/set-title-color.html
  */
-var setTitleColor = function (options) {
+var setTitleColor$1 = function (options) {
     if (typeof options === 'string') {
         options = {
             color: fromColor(options)
         };
     }
     var color = options.color, _a = options.reset, reset = _a === void 0 ? false : _a, _b = options.resetTransparent, resetTransparent = _b === void 0 ? false : _b;
-    return pcall$1('setTitleColor', { color: color, reset: reset, resetTransparent: resetTransparent });
+    return pcall('setTitleColor', { color: color, reset: reset, resetTransparent: resetTransparent });
 };
 var resetTitleColor = function () {
-    return setTitleColor({ reset: true });
+    return setTitleColor$1({ reset: true });
 };
 /**
  * setTransparentTitle
  * http://jsapi.alipay.net/jsapi/ui/set-transparent-title.html
  */
-var setTransparentTitle = function (mode) {
+var setTransparentTitle$1 = function (mode) {
     if (mode === void 0) { mode = "auto"; }
-    return pcall$1('setTransparentTitle', {
+    return pcall('setTransparentTitle', {
         transparentTitle: mode
     });
 };
 var resetTransparentTitle = function () {
-    return setTitleColor({ resetTransparent: true });
+    return setTitleColor$1({ resetTransparent: true });
 };
 /**
  * getTitleAndStatusbarHeight
  * @docs http://jsapi.alipay.net/jsapi/ui/get-title-and-statusbar-height.html
  */
-var getTitleAndStatusbarHeight = function () {
-    return pcall$1('getTitleAndStatusbarHeight');
+var getTitleAndStatusbarHeight$1 = function () {
+    return pcall('getTitleAndStatusbarHeight');
 };
 var hideBackButton = function () {
-    return pcall$1('hideBackButton');
+    return pcall('hideBackButton');
 };
 var showBackButton = function () {
-    return pcall$1('showBackButton');
+    return pcall('showBackButton');
 };
 /**
  * https://myjsapi.alipay.com/jsapi/ui/show-title-loading.html
  */
 var showTitleLoading = function () {
-    return pcall$1('showTitleLoading');
+    return pcall('showTitleLoading');
 };
 /**
  * https://myjsapi.alipay.com/jsapi/ui/hide-title-loading.html
  */
 var hideTitleLoading = function () {
-    return pcall$1('hideTitleLoading');
+    return pcall('hideTitleLoading');
 };
 
 var confirm$1 = function (message, _a) {
     var _b = _a === void 0 ? {} : _a, title = _b.title, okButton = _b.okButton, cancelButton = _b.cancelButton;
-    return pcall$1('confirm', {
+    return pcall('confirm', {
         title: title,
         message: message,
         okButton: okButton,
@@ -384,10 +384,10 @@ var confirm$1 = function (message, _a) {
 };
 
 var showLoading$1 = function () {
-    return pcall$1('showLoading').then(handleResponse);
+    return pcall('showLoading').then(handleResponse);
 };
 var hideLoading$1 = function () {
-    return pcall$1('hideLoading').then(handleResponse);
+    return pcall('hideLoading').then(handleResponse);
 };
 
 /**
@@ -406,14 +406,14 @@ var tradePay = function (_a) {
         "apiservice=" + apiservice,
         "tip=" + tip
     ].join('&');
-    return pcall$1('tradePay', { orderStr: orderStr }).then(function (res) {
+    return pcall('tradePay', { orderStr: orderStr }).then(function (res) {
         if (res.resultCode === '9000')
             return res;
         throw res;
     });
 };
 var verifyIdentity = function (verifyId) {
-    return pcall$1('verifyIdentity', { verifyId: verifyId }).then(function (res) {
+    return pcall('verifyIdentity', { verifyId: verifyId }).then(function (res) {
         if (res.code === '1000')
             return res;
         throw res;
@@ -423,8 +423,8 @@ var verifyIdentity = function (verifyId) {
 /**
  * https://myjsapi.alipay.com/jsapi/context/pop-window.html
  */
-var popWindow = function () {
-    return pcall$1('popWindow');
+var popWindow$2 = function () {
+    return pcall('popWindow');
 };
 
 /**
@@ -433,22 +433,22 @@ var popWindow = function () {
  * @param url
  * @param param
  */
-var pushWindow = function (url, param) {
-    return pcall$1('pushWindow', { url: url, param: param });
+var pushWindow$2 = function (url, param) {
+    return pcall('pushWindow', { url: url, param: param });
 };
 
-var closeWebview = function () {
-    return pcall$1('closeWebview');
+var closeWebview$1 = function () {
+    return pcall('closeWebview');
 };
 
 var subscribeMsgbox = function (serviceCode) {
-    return pcall$1('subscribeMsgbox', { serviceCode: serviceCode });
+    return pcall('subscribeMsgbox', { serviceCode: serviceCode });
 };
 
 /**
  * https://myjsapi.alipay.com/jsapi/events/option-menu.html
  */
-var optionMenu = function (options, fn) {
+var optionMenu$1 = function (options, fn) {
     call$1('setOptionMenu', options);
     call$1('showOptionMenu');
     var removeEventListener = addEventListener('optionMenu', fn);
@@ -462,35 +462,35 @@ var hideOptionMenu = function () {
 };
 
 var openInBrowser = function (url) {
-    return pcall$1('openInBrowser', { url: url });
+    return pcall('openInBrowser', { url: url });
 };
 
-var restorePullToRefresh = function () {
-    return pcall$1('restorePullToRefresh');
+var restorePullToRefresh$1 = function () {
+    return pcall('restorePullToRefresh');
 };
 
 var alipay = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ready: ready,
     call: call$1,
-    pcall: pcall$1,
+    pcall: pcall,
     handleResponse: handleResponse,
     rpc: rpc,
-    getCdpSpaceInfos: getCdpSpaceInfos,
-    getCdpSpaceInfo: getCdpSpaceInfo,
-    cdpFeedback: cdpFeedback,
+    getCdpSpaceInfos: getCdpSpaceInfos$1,
+    getCdpSpaceInfo: getCdpSpaceInfo$1,
+    cdpFeedback: cdpFeedback$1,
     getUserInfo: getUserInfo,
     toast: toast$1,
     alert: alert$1,
     addNotifyListener: addNotifyListener,
     removeNotifyListener: removeNotifyListener,
     postNotification: postNotification,
-    setTitle: setTitle,
-    setTitleColor: setTitleColor,
+    setTitle: setTitle$1,
+    setTitleColor: setTitleColor$1,
     resetTitleColor: resetTitleColor,
-    setTransparentTitle: setTransparentTitle,
+    setTransparentTitle: setTransparentTitle$1,
     resetTransparentTitle: resetTransparentTitle,
-    getTitleAndStatusbarHeight: getTitleAndStatusbarHeight,
+    getTitleAndStatusbarHeight: getTitleAndStatusbarHeight$1,
     hideBackButton: hideBackButton,
     showBackButton: showBackButton,
     showTitleLoading: showTitleLoading,
@@ -500,42 +500,42 @@ var alipay = /*#__PURE__*/Object.freeze({
     hideLoading: hideLoading$1,
     tradePay: tradePay,
     verifyIdentity: verifyIdentity,
-    popWindow: popWindow,
-    pushWindow: pushWindow,
-    closeWebview: closeWebview,
+    popWindow: popWindow$2,
+    pushWindow: pushWindow$2,
+    closeWebview: closeWebview$1,
     subscribeMsgbox: subscribeMsgbox,
-    optionMenu: optionMenu,
+    optionMenu: optionMenu$1,
     hideOptionMenu: hideOptionMenu,
     openInBrowser: openInBrowser,
-    restorePullToRefresh: restorePullToRefresh
+    restorePullToRefresh: restorePullToRefresh$1
 });
 
 var getAlipayUserId = function () {
-    return pcall$1('getAlipayUserId').then(function (user) { return user.alipayUserId; });
+    return pcall('getAlipayUserId').then(function (user) { return user.alipayUserId; });
 };
 
 var mybank = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ready: ready,
     call: call$1,
-    pcall: pcall$1,
+    pcall: pcall,
     handleResponse: handleResponse,
     rpc: rpc,
-    getCdpSpaceInfos: getCdpSpaceInfos,
-    getCdpSpaceInfo: getCdpSpaceInfo,
-    cdpFeedback: cdpFeedback,
+    getCdpSpaceInfos: getCdpSpaceInfos$1,
+    getCdpSpaceInfo: getCdpSpaceInfo$1,
+    cdpFeedback: cdpFeedback$1,
     getUserInfo: getUserInfo,
     toast: toast$1,
     alert: alert$1,
     addNotifyListener: addNotifyListener,
     removeNotifyListener: removeNotifyListener,
     postNotification: postNotification,
-    setTitle: setTitle,
-    setTitleColor: setTitleColor,
+    setTitle: setTitle$1,
+    setTitleColor: setTitleColor$1,
     resetTitleColor: resetTitleColor,
-    setTransparentTitle: setTransparentTitle,
+    setTransparentTitle: setTransparentTitle$1,
     resetTransparentTitle: resetTransparentTitle,
-    getTitleAndStatusbarHeight: getTitleAndStatusbarHeight,
+    getTitleAndStatusbarHeight: getTitleAndStatusbarHeight$1,
     hideBackButton: hideBackButton,
     showBackButton: showBackButton,
     showTitleLoading: showTitleLoading,
@@ -545,14 +545,14 @@ var mybank = /*#__PURE__*/Object.freeze({
     hideLoading: hideLoading$1,
     tradePay: tradePay,
     verifyIdentity: verifyIdentity,
-    popWindow: popWindow,
-    pushWindow: pushWindow,
-    closeWebview: closeWebview,
+    popWindow: popWindow$2,
+    pushWindow: pushWindow$2,
+    closeWebview: closeWebview$1,
     subscribeMsgbox: subscribeMsgbox,
-    optionMenu: optionMenu,
+    optionMenu: optionMenu$1,
     hideOptionMenu: hideOptionMenu,
     openInBrowser: openInBrowser,
-    restorePullToRefresh: restorePullToRefresh,
+    restorePullToRefresh: restorePullToRefresh$1,
     getAlipayUserId: getAlipayUserId
 });
 
@@ -560,24 +560,24 @@ var koubei = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ready: ready,
     call: call$1,
-    pcall: pcall$1,
+    pcall: pcall,
     handleResponse: handleResponse,
     rpc: rpc,
-    getCdpSpaceInfos: getCdpSpaceInfos,
-    getCdpSpaceInfo: getCdpSpaceInfo,
-    cdpFeedback: cdpFeedback,
+    getCdpSpaceInfos: getCdpSpaceInfos$1,
+    getCdpSpaceInfo: getCdpSpaceInfo$1,
+    cdpFeedback: cdpFeedback$1,
     getUserInfo: getUserInfo,
     toast: toast$1,
     alert: alert$1,
     addNotifyListener: addNotifyListener,
     removeNotifyListener: removeNotifyListener,
     postNotification: postNotification,
-    setTitle: setTitle,
-    setTitleColor: setTitleColor,
+    setTitle: setTitle$1,
+    setTitleColor: setTitleColor$1,
     resetTitleColor: resetTitleColor,
-    setTransparentTitle: setTransparentTitle,
+    setTransparentTitle: setTransparentTitle$1,
     resetTransparentTitle: resetTransparentTitle,
-    getTitleAndStatusbarHeight: getTitleAndStatusbarHeight,
+    getTitleAndStatusbarHeight: getTitleAndStatusbarHeight$1,
     hideBackButton: hideBackButton,
     showBackButton: showBackButton,
     showTitleLoading: showTitleLoading,
@@ -587,23 +587,23 @@ var koubei = /*#__PURE__*/Object.freeze({
     hideLoading: hideLoading$1,
     tradePay: tradePay,
     verifyIdentity: verifyIdentity,
-    popWindow: popWindow,
-    pushWindow: pushWindow,
-    closeWebview: closeWebview,
+    popWindow: popWindow$2,
+    pushWindow: pushWindow$2,
+    closeWebview: closeWebview$1,
     subscribeMsgbox: subscribeMsgbox,
-    optionMenu: optionMenu,
+    optionMenu: optionMenu$1,
     hideOptionMenu: hideOptionMenu,
     openInBrowser: openInBrowser,
-    restorePullToRefresh: restorePullToRefresh
+    restorePullToRefresh: restorePullToRefresh$1
 });
 
 var taobao = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    toast: toast,
-    alert: alert,
-    confirm: confirm,
-    showLoading: showLoading,
-    hideLoading: hideLoading,
+    toast: toast$2,
+    alert: alert$2,
+    confirm: confirm$2,
+    showLoading: showLoading$2,
+    hideLoading: hideLoading$2,
     copyToClipboard: copyToClipboard
 });
 
@@ -637,18 +637,18 @@ var pushWindow$1 = function (url, options) {
 
 var qianniu = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    toast: toast,
-    alert: alert,
-    confirm: confirm,
-    showLoading: showLoading,
-    hideLoading: hideLoading,
+    toast: toast$2,
+    alert: alert$2,
+    confirm: confirm$2,
+    showLoading: showLoading$2,
+    hideLoading: hideLoading$2,
     copyToClipboard: copyToClipboard,
     popWindow: popWindow$1,
     getAbsoluteURL: getAbsoluteURL,
     pushWindow: pushWindow$1
 });
 
-var call$2 = function (method) {
+var call = function (method) {
     var params = [];
     for (var _i = 1; _i < arguments.length; _i++) {
         params[_i - 1] = arguments[_i];
@@ -668,50 +668,50 @@ var call$2 = function (method) {
     // if (detect.isTinyapp) return tinyapp.call(method, params);
     return Promise.reject();
 };
-var toast$2 = function (content, options) {
-    return call$2('toast', content, options);
+var toast = function (content, options) {
+    return call('toast', content, options);
 };
-var alert$2 = function (content, options) {
-    return call$2('alert', content, options);
+var alert = function (content, options) {
+    return call('alert', content, options);
 };
-var confirm$2 = function (content, options) {
-    return call$2('confirm', content, options);
+var confirm = function (content, options) {
+    return call('confirm', content, options);
 };
-var showLoading$2 = function () {
-    return call$2('showLoading');
+var showLoading = function () {
+    return call('showLoading');
 };
-var hideLoading$2 = function () {
-    return call$2('hideLoading');
+var hideLoading = function () {
+    return call('hideLoading');
 };
-var pushWindow$2 = function (url, options) {
-    return call$2('pushWindow', url, options);
+var pushWindow = function (url, options) {
+    return call('pushWindow', url, options);
 };
-var popWindow$2 = function () {
-    return call$2('popWindow');
+var popWindow = function () {
+    return call('popWindow');
 };
-var closeWebview$1 = function () {
-    return call$2('closeWebview');
+var closeWebview = function () {
+    return call('closeWebview');
 };
-var restorePullToRefresh$1 = function () {
-    return call$2('restorePullToRefresh');
+var restorePullToRefresh = function () {
+    return call('restorePullToRefresh');
 };
-var setTitle$1 = function (title) {
-    return call$2('setTitle', title);
+var setTitle = function (title) {
+    return call('setTitle', title);
 };
-var setTitleColor$1 = function (color, reset) {
-    return call$2('setTitleColor', color, reset);
+var setTitleColor = function (color, reset) {
+    return call('setTitleColor', color, reset);
 };
-var setTransparentTitle$1 = function (options) {
-    return call$2('setTransparentTitle', options);
+var setTransparentTitle = function (options) {
+    return call('setTransparentTitle', options);
 };
-var getTitleAndStatusbarHeight$1 = function () {
-    return call$2('getTitleAndStatusbarHeight');
+var getTitleAndStatusbarHeight = function () {
+    return call('getTitleAndStatusbarHeight');
 };
-var optionMenu$1 = function (options, fn) {
-    return call$2('optionMenu', options, fn);
+var optionMenu = function (options, fn) {
+    return call('optionMenu', options, fn);
 };
 var onReady = function (fn) {
-    return call$2('ready', fn);
+    return call('ready', fn);
 };
 var onResume = function (fn) {
     return addEventListener('resume', fn);
@@ -730,15 +730,15 @@ var onBack = function (fn) {
 var onPullToRefresh = function (fn) {
     return addEventListener('firePullToRefresh', fn);
 };
-var getCdpSpaceInfos$1 = function (spaceCodes, options) {
-    return call$2('getCdpSpaceInfos', spaceCodes, options);
+var getCdpSpaceInfos = function (spaceCodes, options) {
+    return call('getCdpSpaceInfos', spaceCodes, options);
 };
-var getCdpSpaceInfo$1 = function (spaceCode, options) {
-    return call$2('getCdpSpaceInfo', spaceCode, options);
+var getCdpSpaceInfo = function (spaceCode, options) {
+    return call('getCdpSpaceInfo', spaceCode, options);
 };
-var cdpFeedback$1 = function (spaceCode, objectId, behavior) {
+var cdpFeedback = function (spaceCode, objectId, behavior) {
     if (behavior === void 0) { behavior = 'SHOW'; }
-    return call$2('cdpFeedback', spaceCode, objectId, behavior);
+    return call('cdpFeedback', spaceCode, objectId, behavior);
 };
 
-export { addEventListener, alert$2 as alert, alipay, call$2 as call, cdpFeedback$1 as cdpFeedback, closeWebview$1 as closeWebview, confirm$2 as confirm, detect, getCdpSpaceInfo$1 as getCdpSpaceInfo, getCdpSpaceInfos$1 as getCdpSpaceInfos, getTitleAndStatusbarHeight$1 as getTitleAndStatusbarHeight, hideLoading$2 as hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, koubei, mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu$1 as optionMenu, popWindow$2 as popWindow, pushWindow$2 as pushWindow, qianniu, restorePullToRefresh$1 as restorePullToRefresh, setTitle$1 as setTitle, setTitleColor$1 as setTitleColor, setTransparentTitle$1 as setTransparentTitle, showLoading$2 as showLoading, taobao, tmall, toast$2 as toast };
+export { addEventListener, alert, alipay, call, cdpFeedback, closeWebview, confirm, detect, getCdpSpaceInfo, getCdpSpaceInfos, getTitleAndStatusbarHeight, hideLoading, isAlipay, isAmap, isDingTalk, isIOS, isInside, isKoubei, isKoubeiMerchant, isMyBank, isQianNiu, isTaobao, isTmall, isWealth, koubei, mybank, onBack, onPause, onPullToRefresh, onReady, onResume, optionMenu, popWindow, pushWindow, qianniu, restorePullToRefresh, setTitle, setTitleColor, setTransparentTitle, showLoading, taobao, tmall, toast };
